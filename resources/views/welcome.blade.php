@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Courses</title>
+    <title>Laravel</title>
     <script src="https://kit.fontawesome.com/2e0d547289.js" crossorigin="anonymous"></script>
     <!-- Fonts -->
     <link href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
@@ -68,7 +68,7 @@
     </header>
 
     <main>
-        <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
+        {{-- <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
             <div class="col">
                 <div class="card mb-4 rounded-3 shadow-sm">
                     <div class="card-header py-3">
@@ -120,7 +120,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> --}}
 
         {{-- <h2 class="display-6 text-center mb-4">Comparar planes</h2>
 

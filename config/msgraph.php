@@ -61,7 +61,7 @@ return [
     */
 
     // 'scopes' => 'offline_access openid calendars.readwrite contacts.readwrite files.readwrite mail.readwrite mail.send tasks.readwrite mailboxsettings.readwrite user.readwrite',
-    'scopes' => 'offline_access openid files.readwrite mailboxsettings.readwrite user.readwrite',
+    'scopes' => 'offline_access openid user.readwrite',
 
     /*
     The default timezone is set to Europe/London this option allows you to set your prefered timetime
