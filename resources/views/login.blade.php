@@ -52,9 +52,9 @@
                         </form>
                         <div>
                             <button type="button" class="btn btn-success" data-bs-toggle="tooltip" data-bs-placement="right" title="tooltip on right">Right</button>
-                            <button type="button" class="btn btn-warning" data-bs-toggle="tooltip" data-bs-placement="bottom" title="tooltip on bottom">Bottom</button>
+                            {{-- <button type="button" class="btn btn-warning" data-bs-toggle="tooltip" data-bs-placement="bottom" title="tooltip on bottom">Bottom</button>
                             <button type="button" class="btn btn-info" data-bs-toggle="tooltip" data-bs-html="true" data-bs-original-title="<em>Tooltip</em> <u>with</u> <b>HTML</b>">Html Tooltip</button>
-                            <button type="button" class="btn btn-info" data-bs-toggle="tooltip" data-bs-html="true" title="<em>Tooltip</em> <u>with</u> <b>HTML</b>">Html Tooltip</button>
+                            <button type="button" class="btn btn-info" data-bs-toggle="tooltip" data-bs-html="true" title="<em>Tooltip</em> <u>with</u> <b>HTML</b>">Html Tooltip</button> --}}
                             <button type="button" class="btn btn-info" data-bs-toggle="popover" data-bs-html="true" data-bs-placement="top" title="<em>popup</em> <u>with</u> <b>HTML</b>" data-bs-content="popup by HTML">Html popup</button>
                         </div>
                     </div>

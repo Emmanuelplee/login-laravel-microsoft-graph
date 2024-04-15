@@ -26,7 +26,7 @@ Route::group(['middleware' => ['web', 'guest']], function(){
     Route::get('connect', [AuthController::class,'connect'])->name('connect');
 });
 
-// Route::group(['middleware' => ['web', 'MsGraphAuthenticated'], 'prefix' => 'app'], function(){
+// Solo usuarios autinticados en msgraph
 Route::group(['middleware' => ['web', 'MsGraphAuthenticated']], function(){
     Route::get('/home', [HomeController::class, 'welcome'])->name('app');
     Route::get('logout', [AuthController::class, 'logout'])->name('logout');

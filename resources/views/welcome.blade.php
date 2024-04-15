@@ -10,7 +10,7 @@
     <link href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
     <link href="https://getbootstrap.com/docs/5.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
-    <!-- Styles -->
+    <!-- // #region MARK:Styles -->
     <style>
         .bd-placeholder-img {
             font-size: 1.125rem;
@@ -61,7 +61,14 @@
         <div class="pricing-header p-3 pb-md-4 mx-auto text-center">
             <h1 class="display-4 fw-normal">Precio</h1>
             @auth
-                <h3> {{print_r(MsGraph::get('me'))}} </h3>
+                    <pre class="text-start" style="font-size: 1rem;">
+                        {{print_r(MsGraph::get('me'))}}
+                    </pre>
+                    <pre>
+                        {{ MsGraph::isConnected() ? 'Conectado' : 'No conectado' }}
+                        {{ isset($token) ? $token : 'No hay token'}}
+                    </pre>
+                    {{-- <img src="{{ MsGraph::get('me')->photo()->content()->get()->wait(); }}" alt=""> --}}
             @endauth
             <p class="fs-5 text-muted">Accede a más de 300 cursos por 10$ mensuales y disfrut de clases en vivo y certificaciones de asistencias.</p>
         </div>
