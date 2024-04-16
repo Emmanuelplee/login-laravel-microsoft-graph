@@ -1,0 +1,192 @@
+[
+	{
+		"nombre" : "Guerrero",
+		"estado" : "GUERRERO",
+		"estatus" : 1
+	},
+	{
+		"nombre" : "Aguascalientes",
+		"estado" : "AGUASCALIENTES",
+		"estatus" : 1
+	},
+	{
+		"nombre" : "Campeche",
+		"estado" : "CAMPECHE",
+		"estatus" : 1
+	},
+	{
+		"nombre" : "Quintana Roo",
+		"estado" : "QUINTANA ROO",
+		"estatus" : 1
+	},
+	{
+		"nombre" : "Guanajuato",
+		"estado" : "GUANAJUATO",
+		"estatus" : 1
+	},
+	{
+		"nombre" : "Sinaloa",
+		"estado" : "SINALOA",
+		"estatus" : 1
+	},
+	{
+		"nombre" : "Chiapas",
+		"estado" : "CHIAPAS",
+		"estatus" : 1
+	},
+	{
+		"nombre" : "Chihuahua",
+		"estado" : "CHIHUAHUA",
+		"estatus" : 1
+	},
+	{
+		"nombre" : "Coahuila de Zaragoza",
+		"estado" : "COAHUILA",
+		"estatus" : 1
+	},
+	{
+		"nombre" : "Colima",
+		"estado" : "COLIMA",
+		"estatus" : 1
+	},
+	{
+		"nombre" : "Corporativo",
+		"estado" : "CIUDAD DE MEXICO",
+		"estatus" : 1
+	},
+	{
+		"nombre" : "Custodias",
+		"estado" : "MEXICO",
+		"estatus" : 1
+	},
+	{
+		"nombre" : "Grajales",
+		"estado" : "PUEBLA",
+		"estatus" : 1
+	},
+	{
+		"nombre" : "Jalisco",
+		"estado" : "JALISCO",
+		"estatus" : 1
+	},
+	{
+		"nombre" : "Hidalgo",
+		"estado" : "HIDALGO",
+		"estatus" : 1
+	},
+	{
+		"nombre" : "Yucatan",
+		"estado" : "YUCATAN",
+		"estatus" : 1
+	},
+	{
+		"nombre" : "Nuevo Leon",
+		"estado" : "NUEVO LEON",
+		"estatus" : 1
+	},
+	{
+		"nombre" : "Michoacan",
+		"estado" : "MICHOACAN",
+		"estatus" : 1
+	},
+	{
+		"nombre" : "Morelos",
+		"estado" : "MORELOS",
+		"estatus" : 1
+	},
+	{
+		"nombre" : "Oaxaca",
+		"estado" : "OAXACA",
+		"estatus" : 1
+	},
+	{
+		"nombre" : "Puebla",
+		"estado" : "PUEBLA",
+		"estatus" : 1
+	},
+	{
+		"nombre" : "Queretaro",
+		"estado" : "QUERETARO",
+		"estatus" : 1
+	},
+	{
+		"nombre" : "San Luis Potosi",
+		"estado" : "SAN LUIS POTOSI",
+		"estatus" : 1
+	},
+	{
+		"nombre" : "Sonora",
+		"estado" : "SONORA",
+		"estatus" : 1
+	},
+	{
+		"nombre" : "Tabasco",
+		"estado" : "TABASCO",
+		"estatus" : 1
+	},
+	{
+		"nombre" : "Tamaulipas",
+		"estado" : "TAMAULIPAS",
+		"estatus" : 1
+	},
+	{
+		"nombre" : "Baja California",
+		"estado" : "BAJA CALIFORNIA",
+		"estatus" : 1
+	},
+	{
+		"nombre" : "Estado de Mexico",
+		"estado" : "MEXICO",
+		"estatus" : 1
+	},
+	{
+		"nombre" : "Torreon",
+		"estado" : "COAHUILA",
+		"estatus" : 1
+	},
+	{
+		"nombre" : "Veracruz",
+		"estado" : "VERACRUZ",
+		"estatus" : 1
+	},
+	{
+		"nombre" : "Zacatecas",
+		"estado" : "ZACATECAS",
+		"estatus" : 1
+	},
+	{
+		"nombre" : "Ciudad de Mexico",
+		"estado" : "CIUDAD DE MEXICO",
+		"estatus" : 1
+	},
+	{
+		"nombre" : "Proteccion Ejecutiva",
+		"estado" : "CIUDAD DE MEXICO",
+		"estatus" : 1
+	},
+	{
+		"nombre" : "Division armados SEDENA",
+		"estado" : "CIUDAD DE MEXICO",
+		"estatus" : 1
+	},
+	{
+		"nombre" : "Proyectos",
+		"estado" : "CHIAPAS",
+		"estatus" : 1
+	},
+	{
+		"nombre" : "Division armados CUSAEM",
+		"estado" : "CIUDAD DE MEXICO",
+		"estatus" : 1
+	},
+	{
+		"nombre" : "Saltillo",
+		"estado" : "COAHUILA",
+		"estatus" : 1
+	},
+	{
+		"nombre" : "Ciudad de México Norte",
+		"estado" : "CIUDAD DE MEXICO",
+		"estatus" : 1
+	}
+]

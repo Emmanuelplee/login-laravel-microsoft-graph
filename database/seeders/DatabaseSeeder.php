@@ -18,8 +18,12 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
+
+        // Ejecutar todo => php artisan migrate --seed
+        // Ejecutar clase => php artisan db:seed --class=TestSeeader
         $this->call([
             TestSeeder::class,
+            EstadosSeader::class,
         ]);
     }
 }

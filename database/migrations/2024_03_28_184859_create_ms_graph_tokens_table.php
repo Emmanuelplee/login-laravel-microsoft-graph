@@ -11,7 +11,7 @@ return new class extends Migration
         Schema::create('ms_graph_tokens', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id')->nullable(); //ID usuario al que pertenecen este token.
-            $table->string('email')->nullable(); // Alamacena l direccion asiada al token.
+            $table->string('email')->nullable();
             //* Es el token de acceso proporcionado por Microsoft Graph.
             //* Este token se usa para solicitudes a la API de Microsoft Graph con usuario autenticado.
             $table->text('access_token');
