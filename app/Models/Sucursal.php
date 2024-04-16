@@ -13,7 +13,6 @@ class Sucursal extends Model
 
     protected $fillable = [
         'nombre',
-        'estado',
         'estaus',
         'id_estado',
     ];

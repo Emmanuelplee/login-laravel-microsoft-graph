@@ -1,192 +1,192 @@
 [
 	{
 		"nombre" : "Guerrero",
-		"estado" : "GUERRERO",
-		"estatus" : 1
+		"estatus" : 1,
+		"id_estado" : 11
 	},
 	{
 		"nombre" : "Aguascalientes",
-		"estado" : "AGUASCALIENTES",
-		"estatus" : 1
+		"estatus" : 1,
+		"id_estado" : 1
 	},
 	{
 		"nombre" : "Campeche",
-		"estado" : "CAMPECHE",
-		"estatus" : 1
+		"estatus" : 1,
+		"id_estado" : 6
 	},
 	{
 		"nombre" : "Quintana Roo",
-		"estado" : "QUINTANA ROO",
-		"estatus" : 1
+		"estatus" : 1,
+		"id_estado" : 22
 	},
 	{
 		"nombre" : "Guanajuato",
-		"estado" : "GUANAJUATO",
-		"estatus" : 1
+		"estatus" : 1,
+		"id_estado" : 12
 	},
 	{
 		"nombre" : "Sinaloa",
-		"estado" : "SINALOA",
-		"estatus" : 1
+		"estatus" : 1,
+		"id_estado" : 24
 	},
 	{
 		"nombre" : "Chiapas",
-		"estado" : "CHIAPAS",
-		"estatus" : 1
+		"estatus" : 1,
+		"id_estado" : 5
 	},
 	{
 		"nombre" : "Chihuahua",
-		"estado" : "CHIHUAHUA",
-		"estatus" : 1
+		"estatus" : 1,
+		"id_estado" : 4
 	},
 	{
 		"nombre" : "Coahuila de Zaragoza",
-		"estado" : "COAHUILA",
-		"estatus" : 1
+		"estatus" : 0,
+		"id_estado" : 8
 	},
 	{
 		"nombre" : "Colima",
-		"estado" : "COLIMA",
-		"estatus" : 1
+		"estatus" : 1,
+		"id_estado" : 9
 	},
 	{
 		"nombre" : "Corporativo",
-		"estado" : "CIUDAD DE MEXICO",
-		"estatus" : 1
+		"estatus" : 1,
+		"id_estado" : 7
 	},
 	{
 		"nombre" : "Custodias",
-		"estado" : "MEXICO",
-		"estatus" : 1
+		"estatus" : 1,
+		"id_estado" : 7
 	},
 	{
 		"nombre" : "Grajales",
-		"estado" : "PUEBLA",
-		"estatus" : 1
+		"estatus" : 1,
+		"id_estado" : 21
 	},
 	{
 		"nombre" : "Jalisco",
-		"estado" : "JALISCO",
-		"estatus" : 1
+		"estatus" : 1,
+		"id_estado" : 14
 	},
 	{
 		"nombre" : "Hidalgo",
-		"estado" : "HIDALGO",
-		"estatus" : 1
+		"estatus" : 1,
+		"id_estado" : 13
 	},
 	{
 		"nombre" : "Yucatan",
-		"estado" : "YUCATAN",
-		"estatus" : 1
+		"estatus" : 1,
+		"id_estado" : 31
 	},
 	{
 		"nombre" : "Nuevo Leon",
-		"estado" : "NUEVO LEON",
-		"estatus" : 1
+		"estatus" : 1,
+		"id_estado" : 19
 	},
 	{
 		"nombre" : "Michoacan",
-		"estado" : "MICHOACAN",
-		"estatus" : 1
+		"estatus" : 1,
+		"id_estado" : 15
 	},
 	{
 		"nombre" : "Morelos",
-		"estado" : "MORELOS",
-		"estatus" : 1
+		"estatus" : 1,
+		"id_estado" : 17
 	},
 	{
 		"nombre" : "Oaxaca",
-		"estado" : "OAXACA",
-		"estatus" : 1
+		"estatus" : 1,
+		"id_estado" : 20
 	},
 	{
 		"nombre" : "Puebla",
-		"estado" : "PUEBLA",
-		"estatus" : 1
+		"estatus" : 1,
+		"id_estado" : 21
 	},
 	{
 		"nombre" : "Queretaro",
-		"estado" : "QUERETARO",
-		"estatus" : 1
+		"estatus" : 1,
+		"id_estado" : 23
 	},
 	{
 		"nombre" : "San Luis Potosi",
-		"estado" : "SAN LUIS POTOSI",
-		"estatus" : 1
+		"estatus" : 1,
+		"id_estado" : 25
 	},
 	{
 		"nombre" : "Sonora",
-		"estado" : "SONORA",
-		"estatus" : 1
+		"estatus" : 1,
+		"id_estado" : 26
 	},
 	{
 		"nombre" : "Tabasco",
-		"estado" : "TABASCO",
-		"estatus" : 1
+		"estatus" : 1,
+		"id_estado" : 27
 	},
 	{
 		"nombre" : "Tamaulipas",
-		"estado" : "TAMAULIPAS",
-		"estatus" : 1
+		"estatus" : 1,
+		"id_estado" : 29
 	},
 	{
 		"nombre" : "Baja California",
-		"estado" : "BAJA CALIFORNIA",
-		"estatus" : 1
+		"estatus" : 1,
+		"id_estado" : 2
 	},
 	{
 		"nombre" : "Estado de Mexico",
-		"estado" : "MEXICO",
-		"estatus" : 1
+		"estatus" : 1,
+		"id_estado" : 7
 	},
 	{
 		"nombre" : "Torreon",
-		"estado" : "COAHUILA",
-		"estatus" : 1
+		"estatus" : 1,
+		"id_estado" : 8
 	},
 	{
 		"nombre" : "Veracruz",
-		"estado" : "VERACRUZ",
-		"estatus" : 1
+		"estatus" : 1,
+		"id_estado" : 30
 	},
 	{
 		"nombre" : "Zacatecas",
-		"estado" : "ZACATECAS",
-		"estatus" : 1
+		"estatus" : 1,
+		"id_estado" : 32
 	},
 	{
 		"nombre" : "Ciudad de Mexico",
-		"estado" : "CIUDAD DE MEXICO",
-		"estatus" : 1
+		"estatus" : 1,
+		"id_estado" : 7
 	},
 	{
 		"nombre" : "Proteccion Ejecutiva",
-		"estado" : "CIUDAD DE MEXICO",
-		"estatus" : 1
+		"estatus" : 1,
+		"id_estado" : 7
 	},
 	{
 		"nombre" : "Division armados SEDENA",
-		"estado" : "CIUDAD DE MEXICO",
-		"estatus" : 1
+		"estatus" : 1,
+		"id_estado" : 7
 	},
 	{
 		"nombre" : "Proyectos",
-		"estado" : "CHIAPAS",
-		"estatus" : 1
+		"estatus" : 1,
+		"id_estado" : 5
 	},
 	{
 		"nombre" : "Division armados CUSAEM",
-		"estado" : "CIUDAD DE MEXICO",
-		"estatus" : 1
+		"estatus" : 1,
+		"id_estado" : 7
 	},
 	{
 		"nombre" : "Saltillo",
-		"estado" : "COAHUILA",
-		"estatus" : 1
+		"estatus" : 1,
+		"id_estado" : 8
 	},
 	{
 		"nombre" : "Ciudad de México Norte",
-		"estado" : "CIUDAD DE MEXICO",
-		"estatus" : 1
+		"estatus" : 1,
+		"id_estado" : 7
 	}
 ]

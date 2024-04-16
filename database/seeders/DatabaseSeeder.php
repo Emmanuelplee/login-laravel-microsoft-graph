@@ -23,7 +23,7 @@ class DatabaseSeeder extends Seeder
         // Ejecutar clase => php artisan db:seed --class=TestSeeader
         $this->call([
             TestSeeder::class,
-            EstadosSeader::class,
+            EstadosSeeder::class,
             SucursalesSeeder::class,
             AreasSeeder::class,
             CuentasSeeder::class,

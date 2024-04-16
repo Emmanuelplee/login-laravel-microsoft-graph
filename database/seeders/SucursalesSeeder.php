@@ -27,10 +27,11 @@ class SucursalesSeeder extends Seeder
         foreach ($data as $obj) {
 
             // print_r($obj);
-            $estado = Estado::where('nombre','like','%'.$obj['estado'].'%')->get();
+            // $estado = Estado::where('nombre','like','%'.$obj['estado'].'%')->get();
+            $estado = Estado::where('id','=',$obj['id_estado'])->get();
             Sucursal::create([
                 'nombre'        => $obj['nombre'],
-                'estado'        => $obj['estado'],
+                'estatus'       => $obj['estatus'],
                 'id_estado'     => $estado[0]->id
             ]);
         }

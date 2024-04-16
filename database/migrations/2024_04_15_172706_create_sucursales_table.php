@@ -14,7 +14,6 @@ return new class extends Migration
         Schema::create('sucursales', function (Blueprint $table) {
             $table->id();
             $table->string('nombre',50);
-            $table->string('estado',50);
             $table->boolean('estatus')->default(1);
 
             $table->unsignedBigInteger('id_estado');
