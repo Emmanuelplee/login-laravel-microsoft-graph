@@ -22,12 +22,13 @@ class DatabaseSeeder extends Seeder
         // Ejecutar todo => php artisan migrate --seed
         // Ejecutar clase => php artisan db:seed --class=TestSeeader
         $this->call([
-            TestSeeder::class,
+            // TestSeeder::class,
             EstadosSeeder::class,
             SucursalesSeeder::class,
             AreasSeeder::class,
             CuentasSeeder::class,
             RoleTiposSeeder::class,
+            PuestoTiposSeeder::class,
         ]);
     }
 }
