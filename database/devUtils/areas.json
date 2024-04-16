@@ -1,0 +1,22 @@
+[
+    {
+        "nombre": "Administración y finanzas",
+        "estatus" : 1
+    },
+    {
+        "nombre": "Factor Humano",
+        "estatus" : 1
+    },
+    {
+        "nombre": "Comercial",
+        "estatus" : 1
+    },
+    {
+        "nombre": "Compras y servicios generales",
+        "estatus" : 1
+    },
+    {
+        "nombre": "Cuentas",
+        "estatus" : 1
+    }
+]

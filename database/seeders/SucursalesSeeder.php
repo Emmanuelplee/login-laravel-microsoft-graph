@@ -3,7 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Estado;
-use App\Models\Sucursales;
+use App\Models\Sucursal;
 use DB;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -28,7 +28,7 @@ class SucursalesSeeder extends Seeder
 
             // print_r($obj);
             $estado = Estado::where('nombre','like','%'.$obj['estado'].'%')->get();
-            Sucursales::create([
+            Sucursal::create([
                 'nombre'        => $obj['nombre'],
                 'estado'        => $obj['estado'],
                 'id_estado'     => $estado[0]->id

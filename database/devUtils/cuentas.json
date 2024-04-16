@@ -1,0 +1,30 @@
+[
+    {
+        "nombre": "Premium",
+        "estatus" : 1
+    },
+    {
+        "nombre": "Estratégicas",
+        "estatus" : 1
+    },
+    {
+        "nombre": "Especiales",
+        "estatus" : 1
+    },
+    {
+        "nombre": "Maestras",
+        "estatus" : 1
+    },
+    {
+        "nombre": "Clave",
+        "estatus" : 1
+    },
+    {
+        "nombre": "Platinum",
+        "estatus" : 1
+    },
+    {
+        "nombre": "Plus",
+        "estatus" : 1
+    }
+]
