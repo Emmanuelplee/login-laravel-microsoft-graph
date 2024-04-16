@@ -27,6 +27,7 @@ class DatabaseSeeder extends Seeder
             SucursalesSeeder::class,
             AreasSeeder::class,
             CuentasSeeder::class,
+            RoleTiposSeeder::class,
         ]);
     }
 }
