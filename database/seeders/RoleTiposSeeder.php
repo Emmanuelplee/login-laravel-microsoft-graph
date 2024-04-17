@@ -19,19 +19,29 @@ class RoleTiposSeeder extends Seeder
         DB::statement('SET FOREIGN_KEY_CHECKS = 1;');
 
         RoleTipo::create([
-            'nombre' => 'admin'
+            'nombre' => 'admin',
+            'descripcion' => 'El rol de tipo admin',
+            'estatus' => 1,
         ]);
         RoleTipo::create([
-            'nombre' => 'general'
+            'nombre' => 'general',
+            'descripcion' => 'El rol de tipo general',
+            'estatus' => 1,
         ]);
         RoleTipo::create([
-            'nombre' => 'area'
+            'nombre' => 'area',
+            'descripcion' => 'El rol de tipo area',
+            'estatus' => 1,
         ]);
         RoleTipo::create([
-            'nombre' => 'sucursal'
+            'nombre' => 'sucursal',
+            'descripcion' => 'El rol de tipo sucursal',
+            'estatus' => 1,
         ]);
         RoleTipo::create([
-            'nombre' => 'cuentas'
+            'nombre' => 'cuentas',
+            'descripcion' => 'El rol de tipo cuentas',
+            'estatus' => 1,
         ]);
     }
 }

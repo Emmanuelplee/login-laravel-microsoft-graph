@@ -14,5 +14,6 @@ class RoleTipo extends Model
     protected $fillable = [
         'nombre',
         'descripcion',
+        'estatus',
     ];
 }
