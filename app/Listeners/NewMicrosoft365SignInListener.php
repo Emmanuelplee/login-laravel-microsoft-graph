@@ -29,9 +29,18 @@ class NewMicrosoft365SignInListener
             $user->email
         );
 
+        // Guardar foto de perfil ========================================
+        $this->guardar_foto_perfil($event->token['accessToken'], $user);
+        // ===============================================================
+
+        Auth::login($user);
+
+    }
+    private function guardar_foto_perfil($accessToken,$user)
+    {
         // Obtener la foto del perfil del usuario desde Microsoft Graph
         $photoUrl = 'https://graph.microsoft.com/v1.0/me/photo/$value';
-        $response = Http::withToken($event->token['accessToken'])->get($photoUrl);
+        $response = Http::withToken($accessToken)->get($photoUrl);
 
         if ($response->successful()) {
             $photoData = $response->body();
@@ -44,11 +53,7 @@ class NewMicrosoft365SignInListener
             $user->profile_photo_path = 'profile-photos/' . $path;
             $user->save();
         } else {
-            // Manejar el caso en que no se pueda obtener la foto del perfil
-            // Puede ser útil registrar el error o proporcionar un valor predeterminado para la foto del perfil
+            // Manejar el error o proporcionar un valor predeterminado para la foto del perfil
         }
-
-        Auth::login($user);
-
     }
 }
