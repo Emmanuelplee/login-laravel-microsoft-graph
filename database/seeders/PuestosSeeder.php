@@ -2,36 +2,33 @@
 
 namespace Database\Seeders;
 
-use DB;
-use App\Models\Estado;
-use App\Models\Sucursal;
+use App\Models\Puesto;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
-class SucursalesSeeder extends Seeder
+class PuestosSeeder extends Seeder
 {
     /**
      * Run the database seeds.
      */
     public function run(): void
     {
-        $json = File::get("database/devUtils/sucursales.json");
+        $json = File::get("database/devUtils/puestos.json");
         $data = json_decode($json, true);
         // print_r(json_encode($data));
 
         DB::statement('SET FOREIGN_KEY_CHECKS = 0;');
-        DB::table('sucursales')->truncate();
+        DB::table('puestos')->truncate();
         DB::statement('SET FOREIGN_KEY_CHECKS = 1;');
 
         foreach ($data as $obj) {
             // print_r($obj);
-            // $estado = Estado::where('nombre','like','%'.$obj['estado'].'%')->get();
-            $estado = Estado::where('id','=',$obj['id_estado'])->get();
-            Sucursal::create([
+            Puesto::create([
                 'nombre'        => $obj['nombre'],
                 'estatus'       => $obj['estatus'],
-                'id_estado'     => $estado[0]->id
+                'id_puesto_tipo' => $obj['id_puesto_tipo'],
             ]);
         }
     }

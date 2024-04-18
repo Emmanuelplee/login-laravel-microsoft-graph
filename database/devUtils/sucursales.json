@@ -1,192 +1,192 @@
 [
 	{
-		"nombre" : "Guerrero",
-		"estatus" : 1,
-		"id_estado" : 11
+		"nombre": "Guerrero",
+		"estatus": 1,
+		"id_estado": 11
 	},
 	{
-		"nombre" : "Aguascalientes",
-		"estatus" : 1,
-		"id_estado" : 1
+		"nombre": "Aguascalientes",
+		"estatus": 1,
+		"id_estado": 1
 	},
 	{
-		"nombre" : "Campeche",
-		"estatus" : 1,
-		"id_estado" : 6
+		"nombre": "Campeche",
+		"estatus": 1,
+		"id_estado": 6
 	},
 	{
-		"nombre" : "Quintana Roo",
-		"estatus" : 1,
-		"id_estado" : 22
+		"nombre": "Quintana Roo",
+		"estatus": 1,
+		"id_estado": 22
 	},
 	{
-		"nombre" : "Guanajuato",
-		"estatus" : 1,
-		"id_estado" : 12
+		"nombre": "Guanajuato",
+		"estatus": 1,
+		"id_estado": 12
 	},
 	{
-		"nombre" : "Sinaloa",
-		"estatus" : 1,
-		"id_estado" : 24
+		"nombre": "Sinaloa",
+		"estatus": 1,
+		"id_estado": 24
 	},
 	{
-		"nombre" : "Chiapas",
-		"estatus" : 1,
-		"id_estado" : 5
+		"nombre": "Chiapas",
+		"estatus": 1,
+		"id_estado": 5
 	},
 	{
-		"nombre" : "Chihuahua",
-		"estatus" : 1,
-		"id_estado" : 4
+		"nombre": "Chihuahua",
+		"estatus": 1,
+		"id_estado": 4
 	},
 	{
-		"nombre" : "Coahuila de Zaragoza",
-		"estatus" : 0,
-		"id_estado" : 8
+		"nombre": "Coahuila de Zaragoza",
+		"estatus": 0,
+		"id_estado": 8
 	},
 	{
-		"nombre" : "Colima",
-		"estatus" : 1,
-		"id_estado" : 9
+		"nombre": "Colima",
+		"estatus": 1,
+		"id_estado": 9
 	},
 	{
-		"nombre" : "Corporativo",
-		"estatus" : 1,
-		"id_estado" : 7
+		"nombre": "Corporativo",
+		"estatus": 1,
+		"id_estado": 7
 	},
 	{
-		"nombre" : "Custodias",
-		"estatus" : 1,
-		"id_estado" : 7
+		"nombre": "Custodias",
+		"estatus": 1,
+		"id_estado": 7
 	},
 	{
-		"nombre" : "Grajales",
-		"estatus" : 1,
-		"id_estado" : 21
+		"nombre": "Grajales",
+		"estatus": 1,
+		"id_estado": 21
 	},
 	{
-		"nombre" : "Jalisco",
-		"estatus" : 1,
-		"id_estado" : 14
+		"nombre": "Jalisco",
+		"estatus": 1,
+		"id_estado": 14
 	},
 	{
-		"nombre" : "Hidalgo",
-		"estatus" : 1,
-		"id_estado" : 13
+		"nombre": "Hidalgo",
+		"estatus": 1,
+		"id_estado": 13
 	},
 	{
-		"nombre" : "Yucatan",
-		"estatus" : 1,
-		"id_estado" : 31
+		"nombre": "Yucatan",
+		"estatus": 1,
+		"id_estado": 31
 	},
 	{
-		"nombre" : "Nuevo Leon",
-		"estatus" : 1,
-		"id_estado" : 19
+		"nombre": "Nuevo Leon",
+		"estatus": 1,
+		"id_estado": 19
 	},
 	{
-		"nombre" : "Michoacan",
-		"estatus" : 1,
-		"id_estado" : 15
+		"nombre": "Michoacan",
+		"estatus": 1,
+		"id_estado": 15
 	},
 	{
-		"nombre" : "Morelos",
-		"estatus" : 1,
-		"id_estado" : 17
+		"nombre": "Morelos",
+		"estatus": 1,
+		"id_estado": 17
 	},
 	{
-		"nombre" : "Oaxaca",
-		"estatus" : 1,
-		"id_estado" : 20
+		"nombre": "Oaxaca",
+		"estatus": 1,
+		"id_estado": 20
 	},
 	{
-		"nombre" : "Puebla",
-		"estatus" : 1,
-		"id_estado" : 21
+		"nombre": "Puebla",
+		"estatus": 1,
+		"id_estado": 21
 	},
 	{
-		"nombre" : "Queretaro",
-		"estatus" : 1,
-		"id_estado" : 23
+		"nombre": "Queretaro",
+		"estatus": 1,
+		"id_estado": 23
 	},
 	{
-		"nombre" : "San Luis Potosi",
-		"estatus" : 1,
-		"id_estado" : 25
+		"nombre": "San Luis Potosi",
+		"estatus": 1,
+		"id_estado": 25
 	},
 	{
-		"nombre" : "Sonora",
-		"estatus" : 1,
-		"id_estado" : 26
+		"nombre": "Sonora",
+		"estatus": 1,
+		"id_estado": 26
 	},
 	{
-		"nombre" : "Tabasco",
-		"estatus" : 1,
-		"id_estado" : 27
+		"nombre": "Tabasco",
+		"estatus": 1,
+		"id_estado": 27
 	},
 	{
-		"nombre" : "Tamaulipas",
-		"estatus" : 1,
-		"id_estado" : 29
+		"nombre": "Tamaulipas",
+		"estatus": 1,
+		"id_estado": 29
 	},
 	{
-		"nombre" : "Baja California",
-		"estatus" : 1,
-		"id_estado" : 2
+		"nombre": "Baja California",
+		"estatus": 1,
+		"id_estado": 2
 	},
 	{
-		"nombre" : "Estado de Mexico",
-		"estatus" : 1,
-		"id_estado" : 7
+		"nombre": "Estado de Mexico",
+		"estatus": 1,
+		"id_estado": 7
 	},
 	{
-		"nombre" : "Torreon",
-		"estatus" : 1,
-		"id_estado" : 8
+		"nombre": "Torreon",
+		"estatus": 1,
+		"id_estado": 8
 	},
 	{
-		"nombre" : "Veracruz",
-		"estatus" : 1,
-		"id_estado" : 30
+		"nombre": "Veracruz",
+		"estatus": 1,
+		"id_estado": 30
 	},
 	{
-		"nombre" : "Zacatecas",
-		"estatus" : 1,
-		"id_estado" : 32
+		"nombre": "Zacatecas",
+		"estatus": 1,
+		"id_estado": 32
 	},
 	{
-		"nombre" : "Ciudad de Mexico",
-		"estatus" : 1,
-		"id_estado" : 7
+		"nombre": "Ciudad de Mexico",
+		"estatus": 1,
+		"id_estado": 7
 	},
 	{
-		"nombre" : "Proteccion Ejecutiva",
-		"estatus" : 1,
-		"id_estado" : 7
+		"nombre": "Proteccion Ejecutiva",
+		"estatus": 1,
+		"id_estado": 7
 	},
 	{
-		"nombre" : "Division armados SEDENA",
-		"estatus" : 1,
-		"id_estado" : 7
+		"nombre": "Division armados SEDENA",
+		"estatus": 1,
+		"id_estado": 7
 	},
 	{
-		"nombre" : "Proyectos",
-		"estatus" : 1,
-		"id_estado" : 5
+		"nombre": "Proyectos",
+		"estatus": 1,
+		"id_estado": 5
 	},
 	{
-		"nombre" : "Division armados CUSAEM",
-		"estatus" : 1,
-		"id_estado" : 7
+		"nombre": "Division armados CUSAEM",
+		"estatus": 1,
+		"id_estado": 7
 	},
 	{
-		"nombre" : "Saltillo",
-		"estatus" : 1,
-		"id_estado" : 8
+		"nombre": "Saltillo",
+		"estatus": 1,
+		"id_estado": 8
 	},
 	{
-		"nombre" : "Ciudad de México Norte",
-		"estatus" : 1,
-		"id_estado" : 7
+		"nombre": "Ciudad de México Norte",
+		"estatus": 1,
+		"id_estado": 7
 	}
 ]

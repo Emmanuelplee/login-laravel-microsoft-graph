@@ -1,0 +1,448 @@
+[
+    {
+        "nombre": "GERENCIA DE SUCURSAL",
+        "estatus": 1,
+        "id_puesto_tipo": 1
+    },
+    {
+        "nombre": "AUXILIAR DE NOMINA",
+        "estatus": 1,
+        "id_puesto_tipo": 1
+    },
+    {
+        "nombre": "COORD ADMIN",
+        "estatus": 1,
+        "id_puesto_tipo": 1
+    },
+    {
+        "nombre": "COORD RECLUTAMIENTO",
+        "estatus": 1,
+        "id_puesto_tipo": 1
+    },
+    {
+        "nombre": "COORDINACION",
+        "estatus": 1,
+        "id_puesto_tipo": 1
+    },
+    {
+        "nombre": "INTENDENCIA",
+        "estatus": 1,
+        "id_puesto_tipo": 1
+    },
+    {
+        "nombre": "JEFE DE OPERACIONES",
+        "estatus": 1,
+        "id_puesto_tipo": 1
+    },
+    {
+        "nombre": "RECLUTADOR",
+        "estatus": 1,
+        "id_puesto_tipo": 1
+    },
+    {
+        "nombre": "SUPERVISOR",
+        "estatus": 1,
+        "id_puesto_tipo": 1
+    },
+    {
+        "nombre": "ASESOR COMERCIAL",
+        "estatus": 1,
+        "id_puesto_tipo": 1
+    },
+    {
+        "nombre": "ASISTENTE DE PRESIDENCIA",
+        "estatus": 1,
+        "id_puesto_tipo": 1
+    },
+    {
+        "nombre": "AUXILIAR DE SISTEMAS (EXTERNO)",
+        "estatus": 1,
+        "id_puesto_tipo": 1
+    },
+    {
+        "nombre": "BECARIO",
+        "estatus": 1,
+        "id_puesto_tipo": 1
+    },
+    {
+        "nombre": "CHOFER",
+        "estatus": 1,
+        "id_puesto_tipo": 1
+    },
+    {
+        "nombre": "CHOFER - ESCOLTA",
+        "estatus": 1,
+        "id_puesto_tipo": 1
+    },
+    {
+        "nombre": "COORD. DE NOMINA",
+        "estatus": 1,
+        "id_puesto_tipo": 1
+    },
+    {
+        "nombre": "COORD. DE CAPACITACIÓN",
+        "estatus": 1,
+        "id_puesto_tipo": 1
+    }
+  ,
+    {
+        "nombre": "DIRECTOR GENERAL",
+        "estatus": 1,
+        "id_puesto_tipo": 1
+    },
+    {
+        "nombre": "JEFE DE TURNO",
+        "estatus": 1,
+        "id_puesto_tipo": 1
+    },
+    {
+        "nombre": "MANTENIMIENTO",
+        "estatus": 1,
+        "id_puesto_tipo": 1
+    },
+    {
+        "nombre": "MENSAJERO",
+        "estatus": 1,
+        "id_puesto_tipo": 1
+    },
+    {
+        "nombre": "MONITORISTA",
+        "estatus": 1,
+        "id_puesto_tipo": 1
+    },
+    {
+        "nombre": "AUXILIAR ADMINISTRATIVO",
+        "estatus": 1,
+        "id_puesto_tipo": 1
+    },
+    {
+        "nombre": "DIRECTOR DE CUSTODIAS",
+        "estatus": 1,
+        "id_puesto_tipo": 1
+    },
+    {
+        "nombre": "GERENTE REGIONAL DE NEGOCIOS",
+        "estatus": 1,
+        "id_puesto_tipo": 1
+    },
+    {
+        "nombre": "COORDINADOR REGIONAL DE NEGOCIOS",
+        "estatus": 1,
+        "id_puesto_tipo": 1
+    },
+    {
+        "nombre": "ASISTENTE DE DIRECCIÓN",
+        "estatus": 1,
+        "id_puesto_tipo": 1
+    },
+    {
+        "nombre": "COORDINADOR OPERATIVO",
+        "estatus": 1,
+        "id_puesto_tipo": 1
+    },
+    {
+        "nombre": "DIRECCION GENERAL ADJUNTA",
+        "estatus": 1,
+        "id_puesto_tipo": 1
+    },
+    {
+        "nombre": "AUDITOR OPERATIVO",
+        "estatus": 1,
+        "id_puesto_tipo": 1
+    },
+    {
+        "nombre": "JEFATURA DE RH",
+        "estatus": 1,
+        "id_puesto_tipo": 1
+    },
+    {
+        "nombre": "COORD RH",
+        "estatus": 1,
+        "id_puesto_tipo": 1
+    },
+    {
+        "nombre": "VENDEDOR",
+        "estatus": 1,
+        "id_puesto_tipo": 1
+    },
+    {
+        "nombre": "CAPACITADOR",
+        "estatus": 1,
+        "id_puesto_tipo": 1
+    },
+    {
+        "nombre": "AUXILIAR DE SUCURSAL",
+        "estatus": 1,
+        "id_puesto_tipo": 1
+    },
+    {
+        "nombre": "DIRECCIóN GENERAL",
+        "estatus": 1,
+        "id_puesto_tipo": 1
+    },
+    {
+        "nombre": "DIRECCIóN",
+        "estatus": 1,
+        "id_puesto_tipo": 1
+    },
+    {
+        "nombre": "DIRECCIóN DE NEGOCIO",
+        "estatus": 1,
+        "id_puesto_tipo": 1
+    },
+    {
+        "nombre": "DIRECCION DE DIVISIóN",
+        "estatus": 1,
+        "id_puesto_tipo": 1
+    },
+    {
+        "nombre": "GERENCIA FUNCIONAL",
+        "estatus": 1,
+        "id_puesto_tipo": 1
+    },
+    {
+        "nombre": "GERENCIA DIVISIONAL",
+        "estatus": 1,
+        "id_puesto_tipo": 1
+    },
+    {
+        "nombre": "JEFATURA",
+        "estatus": 1,
+        "id_puesto_tipo": 1
+    },
+    {
+        "nombre": "COORDINACION",
+        "estatus": 1,
+        "id_puesto_tipo": 1
+    },
+    {
+        "nombre": "ANALISTA",
+        "estatus": 1,
+        "id_puesto_tipo": 1
+    },
+    {
+        "nombre": "AUXILIAR RH",
+        "estatus": 1,
+        "id_puesto_tipo": 1
+    },
+    {
+        "nombre": "GERENTE DE CUENTA",
+        "estatus": 1,
+        "id_puesto_tipo": 1
+    },
+    {
+        "nombre": "PROYECTOS ESPECIALES",
+        "estatus": 1,
+        "id_puesto_tipo": 1
+    },
+    {
+        "nombre": "SUBGERENTE",
+        "estatus": 1,
+        "id_puesto_tipo": 1
+    },
+    {
+        "nombre": "RADIOPERADOR",
+        "estatus": 1,
+        "id_puesto_tipo": 1
+    },
+    {
+        "nombre": "ASISTENTE DE DIVISIÓN",
+        "estatus": 1,
+        "id_puesto_tipo": 1
+    },
+    {
+        "nombre": "VICEPRESIDENCIA",
+        "estatus": 1,
+        "id_puesto_tipo": 1
+    },
+    {
+        "nombre": "VISITADURIA SUCURSALES",
+        "estatus": 1,
+        "id_puesto_tipo": 1
+    },
+    {
+        "nombre": "COACH OPERATIVO",
+        "estatus": 1,
+        "id_puesto_tipo": 1
+    },
+    {
+        "nombre": "GERENCIA RH",
+        "estatus": 1,
+        "id_puesto_tipo": 1
+    },
+    {
+        "nombre": "APOYO OPERATIVO",
+        "estatus": 1,
+        "id_puesto_tipo": 1
+    },
+    {
+        "nombre": "COORD RL",
+        "estatus": 1,
+        "id_puesto_tipo": 1
+    },
+    {
+        "nombre": "GENERALISTA RH",
+        "estatus": 1,
+        "id_puesto_tipo": 1
+    },
+    {
+        "nombre": "AUXILIAR DE NOMINAS",
+        "estatus": 1,
+        "id_puesto_tipo": 1
+    },
+    {
+        "nombre": "AUXILIAR DE OPERACIONES",
+        "estatus": 1,
+        "id_puesto_tipo": 1
+    },
+    {
+        "nombre": "SUPERVISOR",
+        "estatus": 1,
+        "id_puesto_tipo": 2
+    },
+    {
+        "nombre": "GUARDIA DE SEGURIDAD",
+        "estatus": 1,
+        "id_puesto_tipo": 2
+    },
+    {
+        "nombre": "ADMINISTRATIVO",
+        "estatus": 1,
+        "id_puesto_tipo": 2
+    },
+    {
+        "nombre": "GUARDIA ARMADO",
+        "estatus": 1,
+        "id_puesto_tipo": 2
+    },
+    {
+        "nombre": "JEFE DE SERVICIO",
+        "estatus": 1,
+        "id_puesto_tipo": 2
+    },
+    {
+        "nombre": "JEFE DE TURNO",
+        "estatus": 1,
+        "id_puesto_tipo": 2
+    },
+    {
+        "nombre": "MONITORISTA",
+        "estatus": 1,
+        "id_puesto_tipo": 2
+    },
+    {
+        "nombre": "RECEPCIONISTA",
+        "estatus": 1,
+        "id_puesto_tipo": 2
+    },
+    {
+        "nombre": "CUSTODIO ABORDO",
+        "estatus": 1,
+        "id_puesto_tipo": 2
+    },
+    {
+        "nombre": "CUSTODIO CHOFER",
+        "estatus": 1,
+        "id_puesto_tipo": 2
+    },
+    {
+        "nombre": "VIGILANTE",
+        "estatus": 1,
+        "id_puesto_tipo": 2
+    },
+    {
+        "nombre": "CHOFER ESCOLTA",
+        "estatus": 1,
+        "id_puesto_tipo": 2
+    },
+    {
+        "nombre": "CHOFER ESCOLTA ARMADO",
+        "estatus": 1,
+        "id_puesto_tipo": 2
+    },
+    {
+        "nombre": "COORD  OPERATIVO",
+        "estatus": 1,
+        "id_puesto_tipo": 2
+    },
+    {
+        "nombre": "CUBRE VACACIONES",
+        "estatus": 1,
+        "id_puesto_tipo": 2
+    },
+    {
+        "nombre": "GUARDIA BRIGADISTA",
+        "estatus": 1,
+        "id_puesto_tipo": 2
+    },
+    {
+        "nombre": "GUARDIA MONITORISTA",
+        "estatus": 1,
+        "id_puesto_tipo": 2
+    },
+    {
+        "nombre": "GUARDIA RECEPCIONISTA",
+        "estatus": 1,
+        "id_puesto_tipo": 2
+    },
+    {
+        "nombre": "COMODIN COVID",
+        "estatus": 1,
+        "id_puesto_tipo": 2
+    },
+    {
+        "nombre": "TRASLADISTA",
+        "estatus": 1,
+        "id_puesto_tipo": 2
+    },
+    {
+        "nombre": "LLAVERO PEPSICO",
+        "estatus": 1,
+        "id_puesto_tipo": 2
+    },
+    {
+        "nombre": "PATRULLAJE PEPSICO",
+        "estatus": 1,
+        "id_puesto_tipo": 2
+    },
+    {
+        "nombre": "CONTROL DE ACCESOS PEPSICO",
+        "estatus": 1,
+        "id_puesto_tipo": 2
+    },
+    {
+        "nombre": "CUBRE DESCANSOS PEPSICO",
+        "estatus": 1,
+        "id_puesto_tipo": 2
+    },
+    {
+        "nombre": "JEFE DE SERVICIO PEPSICO",
+        "estatus": 1,
+        "id_puesto_tipo": 2
+    },
+    {
+        "nombre": "JEFE DE TURNO PEPSICO",
+        "estatus": 1,
+        "id_puesto_tipo": 2
+    },
+    {
+        "nombre": "MONITORISTA PEPSICO",
+        "estatus": 1,
+        "id_puesto_tipo": 2
+    },
+    {
+        "nombre": "CUBRE INCIDENCIAS PEPSICO",
+        "estatus": 1,
+        "id_puesto_tipo": 2
+    },
+    {
+        "nombre": "ELEMENTO DE CONTROL Y VIGILANCIA ARMADO",
+        "estatus": 1,
+        "id_puesto_tipo": 2
+    },
+    {
+        "nombre": "VERIFICADOR",
+        "estatus": 1,
+        "id_puesto_tipo": 2
+    }
+]

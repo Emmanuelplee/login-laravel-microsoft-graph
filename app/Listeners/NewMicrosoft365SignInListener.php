@@ -12,7 +12,7 @@ class NewMicrosoft365SignInListener
 {
     public function handle(object $event): void
     {
-        // dd($event);
+        error_log('NewMicrosoft365SignInListener handle');
         $user = User::firstOrCreate([
             'email' => $event->token['info']['mail'],
         ], [
