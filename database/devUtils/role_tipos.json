@@ -1,0 +1,37 @@
+[
+    {
+        "nombre": "admin",
+        "descripcion": "El rol de tipo admin",
+        "estatus": 1
+    },
+    {
+        "nombre": "general",
+        "descripcion": "El rol de tipo general",
+        "estatus": 1
+    },
+    {
+        "nombre": "area",
+        "descripcion": "El rol de tipo area",
+        "estatus": 1
+    },
+    {
+        "nombre": "sucursal",
+        "descripcion": "El rol de tipo sucursal",
+        "estatus": 1
+    },
+    {
+        "nombre": "cuentas",
+        "descripcion": "El rol de tipo cuentas",
+        "estatus": 1
+    },
+    {
+        "nombre": "nuevo",
+        "descripcion": "El rol de tipo nuevo",
+        "estatus": 1
+    },
+    {
+        "nombre": "operacion",
+        "descripcion": "El rol de tipo operacion",
+        "estatus": 1
+    }
+]

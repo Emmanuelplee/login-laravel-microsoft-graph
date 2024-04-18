@@ -1,0 +1,102 @@
+[
+    {
+        "name": "Administrador",
+        "estatus": 1,
+        "id_role_tipo": 1
+    },
+    {
+        "name": "Dirección general",
+        "estatus": 1,
+        "id_role_tipo": 2
+    },
+    {
+        "name": "Direcciones área",
+        "estatus": 1,
+        "id_role_tipo": 3
+    },
+    {
+        "name": "Direcciones sucursal",
+        "estatus": 1,
+        "id_role_tipo": 4
+    },
+    {
+        "name": "Direcciones de cuentas",
+        "estatus": 1,
+        "id_role_tipo": 5
+    },
+    {
+        "name": "Gerencias de área Operación",
+        "estatus": 1,
+        "id_role_tipo": 3
+    },
+    {
+        "name": "Gerencias regionales de sucursal",
+        "estatus": 1,
+        "id_role_tipo": 4
+    },
+    {
+        "name": "Gerencias de sucursal Operación",
+        "estatus": 1,
+        "id_role_tipo": 4
+    },
+    {
+        "name": "Gerente cuentas Operación",
+        "estatus": 1,
+        "id_role_tipo": 5
+    },
+    {
+        "name": "Jefaturas área",
+        "estatus": 1,
+        "id_role_tipo": 3
+    },
+    {
+        "name": "Jefaturas Sucursal",
+        "estatus": 1,
+        "id_role_tipo": 4
+    },
+    {
+        "name": "Coordinaciones área",
+        "estatus": 1,
+        "id_role_tipo": 3
+    },
+    {
+        "name": "Coordinaciones sucursal",
+        "estatus": 1,
+        "id_role_tipo": 4
+    },
+    {
+        "name": "Coordinaciones cuentas",
+        "estatus": 1,
+        "id_role_tipo": 5
+    },
+    {
+        "name": "Analistas área",
+        "estatus": 1,
+        "id_role_tipo": 3
+    },
+    {
+        "name": "Analistas sucursal",
+        "estatus": 1,
+        "id_role_tipo": 4
+    },
+    {
+        "name": "Proveedores Operación",
+        "estatus": 1,
+        "id_role_tipo": 7
+    },
+    {
+        "name": "Clientes Operación",
+        "estatus": 1,
+        "id_role_tipo": 7
+    },
+    {
+        "name": "Externos Operación",
+        "estatus": 1,
+        "id_role_tipo": 7
+    },
+    {
+        "name": "Nuevo",
+        "estatus": 1,
+        "id_role_tipo": 6
+    }
+]

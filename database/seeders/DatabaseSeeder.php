@@ -33,6 +33,8 @@ class DatabaseSeeder extends Seeder
 
             PuestoTiposSeeder::class,
             PuestosSeeder::class,
+
+            RolesSeeer::class,
         ]);
     }
 }

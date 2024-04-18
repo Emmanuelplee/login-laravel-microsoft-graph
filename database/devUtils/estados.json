@@ -5,8 +5,8 @@
     },
     {
         "clave": "BC",
-         "nombre": "BAJA CALIFORNIA"
-        },
+        "nombre": "BAJA CALIFORNIA"
+    },
     {
         "clave": "BCS",
         "nombre": "BAJA CALIFORNIA SUR"
@@ -74,7 +74,7 @@
     {
         "clave": "NL",
          "nombre": "NUEVO LEON"
-        },
+    },
     {
         "clave": "OAX",
         "nombre": "OAXACA"
