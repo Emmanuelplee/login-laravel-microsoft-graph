@@ -1,5 +1,10 @@
 [
     {
+        "nombre": "developer",
+        "descripcion": "El rol de tipo developer",
+        "estatus": 1
+    },
+    {
         "nombre": "admin",
         "descripcion": "El rol de tipo admin",
         "estatus": 1
@@ -30,8 +35,8 @@
         "estatus": 1
     },
     {
-        "nombre": "operacion",
-        "descripcion": "El rol de tipo operacion",
+        "nombre": "externo",
+        "descripcion": "Incluye provedores, externos y clientes",
         "estatus": 1
     }
 ]

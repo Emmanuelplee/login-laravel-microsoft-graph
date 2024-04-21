@@ -1,65 +1,49 @@
-<!-- resources/views/auth/login.blade.php -->
+<!DOCTYPE html>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<head>
+    <!-- Etiquetes meta -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="description" content />
+    <meta name="keywords" content>
+    <meta name="author" content="Codedthemes" />
 
-@extends('layouts.app')
+    <title>{{ config('app.name', 'Laravel') }}</title>
 
-@section('content')
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-6">
-                <div class="card">
-                    <div class="card-header">{{ __('Login') }}</div>
+    @include('layouts.login.styles')
 
-                    <div class="card-body">
-                        <form method="POST" action="{{ route('login') }}">
-                            @csrf
-
-                            <div class="form-group row">
-                                <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
-
-                                <div class="col-md-8">
-                                    <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
-
-                                    @error('email')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
-                                </div>
-                            </div>
-
-                            <div class="form-group row">
-                                <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
-
-                                <div class="col-md-8">
-                                    <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
-
-                                    @error('password')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
-                                </div>
-                            </div>
-
-                            <div class="form-group row mb-0 mt-4">
-                                <div class="col-md-8 offset-md-4">
-                                    {{-- <button type="submit" class="btn btn-primary">
-                                        {{ __('Login') }}
-                                    </button> --}}
-                                    <a href="{{ route('connect') }}" class="btn btn-success">{{ __('Connect with Microsoft') }}</a>
-                                </div>
+</head>
+<body>
+    <div class="auth-wrapper">
+        <div class="auth-content">
+            <div class="card">
+                <div class="row align-items-center text-center">
+                    <div class="col-md-12">
+                        <form method="POST" action="#">
+                            <div class="card-body">
+                                <img src="{{ asset('assets/images/logo-dark.png') }}" alt class="img-fluid mb-4">
+                                <h6 class="mb-3 f-w-400">Inicia sesión con tu cuenta institucional</h4>
+                                <!-- MARK: Campos del login -->
+                                <a class="color-blanco btn btn-primary mt-2 mb-4"
+                                    href="{{ route('connect')}}">
+                                    Iniciar Sesión
+                                </a>
+                                <div class="text-end tooltip-login text-primary">
+                                    ¿Olvidate tu contraseña?
+                                    <span class="tooltiptext">
+                                        Comunicate con el area de [CTI TI] para mas informacion
+                                    </span>
+                                  </div>
                             </div>
                         </form>
-                        <div>
-                            <button type="button" class="btn btn-success" data-bs-toggle="tooltip" data-bs-placement="right" title="tooltip on right">Right</button>
-                            {{-- <button type="button" class="btn btn-warning" data-bs-toggle="tooltip" data-bs-placement="bottom" title="tooltip on bottom">Bottom</button>
-                            <button type="button" class="btn btn-info" data-bs-toggle="tooltip" data-bs-html="true" data-bs-original-title="<em>Tooltip</em> <u>with</u> <b>HTML</b>">Html Tooltip</button>
-                            <button type="button" class="btn btn-info" data-bs-toggle="tooltip" data-bs-html="true" title="<em>Tooltip</em> <u>with</u> <b>HTML</b>">Html Tooltip</button> --}}
-                            <button type="button" class="btn btn-info" data-bs-toggle="popover" data-bs-html="true" data-bs-placement="top" title="<em>popup</em> <u>with</u> <b>HTML</b>" data-bs-content="popup by HTML">Html popup</button>
-                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-@endsection
+
+@include('layouts.login.scripts')
+
+</body>
+</html>

@@ -1,0 +1,47 @@
+.auth-wrapper {
+    background-image: url("./../images/MSPV_Fondo_2024.jpg");
+    background-size: cover;
+    background-position: cover;
+    border-radius: 20px;
+}
+.forgot-password {
+    font-weight: 200 !important;
+}
+
+.color-blanco {
+    color: #ffff !important;
+    font-weight: 200 !important;
+}
+
+/* Estilos generales del tooltip */
+.tooltip-login {
+    position: relative;
+    /* display: inline-block; */
+    cursor: pointer;
+    /* border-bottom: 1px dotted black; Línea punteada para indicar que hay más información */
+  }
+
+/* Estilos del tooltip en sí */
+.tooltip-login .tooltiptext {
+    visibility: hidden;
+    width: 200px; /* Ancho del tooltip */
+    background-color: #262861; /* Color del tooltip */
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 10px;
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: calc(35%); /* Posicionar el tooltip a la derecha del texto con un pequeño espacio */
+    transform: translateY(40%); /* Centrar verticalmente el tooltip */
+    opacity: 0;
+    transition: opacity 0.3s;
+    font-size: smaller;
+  }
+
+  /* Mostrar el tooltip al hacer hover sobre el elemento padre */
+  .tooltip-login:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+  }

@@ -7,6 +7,7 @@ use Dcblogdev\MsGraph\Facades\MsGraph;
 
 class AuthController extends Controller
 {
+    // MARK:GLOBAL
     public function login()
     {
         return view('login');
