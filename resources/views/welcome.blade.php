@@ -31,6 +31,9 @@
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}" id="main-style-link">
     <link rel="stylesheet" href="{{ asset('assets/css/style-preset.css') }}">
 
+    <link rel="stylesheet" href="{{ asset('assets/css/mis-css/settings.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/mis-css/nav-header.css') }}">
+
 </head>
 <!-- [Head] end -->
 <!-- [Body] Start -->
@@ -44,24 +47,25 @@
         </div>
     </div>
     <!-- [ Pre-loader ] End -->
-    <!-- [ Sidebar Menu ] start -->
+    <!-- MARK:[Sidebar Movil] start -->
     <nav class="pc-sidebar">
         <div class="navbar-wrapper">
             <div class="m-header">
                 <a href="{{ route('app') }}" class="b-brand text-primary">
-                    <!-- ========   Change your logo from here   ============ -->
-                    <img src="{{ asset('assets/images/logooscuro.png') }}" alt="logo image" class="logo-lg">
-                    <span class="badge bg-primary rounded-pill ms-2 theme-version">v11.0</span>
+                    <!-- ========   Change your logo Movil   ============ -->
+                    <img src="{{ asset('assets/images/logooscuro.png') }}" alt="logo image" class="logo-lg pt-3" width="90%">
+                    {{-- <span class="badge bg-primary rounded-pill ms-2 theme-version">v1-m</span> --}}
                 </a>
             </div>
+            <!-- MARK:[navbar content] start -->
             <div class="navbar-content">
                 <ul class="pc-navbar">
                     <li class="pc-item pc-caption">
-                        <label>Navigation</label>
+                        <label>Navegacion</label>
                     </li>
                     <li class="pc-item pc-hasmenu">
                         <a href="#!" class="pc-link"><span class="pc-micon">
-                                <i class="ph ph-gauge"></i></span><span class="pc-mtext">Dashboard</span><span class="pc-arrow"><i
+                                <i class="ph ph-gauge"></i></span><span class="pc-mtext">Principal</span><span class="pc-arrow"><i
                                     data-feather="chevron-right"></i></span></a>
                         <ul class="pc-submenu">
                             <li class="pc-item"><a class="pc-link" href="../dashboard/index.html">Sales</a></li>
@@ -71,7 +75,7 @@
                     </li>
                     <li class="pc-item pc-hasmenu">
                         <a href="#!" class="pc-link"><span class="pc-micon">
-                                <i class="ph ph-layout"></i></span><span class="pc-mtext">Layouts</span><span class="pc-arrow"><i
+                                <i class="ph ph-layout"></i></span><span class="pc-mtext">Otros</span><span class="pc-arrow"><i
                                     data-feather="chevron-right"></i></span></a>
                         <ul class="pc-submenu">
                             <li class="pc-item"><a class="pc-link" href="../demo/layout-compact.html">Compact</a></li>
@@ -82,32 +86,36 @@
                     </li>
                 </ul>
             </div>
+            <!-- [navbar content] end -->
         </div>
     </nav>
-    <!-- [ Sidebar Menu ] end --> <!-- [ Header Topbar ] start -->
+    <!-- [ nav sidebar Movil ] end -->
+    <!-- MARK:[Header Topbar ] start -->
     <header class="pc-header">
         <div class="m-header">
             <a href="{{ route('app') }}" class="b-brand text-primary">
-                <!-- ========   Change your logo from here   ============ -->
-                <img src="{{ asset('assets/images/logooscuro.png') }}" alt="logo image" class="logo-lg" width="150">
-                <span class="badge bg-white text-dark rounded-pill ms-2 theme-version">v1.0</span>
+                <!-- ========   Change your logo Web   ============ -->
+                <img src="{{ asset('assets/images/logooscuro.png') }}" alt="logo image" class="logo-lg" width="70%">
+                {{-- <span class="badge bg-white text-dark rounded-pill ms-2 theme-version">v1.0</span> --}}
             </a>
         </div>
-        <!-- [Mobile Media Block] start -->
         <div class="header-wrapper">
+            <!-- [Mobile Media Block] start -->
             <div class="me-auto pc-mob-drp">
                 <ul class="list-unstyled">
-                    <!-- ======= Menu collapse Icon ===== -->
+                    <!-- ======= Menu collapse Icon Web ===== -->
                     <li class="pc-h-item pc-sidebar-collapse">
                         <a href="#" class="pc-head-link ms-0" id="sidebar-hide">
                             <i class="ph ph-list"></i>
                         </a>
                     </li>
+                    <!-- ======= Menu collapse Icon Movil ===== -->
                     <li class="pc-h-item pc-sidebar-popup">
                         <a href="#" class="pc-head-link ms-0" id="mobile-collapse">
                             <i class="ph ph-list"></i>
                         </a>
                     </li>
+                    <!-- ======= Search [Web y Movil] ===== -->
                     <li class="dropdown pc-h-item">
                         <a class="pc-head-link dropdown-toggle arrow-none m-0" data-bs-toggle="dropdown" href="#" role="button"
                             aria-haspopup="false" aria-expanded="false">
@@ -116,8 +124,8 @@
                         <div class="dropdown-menu pc-h-dropdown drp-search">
                             <form class="px-3">
                                 <div class="form-group mb-0 d-flex align-items-center">
-                                    <input type="search" class="form-control border-0 shadow-none" placeholder="Search here. . .">
-                                    <button class="btn btn-light-secondary btn-search">Search</button>
+                                    <input type="search" class="form-control border-0 shadow-none" placeholder="Buscar aqui. . .">
+                                    <button class="btn btn-light-secondary btn-search">Buscar</button>
                                 </div>
                             </form>
                         </div>
@@ -127,34 +135,7 @@
             <!-- [Mobile Media Block end] -->
             <div class="ms-auto">
                 <ul class="list-unstyled">
-                    <li class="dropdown pc-h-item">
-                        <a class="pc-head-link dropdown-toggle arrow-none me-0" data-bs-toggle="dropdown" href="#" role="button"
-                            aria-haspopup="false" aria-expanded="false">
-                            <i class="ph ph-diamonds-four"></i>
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-end pc-h-dropdown">
-                            <a href="#!" class="dropdown-item">
-                                <i class="ph ph-user"></i>
-                                <span>My Account</span>
-                            </a>
-                            <a href="#!" class="dropdown-item">
-                                <i class="ph ph-gear"></i>
-                                <span>Settings</span>
-                            </a>
-                            <a href="#!" class="dropdown-item">
-                                <i class="ph ph-lifebuoy"></i>
-                                <span>Support</span>
-                            </a>
-                            <a href="#!" class="dropdown-item">
-                                <i class="ph ph-lock-key"></i>
-                                <span>Lock Screen</span>
-                            </a>
-                            <a href="#!" class="dropdown-item">
-                                <i class="ph ph-power"></i>
-                                <span>Logout</span>
-                            </a>
-                        </div>
-                    </li>
+                    {{-- MARK:[Notification] --}}
                     <li class="dropdown pc-h-item">
                         <a class="pc-head-link dropdown-toggle arrow-none me-0" data-bs-toggle="dropdown" href="#" role="button"
                             aria-haspopup="false" aria-expanded="false">
@@ -245,10 +226,12 @@
                             </div>
                         </div>
                     </li>
-                    <li class="dropdown pc-h-item header-user-profile">
+                    {{-- MARK:[Profile] start --}}
+                    <li class="dropdown pc-h-item">
                         <a class="pc-head-link dropdown-toggle arrow-none me-0" data-bs-toggle="dropdown" href="#" role="button"
                             aria-haspopup="false" data-bs-auto-close="outside" aria-expanded="false">
-                            <img src="{{ asset('assets/images/mspv.png') }}" alt="user-image" class="user-avtar">
+                            {{-- <img src="{{ asset('assets/images/mspv.png') }}" alt="user-image" class="user-avtar"> --}}
+                            <i class="ph ph-user"></i>
                         </a>
                         <div class="dropdown-menu dropdown-user-profile dropdown-menu-end pc-h-dropdown">
                             <div class="dropdown-header d-flex align-items-center justify-content-between">
@@ -260,7 +243,7 @@
                                         <li class="list-group-item">
                                             <div class="d-flex align-items-center">
                                                 <div class="flex-shrink-0">
-                                                    <img src="{{ asset('assets/images/favicon.png') }}" alt="user-image" class="wid-50 rounded-circle">
+                                                    <img src="{{ asset('assets/images/favicon.png') }}" alt="user-image" class="wid-25">
                                                 </div>
                                                 <div class="flex-grow-1 mx-3">
                                                     <?php
@@ -308,6 +291,7 @@
                             </div>
                         </div>
                     </li>
+                    {{-- [Profile] end --}}
                 </ul>
             </div>
         </div>
@@ -349,6 +333,7 @@
                             <hr>
                             @auth
                               <pre class="text-start" style="font-size: 1rem;">
+                                {{-- {{ print_r($user) }} --}}
                                   {{-- {{print_r(MsGraph::get('me'))}} --}}
                               </pre>
                             @endauth
@@ -363,12 +348,14 @@
         </div>
     </div>
     <!-- [ Main Content ] end -->
+    <!-- MARK: [ Footer ] start -->
     <footer class="pc-footer">
         <div class="footer-wrapper container-fluid">
             <div class="row">
-                <div class="col-sm-6 my-1">
-                    <p class="m-0">Copyright © 2024 MSPV by Funnel MKT. Todos los derechos reservados <a href="https://www.mspv.com.mx/"
-                            target="_blank">MSPV</a></p>
+                <div class="col-sm-8 my-1">
+                    <p class="m-0">Copyright © 2024 MSPV by Funnel MKT. Todos los derechos reservados
+                        <a class="text-primary" href="https://www.mspv.com.mx/" target="_blank">MSPV</a>
+                    </p>
                 </div>
                 {{-- <div class="col-sm-6 ms-auto my-1">
                     <ul class="list-inline footer-link mb-0 justify-content-sm-end d-flex">
@@ -380,43 +367,24 @@
                 </div>
             </div>
         </div>
-    </footer> <!-- Required Js -->
-    <script src="../assets/js/plugins/popper.min.js"></script>
-    <script src="../assets/js/plugins/simplebar.min.js"></script>
-    <script src="../assets/js/plugins/bootstrap.min.js"></script>
-    <script src="../assets/js/fonts/custom-font.js"></script>
-    <script src="../assets/js/pcoded.js"></script>
-    <script src="../assets/js/plugins/feather.min.js"></script>
-
-
-
-
-
+    </footer>
+    <!-- [ Footer ] end -->
+    <!-- MARK: Required Js -->
+    <script src="{{ asset('assets/js/plugins/popper.min.js') }}"></script>
+    <script src="{{ asset('assets/js/plugins/simplebar.min.js') }}"></script>
+    <script src="{{ asset('assets/js/plugins/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('assets/js/fonts/custom-font.js') }}"></script>
+    <script src="{{ asset('assets/js/pcoded.js') }}"></script>
+    <script src="{{ asset('assets/js/plugins/feather.min.js') }}"></script>
+    {{-- Funcionalidad de los Settings --}}
     <script>layout_change('light');</script>
-
-
-
-
     <script>layout_sidebar_change('light');</script>
-
-
-
     <script>change_box_container('false');</script>
-
-
-    <script>layout_caption_change('true');</script>
-
-
-
-
+    <script>layout_caption_change('false');</script>
     <script>layout_rtl_change('false');</script>
-
-
     <script>preset_change("preset-1");</script>
-
-
     <script>header_change("header-1");</script>
-
+    {{-- MARK:[Settings] --}}
     <div class="pct-c-btn">
         <a href="#" data-bs-toggle="offcanvas" data-bs-target="#offcanvas_pc_layout">
             <i class="ph ph-gear-six"></i>
@@ -424,7 +392,7 @@
     </div>
     <div class="offcanvas border-0 pct-offcanvas offcanvas-end" tabindex="-1" id="offcanvas_pc_layout">
         <div class="offcanvas-header">
-            <h5 class="offcanvas-title">Settings</h5>
+            <h5 class="offcanvas-title">Configuracion</h5>
             <button type="button" class="btn btn-icon btn-link-danger" data-bs-dismiss="offcanvas" aria-label="Close"><i
                     class="ti ti-x"></i></button>
         </div>
@@ -433,13 +401,13 @@
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item">
                         <div class="pc-dark">
-                            <h6 class="mb-1">Theme Mode</h6>
-                            <p class="text-muted text-sm">Choose light or dark mode or Auto</p>
+                            <h6 class="mb-1">Modo de tema</h6>
+                            <p class="text-muted text-sm">Elige el modo claro, oscuro o automático</p>
                             <div class="row theme-color theme-layout">
                                 <div class="col-4">
                                     <div class="d-grid">
                                         <button class="preset-btn btn active" data-value="true" onclick="layout_change('light');">
-                                            <span class="btn-label">Light</span>
+                                            <span class="btn-label">Claro</span>
                                             <span class="pc-lay-icon"><span></span><span></span><span></span><span></span></span>
                                         </button>
                                     </div>
@@ -447,7 +415,7 @@
                                 <div class="col-4">
                                     <div class="d-grid">
                                         <button class="preset-btn btn" data-value="false" onclick="layout_change('dark');">
-                                            <span class="btn-label">Dark</span>
+                                            <span class="btn-label">Oscuro</span>
                                             <span class="pc-lay-icon"><span></span><span></span><span></span><span></span></span>
                                         </button>
                                     </div>
@@ -457,7 +425,7 @@
                                         <button class="preset-btn btn" data-value="default" onclick="layout_change_default();"
                                             data-bs-toggle="tooltip"
                                             title="Automatically sets the theme based on user's operating system's color scheme.">
-                                            <span class="btn-label">Default</span>
+                                            <span class="btn-label">Defecto</span>
                                             <span class="pc-lay-icon d-flex align-items-center justify-content-center">
                                                 <i class="ph ph-cpu"></i>
                                             </span>
@@ -468,13 +436,13 @@
                         </div>
                     </li>
                     <li class="list-group-item">
-                        <h6 class="mb-1">Sidebar Theme</h6>
-                        <p class="text-muted text-sm">Choose Sidebar Theme</p>
+                        <h6 class="mb-1">Color Menu</h6>
+                        <p class="text-muted text-sm">Elija el color del menu lateral</p>
                         <div class="row theme-color theme-sidebar-color">
                             <div class="col-6">
                                 <div class="d-grid">
                                     <button class="preset-btn btn" data-value="true" onclick="layout_sidebar_change('dark');">
-                                        <span class="btn-label">Dark</span>
+                                        <span class="btn-label">Oscuro</span>
                                         <span class="pc-lay-icon"><span></span><span></span><span></span><span></span></span>
                                     </button>
                                 </div>
@@ -482,7 +450,7 @@
                             <div class="col-6">
                                 <div class="d-grid">
                                     <button class="preset-btn btn active" data-value="false" onclick="layout_sidebar_change('light');">
-                                        <span class="btn-label">Light</span>
+                                        <span class="btn-label">Claro</span>
                                         <span class="pc-lay-icon"><span></span><span></span><span></span><span></span></span>
                                     </button>
                                 </div>
@@ -490,8 +458,8 @@
                         </div>
                     </li>
                     <li class="list-group-item">
-                        <h6 class="mb-1">Header color</h6>
-                        <p class="text-muted text-sm">Choose your Header theme color</p>
+                        <h6 class="mb-1">Color Cabecera</h6>
+                        <p class="text-muted text-sm">Elija el color de la cabecera</p>
                         <div class="theme-color header-color">
                             <a href="#!" class="active" data-value="header-1"><i class="ti ti-check"></i></a>
                             <a href="#!" data-value="header-2"><i class="ti ti-check"></i></a>
@@ -508,96 +476,8 @@
                         </div>
                     </li>
                     <li class="list-group-item">
-                        <h6 class="mb-1">Accent color</h6>
-                        <p class="text-muted text-sm">Choose your primary theme color</p>
-                        <div class="theme-color preset-color">
-                            <a href="#!" class="active" data-value="preset-1"><i class="ti ti-check"></i></a>
-                            <a href="#!" data-value="preset-2"><i class="ti ti-check"></i></a>
-                            <a href="#!" data-value="preset-3"><i class="ti ti-check"></i></a>
-                            <a href="#!" data-value="preset-4"><i class="ti ti-check"></i></a>
-                            <a href="#!" data-value="preset-5"><i class="ti ti-check"></i></a>
-                            <a href="#!" data-value="preset-6"><i class="ti ti-check"></i></a>
-                            <a href="#!" data-value="preset-7"><i class="ti ti-check"></i></a>
-                            <a href="#!" data-value="preset-8"><i class="ti ti-check"></i></a>
-                            <a href="#!" data-value="preset-9"><i class="ti ti-check"></i></a>
-                            <a href="#!" data-value="preset-10"><i class="ti ti-check"></i></a>
-                        </div>
-                    </li>
-                    <li class="list-group-item">
-                        <h6 class="mb-1">Sidebar Caption</h6>
-                        <p class="text-muted text-sm">Sidebar Caption Hide/Show</p>
-                        <div class="row theme-color theme-nav-caption">
-                            <div class="col-6">
-                                <div class="d-grid">
-                                    <button class="preset-btn btn active" data-value="true" onclick="layout_caption_change('true');">
-                                        <span class="btn-label">Caption Show</span>
-                                        <span
-                                            class="pc-lay-icon"><span></span><span></span><span><span></span><span></span></span><span></span></span>
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="col-6">
-                                <div class="d-grid">
-                                    <button class="preset-btn btn" data-value="false" onclick="layout_caption_change('false');">
-                                        <span class="btn-label">Caption Hide</span>
-                                        <span
-                                            class="pc-lay-icon"><span></span><span></span><span><span></span><span></span></span><span></span></span>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="list-group-item">
-                        <div class="pc-rtl">
-                            <h6 class="mb-1">Theme Layout</h6>
-                            <p class="text-muted text-sm">LTR/RTL</p>
-                            <div class="row theme-color theme-direction">
-                                <div class="col-6">
-                                    <div class="d-grid">
-                                        <button class="preset-btn btn active" data-value="false" onclick="layout_rtl_change('false');">
-                                            <span class="btn-label">LTR</span>
-                                            <span class="pc-lay-icon"><span></span><span></span><span></span><span></span></span>
-                                        </button>
-                                    </div>
-                                </div>
-                                <div class="col-6">
-                                    <div class="d-grid">
-                                        <button class="preset-btn btn" data-value="true" onclick="layout_rtl_change('true');">
-                                            <span class="btn-label">RTL</span>
-                                            <span class="pc-lay-icon"><span></span><span></span><span></span><span></span></span>
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="list-group-item pc-box-width">
-                        <div class="pc-container-width">
-                            <h6 class="mb-1">Layout Width</h6>
-                            <p class="text-muted text-sm">Choose Full or Container Layout</p>
-                            <div class="row theme-color theme-container">
-                                <div class="col-6">
-                                    <div class="d-grid">
-                                        <button class="preset-btn btn active" data-value="false" onclick="change_box_container('false')">
-                                            <span class="btn-label">Full Width</span>
-                                            <span class="pc-lay-icon"><span></span><span></span><span></span><span><span></span></span></span>
-                                        </button>
-                                    </div>
-                                </div>
-                                <div class="col-6">
-                                    <div class="d-grid">
-                                        <button class="preset-btn btn" data-value="true" onclick="change_box_container('true')">
-                                            <span class="btn-label">Fixed Width</span>
-                                            <span class="pc-lay-icon"><span></span><span></span><span></span><span><span></span></span></span>
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="list-group-item">
                         <div class="d-grid">
-                            <button class="btn btn-light-danger" id="layoutreset">Reset Layout</button>
+                            <button class="btn btn-light-danger" id="layoutreset">Reiniciar Estilos</button>
                         </div>
                     </li>
                 </ul>

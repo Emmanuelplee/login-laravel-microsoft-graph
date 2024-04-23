@@ -9,6 +9,8 @@ class HomeController extends Controller
     // MARK:GLOBAL
     function welcome()
     {
-        return view('welcome');
+        // Obtener informacion del usuario autentificado
+        $user = auth()->user();
+        return view('welcome', compact('user'));
     }
 }

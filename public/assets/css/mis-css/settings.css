@@ -1,0 +1,34 @@
+/* Icono de configuracion */
+.pct-c-btn {
+    display: block;
+    padding: 0px;
+    position: fixed;
+    overflow: hidden;
+    right: 0;
+    top: 50% !important;
+    z-index: 1030;
+    transition: all 0.15s ease-in-out;
+    border-radius: 50% 4px 4px 50%;
+    box-shadow: -6px 0px 14px 1px rgba(27, 46, 94, 0.08);
+    background: linear-gradient(to right, #ff5858, #f09819);
+}
+
+.pct-c-btn a {
+    display: block;
+    padding: 5px 5px 5px 5px !important;
+    transition: all 0.08s cubic-bezier(0.37, 0.24, 0.53, 0.99);
+}
+
+/* ============ colores de header ====================== */
+
+/* archivo style.css */
+.theme-color.header-color > a[data-value=header-1] {
+    background: linear-gradient(to right, #1D3E77, #3A6FCF) !important;
+  }
+/* archivo style-present.css */
+[data-pc-header=header-1] {
+    --pc-header-background: linear-gradient(to right, #1D3E77, #3A6FCF) !important;
+  }
+/* [data-pc-header=header-2] {
+--pc-header-background: linear-gradient(to right, #FF5370, #f48fb1);
+} */

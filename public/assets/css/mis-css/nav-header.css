@@ -1,0 +1,8 @@
+.pc-header .m-header {
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content:space-between;
+    width: 245px;
+    padding: 2px 2px 2px 35px !important;
+}
