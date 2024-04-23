@@ -1,7 +1,8 @@
 .auth-wrapper {
     background-image: url("./../images/MSPV_Fondo_2024.jpg");
     background-size: cover;
-    background-position: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     border-radius: 20px;
 }
 .forgot-password {

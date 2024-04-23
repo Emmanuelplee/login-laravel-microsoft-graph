@@ -31,3 +31,5 @@ Route::group(['middleware' => ['web', 'MsGraphAuthenticated']], function(){
     Route::get('/home', [HomeController::class, 'welcome'])->name('app');
     Route::get('logout', [AuthController::class, 'logout'])->name('logout');
 });
+
+// Route::view('test', 'welcome-test');
