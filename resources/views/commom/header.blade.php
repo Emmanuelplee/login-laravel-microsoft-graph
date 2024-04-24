@@ -3,7 +3,7 @@
         <div class="row align-items-center text-center">
             <div class="col-md-12">
                 <div class="card-body">
-                    <img src="{{ asset('assets/images/logo-dark.png') }}" alt class="img-fluid mb-4">
+                    <img src="{{ asset('assets/images/logo_oscuro.png') }}" alt class="img-fluid mb-4">
                     <h6 class="mb-3 f-w-400">Inicia sesión con tu cuenta institucional</h4>
                     <!-- MARK: Campos del login
                     -->

@@ -316,7 +316,7 @@ for (var t = 0; t < tc.length; t++) {
 // authentication logo
 var tc = document.querySelectorAll('.auth-main.v2 .img-brand');
 for (var t = 0; t < tc.length; t++) {
-  tc[t].setAttribute('src', '../assets/images/logooscuro.png');
+  tc[t].setAttribute('src', '../assets/images/logo_blanco.png');
 }
 
 // =======================================================
@@ -401,7 +401,7 @@ function layout_sidebar_change(value) {
   if (value == 'dark') {
     document.getElementsByTagName('body')[0].setAttribute('data-pc-sidebar-theme', 'dark');
     if (document.querySelector('.pc-sidebar .m-header .logo-lg')) {
-      document.querySelector('.pc-sidebar .m-header .logo-lg').setAttribute('src', '../assets/images/logooscuro.png');
+      document.querySelector('.pc-sidebar .m-header .logo-lg').setAttribute('src', '../assets/images/logo_blanco.png');
     }
     var control = document.querySelector('.theme-sidebar-color .btn.active');
     if (control) {
@@ -411,7 +411,7 @@ function layout_sidebar_change(value) {
   } else {
     document.getElementsByTagName('body')[0].setAttribute('data-pc-sidebar-theme', 'light');
     if (document.querySelector('.pc-sidebar .m-header .logo-lg')) {
-      document.querySelector('.pc-sidebar .m-header .logo-lg').setAttribute('src', '../assets/images/logo-dark.png');
+      document.querySelector('.pc-sidebar .m-header .logo-lg').setAttribute('src', '../assets/images/logo_oscuro.png');
     }
     var control = document.querySelector('.theme-sidebar-color .btn.active');
     if (control) {
@@ -494,10 +494,10 @@ function layout_change(layout) {
   if (layout == 'dark') {
     dark_flag = true;
     if (document.querySelector('.auth-main.v1 .auth-sidefooter')) {
-      document.querySelector('.auth-main.v1 .auth-sidefooter img').setAttribute('src', '../assets/images/logooscuro.png');
+      document.querySelector('.auth-main.v1 .auth-sidefooter img').setAttribute('src', '../assets/images/logo_blanco.png');
     }
     if (document.querySelector('.footer-top .footer-logo')) {
-      document.querySelector('.footer-top .footer-logo').setAttribute('src', '../assets/images/logooscuro.png');
+      document.querySelector('.footer-top .footer-logo').setAttribute('src', '../assets/images/logo_blanco.png');
     }
     var control = document.querySelector('.theme-layout .btn.active');
     if (control) {
@@ -507,10 +507,10 @@ function layout_change(layout) {
   } else {
     dark_flag = false;
     if (document.querySelector('.auth-main.v1 .auth-sidefooter')) {
-      document.querySelector('.auth-main.v1 .auth-sidefooter img').setAttribute('src', '../assets/images/logo-dark.png');
+      document.querySelector('.auth-main.v1 .auth-sidefooter img').setAttribute('src', '../assets/images/logo_oscuro.png');
     }
     if (document.querySelector('.footer-top .footer-logo')) {
-      document.querySelector('.footer-top .footer-logo').setAttribute('src', '../assets/images/logo-dark.png');
+      document.querySelector('.footer-top .footer-logo').setAttribute('src', '../assets/images/logo_oscuro.png');
     }
     var control = document.querySelector('.theme-layout .btn.active');
     if (control) {

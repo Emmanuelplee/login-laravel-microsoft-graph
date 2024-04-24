@@ -1,7 +1,7 @@
 .auth-wrapper {
     background-image: url("./../images/MSPV_Fondo_2024.jpg");
     background-size: cover;
-    background-position: center;
+    background-position: top;
     background-repeat: no-repeat;
     border-radius: 20px;
 }
@@ -17,8 +17,7 @@
 /* Estilos generales del tooltip */
 .tooltip-login {
     position: relative;
-    /* display: inline-block; */
-    cursor: pointer;
+    /* cursor: pointer; */
     /* border-bottom: 1px dotted black; Línea punteada para indicar que hay más información */
   }
 

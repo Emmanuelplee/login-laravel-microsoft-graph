@@ -50,7 +50,7 @@
 			<div class="m-header">
 				<a href="../dashboard/index.html" class="b-brand text-primary">
 					<!-- ========   Change your logo from here   ============ -->
-					<img src="{{ asset('assets/images/logooscuro.png') }}" alt="logo image" class="logo-lg">
+					<img src="{{ asset('assets/images/logo_blanco.png') }}" alt="logo image" class="logo-lg">
 					<span class="badge bg-primary rounded-pill ms-2 theme-version">v1.0</span>
 				</a>
 			</div>
@@ -89,7 +89,7 @@
 		<div class="m-header">
 			<a href="../dashboard/index.html" class="b-brand text-primary">
 				<!-- ========   Change your logo from here   ============ -->
-				<img src="{{ asset('assets/images/logooscuro.png') }}" alt="logo image" class="logo-lg" width="150">
+				<img src="{{ asset('assets/images/logo_blanco.png') }}" alt="logo image" class="logo-lg" width="150">
 				<span class="badge bg-white text-dark rounded-pill ms-2 theme-version">v1.0</span>
 			</a>
 		</div>

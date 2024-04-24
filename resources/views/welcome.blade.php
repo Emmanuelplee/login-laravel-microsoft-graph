@@ -30,7 +30,7 @@
     <!-- [Template CSS Files] -->
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}" id="main-style-link">
     <link rel="stylesheet" href="{{ asset('assets/css/style-preset.css') }}">
-
+    {{-- [Mis Archivos CSS] --}}
     <link rel="stylesheet" href="{{ asset('assets/css/mis-css/settings.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/mis-css/nav-header.css') }}">
 
@@ -53,7 +53,7 @@
             <div class="m-header">
                 <a href="{{ route('app') }}" class="b-brand text-primary">
                     <!-- ========   Change your logo Movil   ============ -->
-                    <img src="{{ asset('assets/images/logooscuro.png') }}" alt="logo image" class="logo-lg pt-3" width="90%">
+                    <img src="{{ asset('assets/images/logo_blanco.png') }}" alt="logo image" class="logo-lg pt-3" width="90%">
                     {{-- <span class="badge bg-primary rounded-pill ms-2 theme-version">v1-m</span> --}}
                 </a>
             </div>
@@ -95,7 +95,7 @@
         <div class="m-header">
             <a href="{{ route('app') }}" class="b-brand text-primary">
                 <!-- ========   Change your logo Web   ============ -->
-                <img src="{{ asset('assets/images/logooscuro.png') }}" alt="logo image" class="logo-lg" width="70%">
+                <img src="{{ asset('assets/images/logo_blanco.png') }}" alt="logo image" class="logo-lg" width="70%">
                 {{-- <span class="badge bg-white text-dark rounded-pill ms-2 theme-version">v1.0</span> --}}
             </a>
         </div>

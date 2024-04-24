@@ -29,12 +29,13 @@
                                     href="{{ route('connect')}}">
                                     Iniciar Sesión
                                 </a>
-                                <div class="text-end tooltip-login text-primary">
-                                    ¿Olvidate tu contraseña?
+                                <div class="text-end tooltip-login">
+                                    <a href="https://mspv.servicecamp.com/portal/forms" class="text-primary" target="_blank" rel="noopener noreferrer">
+                                        ¿Olvidaste tu contraseña?</a>
                                     <span class="tooltiptext">
-                                        Comunicate con el area de [CTI TI] para mas informacion
+                                        <i>Por favor genera un ticket solicitando el restablecimiento de su contraseña (clic para ir al formulario)</i>
                                     </span>
-                                  </div>
+                                </div>
                             </div>
                         </form>
                     </div>
