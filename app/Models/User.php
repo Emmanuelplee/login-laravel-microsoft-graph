@@ -3,16 +3,20 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
+use App\Models\Puesto;
+use Illuminate\Support\Carbon;
 use Laravel\Sanctum\HasApiTokens;
 use Spatie\Permission\Traits\HasRoles;
+use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
     use HasRoles;
+    use SoftDeletes;
 
     /**
      * The attributes that are mass assignable.
@@ -20,10 +24,19 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
+        'alias',
         'name',
+        'surname',
         'email',
         'password',
-        'profile_photo_path',
+
+        'path_foto_perfil',
+        'inicio_sesion',
+        'ip_equipo',
+        'activo',
+        'tipo',
+        'id_role',
+        'id_puesto'
     ];
 
     /**
@@ -44,5 +57,19 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
+
+        'inicio_sesion' => "datetime",
     ];
+    // MARK: Atributos
+    public function getInicioSesionAttribute($value)
+    {
+        return Carbon::parse($value)->format('h:i:s A');
+    }
+    // MARK: Releciones
+    // relacion de user con el id de puestos
+    public function puesto()
+    {
+        return $this->hasOne(Puesto::class, 'id');
+    }
+
 }

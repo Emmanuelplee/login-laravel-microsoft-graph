@@ -334,6 +334,8 @@
                             @auth
                               <pre class="text-start" style="font-size: 1rem;">
                                 {{-- {{ print_r($user) }} --}}
+                                {{ $user[0]->inicio_sesion }}
+                                {{ $user[0]->puesto->nombre }}
                                   {{-- {{print_r(MsGraph::get('me'))}} --}}
                               </pre>
                             @endauth

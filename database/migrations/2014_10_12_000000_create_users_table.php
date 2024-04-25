@@ -13,12 +13,21 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->string('alias')->nullable();
+            $table->string('name')->nullable();
+            $table->string('surname')->nullable();
             $table->string('email')->unique()->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->string('profile_photo_path',100)->nullable();
+            $table->string('path_foto_perfil',100)->nullable()->comment('Ruta de la foto de perfil');
+
+            $table->timestamp('inicio_sesion')->nullable()->comment('Hora de inicio de sesión');
+            $table->ipAddress('ip_equipo')->nullable()->comment('IP del equipo');
+            $table->boolean('activo')->default(1);
+            $table->enum('tipo', ['NUEVO', 'EXTERNO', 'NOEXTERNO'])->default('NUEVO')->comment('Tipo de usuario');
+
             $table->rememberToken();
+            $table->softDeletes(); // Agregar columna deleted_at
             $table->timestamps();
         });
     }

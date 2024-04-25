@@ -444,5 +444,10 @@
         "nombre": "VERIFICADOR",
         "estatus": 1,
         "id_puesto_tipo": 2
+    },
+    {
+        "nombre": "NUEVO",
+        "estatus": 1,
+        "id_puesto_tipo": 1
     }
 ]

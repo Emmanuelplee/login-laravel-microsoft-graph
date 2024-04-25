@@ -85,17 +85,17 @@
         "id_role_tipo": 5
     },
     {
-        "name": "Proveedores Operación",
+        "name": "Proveedores",
         "estatus": 1,
         "id_role_tipo": 8
     },
     {
-        "name": "Clientes Operación",
+        "name": "Clientes",
         "estatus": 1,
         "id_role_tipo": 8
     },
     {
-        "name": "Externos Operación",
+        "name": "Externos",
         "estatus": 1,
         "id_role_tipo": 8
     },

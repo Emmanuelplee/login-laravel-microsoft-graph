@@ -2,8 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Puesto extends Model
 {
@@ -17,4 +18,8 @@ class Puesto extends Model
         'estatus',
         'id_puesto_tipo',
     ];
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'id_puestos');
+    }
 }

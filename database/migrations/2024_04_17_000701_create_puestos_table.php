@@ -19,7 +19,7 @@ return new class extends Migration
 
             $table->unsignedBigInteger('id_puesto_tipo');
             $table->foreign('id_puesto_tipo')->references('id')->on('puesto_tipos')
-                ->onUpdate('cascade')->onDelete('cascade');
+            ->onUpdate('cascade')->onDelete('cascade');
 
             $table->timestamps();
         });
