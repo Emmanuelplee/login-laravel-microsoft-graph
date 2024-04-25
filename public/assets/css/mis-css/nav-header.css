@@ -6,3 +6,16 @@
     width: 245px;
     padding: 2px 2px 2px 35px !important;
 }
+
+.__mi_card {
+    box-shadow:none !important;
+    margin-bottom: 5px !important;
+    transition:none !important;
+}
+
+.__mi_card_body{
+    padding: 2px !important;
+}
+.__mi_cursor_pointer{
+    cursor: pointer !important;
+}

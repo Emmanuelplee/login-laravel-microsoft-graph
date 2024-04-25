@@ -6,10 +6,12 @@ namespace App\Models;
 use App\Models\Puesto;
 use Illuminate\Support\Carbon;
 use Laravel\Sanctum\HasApiTokens;
+use Spatie\Permission\Models\Role;
 use Spatie\Permission\Traits\HasRoles;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
@@ -61,15 +63,19 @@ class User extends Authenticatable
         'inicio_sesion' => "datetime",
     ];
     // MARK: Atributos
-    public function getInicioSesionAttribute($value)
+    public function getInicioSesionAttribute($value): String
     {
         return Carbon::parse($value)->format('h:i:s A');
     }
-    // MARK: Releciones
-    // relacion de user con el id de puestos
-    public function puesto()
+    // MARK: Relaciones
+    // El usuario tiene un rol
+    public function role(): BelongsTo
     {
-        return $this->hasOne(Puesto::class, 'id');
+        return $this->belongsTo(Role::class, 'id_role');
     }
-
+    // El usuario tiene un puesto
+    public function puesto(): BelongsTo
+    {
+        return $this->belongsTo(Puesto::class,'id_puesto');
+    }
 }

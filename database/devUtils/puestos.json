@@ -446,7 +446,7 @@
         "id_puesto_tipo": 2
     },
     {
-        "nombre": "NUEVO",
+        "nombre": "PUESTO NUEVO",
         "estatus": 1,
         "id_puesto_tipo": 1
     }

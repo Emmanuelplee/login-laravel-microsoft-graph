@@ -15,7 +15,7 @@ class NewMicrosoft365SignInListener
     {
         error_log('NewMicrosoft365SignInListener handle');
         // dd($event->token['info']);
-        // Buscame el user por email si no crearlo
+        // Buscar el user por email si no existe se crea
         $user = User::firstOrCreate([
             'email' => $event->token['info']['mail'],
         ], [

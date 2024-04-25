@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Models\User;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Puesto extends Model
@@ -18,8 +19,9 @@ class Puesto extends Model
         'estatus',
         'id_puesto_tipo',
     ];
-    public function user()
+    // El puesto pertenece a un solo usuario
+    public function user(): HasOne
     {
-        return $this->belongsTo(User::class, 'id_puestos');
+        return $this->hasOne(User::class,'id');
     }
 }

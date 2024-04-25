@@ -30,7 +30,7 @@
     <!-- [Template CSS Files] -->
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}" id="main-style-link">
     <link rel="stylesheet" href="{{ asset('assets/css/style-preset.css') }}">
-    {{-- [Mis Archivos CSS] --}}
+    <!-- [Mis Archivos CSS] -->
     <link rel="stylesheet" href="{{ asset('assets/css/mis-css/settings.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/mis-css/nav-header.css') }}">
 
@@ -53,8 +53,9 @@
             <div class="m-header">
                 <a href="{{ route('app') }}" class="b-brand text-primary">
                     <!-- ========   Change your logo Movil   ============ -->
-                    <img src="{{ asset('assets/images/logo_blanco.png') }}" alt="logo image" class="logo-lg pt-3" width="90%">
-                    {{-- <span class="badge bg-primary rounded-pill ms-2 theme-version">v1-m</span> --}}
+                    <img src="{{ asset('assets/images/logo_blanco.png') }}" alt="logo image" class="logo-lg pt-3"
+                        width="90%">
+                    <!-- <span class="badge bg-primary rounded-pill ms-2 theme-version">v1-m</span> -->
                 </a>
             </div>
             <!-- MARK:[navbar content] start -->
@@ -65,21 +66,24 @@
                     </li>
                     <li class="pc-item pc-hasmenu">
                         <a href="#!" class="pc-link"><span class="pc-micon">
-                                <i class="ph ph-gauge"></i></span><span class="pc-mtext">Principal</span><span class="pc-arrow"><i
-                                    data-feather="chevron-right"></i></span></a>
+                                <i class="ph ph-gauge"></i></span><span class="pc-mtext">Principal</span><span
+                                class="pc-arrow"><i data-feather="chevron-right"></i></span></a>
                         <ul class="pc-submenu">
                             <li class="pc-item"><a class="pc-link" href="../dashboard/index.html">Sales</a></li>
-                            <li class="pc-item"><a class="pc-link" href="../dashboard/index-analytics.html">Analytics</a></li>
-                            <li class="pc-item"><a class="pc-link" href="../dashboard/index-affiliate.html">Affiliate</a></li>
+                            <li class="pc-item"><a class="pc-link"
+                                    href="../dashboard/index-analytics.html">Analytics</a></li>
+                            <li class="pc-item"><a class="pc-link"
+                                    href="../dashboard/index-affiliate.html">Affiliate</a></li>
                         </ul>
                     </li>
                     <li class="pc-item pc-hasmenu">
                         <a href="#!" class="pc-link"><span class="pc-micon">
-                                <i class="ph ph-layout"></i></span><span class="pc-mtext">Otros</span><span class="pc-arrow"><i
-                                    data-feather="chevron-right"></i></span></a>
+                                <i class="ph ph-layout"></i></span><span class="pc-mtext">Otros</span><span
+                                class="pc-arrow"><i data-feather="chevron-right"></i></span></a>
                         <ul class="pc-submenu">
                             <li class="pc-item"><a class="pc-link" href="../demo/layout-compact.html">Compact</a></li>
-                            <li class="pc-item"><a class="pc-link" href="../demo/layout-horizontal.html">Horizontal</a></li>
+                            <li class="pc-item"><a class="pc-link" href="../demo/layout-horizontal.html">Horizontal</a>
+                            </li>
                             <li class="pc-item"><a class="pc-link" href="../demo/layout-tab.html">Tab</a></li>
                             <li class="pc-item"><a class="pc-link" href="../demo/layout-vertical.html">Vertical</a></li>
                         </ul>
@@ -96,7 +100,7 @@
             <a href="{{ route('app') }}" class="b-brand text-primary">
                 <!-- ========   Change your logo Web   ============ -->
                 <img src="{{ asset('assets/images/logo_blanco.png') }}" alt="logo image" class="logo-lg" width="70%">
-                {{-- <span class="badge bg-white text-dark rounded-pill ms-2 theme-version">v1.0</span> --}}
+                <!-- <span class="badge bg-white text-dark rounded-pill ms-2 theme-version">v1.0</span> -->
             </a>
         </div>
         <div class="header-wrapper">
@@ -117,14 +121,15 @@
                     </li>
                     <!-- ======= Search [Web y Movil] ===== -->
                     <li class="dropdown pc-h-item">
-                        <a class="pc-head-link dropdown-toggle arrow-none m-0" data-bs-toggle="dropdown" href="#" role="button"
-                            aria-haspopup="false" aria-expanded="false">
+                        <a class="pc-head-link dropdown-toggle arrow-none m-0" data-bs-toggle="dropdown" href="#"
+                            role="button" aria-haspopup="false" aria-expanded="false">
                             <i class="ph ph-magnifying-glass"></i>
                         </a>
                         <div class="dropdown-menu pc-h-dropdown drp-search">
                             <form class="px-3">
                                 <div class="form-group mb-0 d-flex align-items-center">
-                                    <input type="search" class="form-control border-0 shadow-none" placeholder="Buscar aqui. . .">
+                                    <input type="search" class="form-control border-0 shadow-none"
+                                        placeholder="Buscar aqui. . .">
                                     <button class="btn btn-light-secondary btn-search">Buscar</button>
                                 </div>
                             </form>
@@ -135,10 +140,10 @@
             <!-- [Mobile Media Block end] -->
             <div class="ms-auto">
                 <ul class="list-unstyled">
-                    {{-- MARK:[Notification] --}}
+                    <!-- MARK:[Notification] -->
                     <li class="dropdown pc-h-item">
-                        <a class="pc-head-link dropdown-toggle arrow-none me-0" data-bs-toggle="dropdown" href="#" role="button"
-                            aria-haspopup="false" aria-expanded="false">
+                        <a class="pc-head-link dropdown-toggle arrow-none me-0" data-bs-toggle="dropdown" href="#"
+                            role="button" aria-haspopup="false" aria-expanded="false">
                             <i class="ph ph-bell"></i>
                             <span class="badge bg-success pc-h-badge">3</span>
                         </a>
@@ -165,12 +170,14 @@
                                         <p class="text-span">Today</p>
                                         <div class="d-flex">
                                             <div class="flex-shrink-0">
-                                                <img src="../assets/images/user/avatar-2.jpg" alt="user-image" class="user-avtar avtar avtar-s">
+                                                <img src="../assets/images/user/avatar-2.jpg" alt="user-image"
+                                                    class="user-avtar avtar avtar-s">
                                             </div>
                                             <div class="flex-grow-1 ms-3">
                                                 <div class="d-flex">
                                                     <div class="flex-grow-1 me-3 position-relative">
-                                                        <h5 class="mb-0 text-truncate">Keefe Bond <span class="text-body"> added new tags to </span>
+                                                        <h5 class="mb-0 text-truncate">Keefe Bond <span
+                                                                class="text-body"> added new tags to </span>
                                                             💪
                                                             Design system</h5>
                                                     </div>
@@ -178,12 +185,18 @@
                                                         <span class="text-sm text-muted">2 min ago</span>
                                                     </div>
                                                 </div>
-                                                <p class="position-relative text-muted mt-1 mb-2"><br><span class="text-truncate">Lorem Ipsum
+                                                <p class="position-relative text-muted mt-1 mb-2"><br><span
+                                                        class="text-truncate">Lorem Ipsum
                                                         has been
-                                                        the industry's standard dummy text ever since the 1500s.</span></p>
-                                                <span class="badge bg-light-primary border border-primary me-1 mt-1">web design</span>
-                                                <span class="badge bg-light-warning border border-warning me-1 mt-1">Dashobard</span>
-                                                <span class="badge bg-light-success border border-success me-1 mt-1">Design System</span>
+                                                        the industry's standard dummy text ever since the 1500s.</span>
+                                                </p>
+                                                <span class="badge bg-light-primary border border-primary me-1 mt-1">web
+                                                    design</span>
+                                                <span
+                                                    class="badge bg-light-warning border border-warning me-1 mt-1">Dashobard</span>
+                                                <span
+                                                    class="badge bg-light-success border border-success me-1 mt-1">Design
+                                                    System</span>
                                             </div>
                                         </div>
                                     </li>
@@ -204,10 +217,12 @@
                                                         <span class="text-sm text-muted">12 hour ago</span>
                                                     </div>
                                                 </div>
-                                                <p class="position-relative text-muted mt-1 mb-2"><br><span class="text-truncate"><strong> Jonny
+                                                <p class="position-relative text-muted mt-1 mb-2"><br><span
+                                                        class="text-truncate"><strong> Jonny
                                                             aber
                                                         </strong> invites to join the challenge</span></p>
-                                                <button class="btn btn-sm rounded-pill btn-outline-secondary me-2">Decline</button>
+                                                <button
+                                                    class="btn btn-sm rounded-pill btn-outline-secondary me-2">Decline</button>
                                                 <button class="btn btn-sm rounded-pill btn-primary">Accept</button>
                                             </div>
                                         </div>
@@ -220,53 +235,85 @@
                                         <div class="d-grid"><button class="btn btn-primary">Archive all</button></div>
                                     </div>
                                     <div class="col-6">
-                                        <div class="d-grid"><button class="btn btn-outline-secondary">Mark all as read</button></div>
+                                        <div class="d-grid"><button class="btn btn-outline-secondary">Mark all as
+                                                read</button></div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </li>
-                    {{-- MARK:[Profile] start --}}
+                    <!-- MARK:[Profile] start -->
                     <li class="dropdown pc-h-item">
-                        <a class="pc-head-link dropdown-toggle arrow-none me-0" data-bs-toggle="dropdown" href="#" role="button"
-                            aria-haspopup="false" data-bs-auto-close="outside" aria-expanded="false">
-                            {{-- <img src="{{ asset('assets/images/mspv.png') }}" alt="user-image" class="user-avtar"> --}}
+                        <a class="pc-head-link dropdown-toggle arrow-none me-0" data-bs-toggle="dropdown" href="#"
+                            role="button" aria-haspopup="false" data-bs-auto-close="outside" aria-expanded="false">
+                            <!-- <img src="{{ asset('assets/images/mspv.png') }}" alt="user-image" class="user-avtar"> -->
                             <i class="ph ph-user"></i>
                         </a>
                         <div class="dropdown-menu dropdown-user-profile dropdown-menu-end pc-h-dropdown">
                             <div class="dropdown-header d-flex align-items-center justify-content-between">
-                                <h4 class="m-0">Profile</h4>
+                                <h4 class="m-0">Perfil</h4>
                             </div>
                             <div class="dropdown-body">
-                                <div class="profile-notification-scroll position-relative" style="max-height: calc(100vh - 225px)">
+                                <div class="profile-notification-scroll position-relative"
+                                    style="max-height: calc(100vh - 225px)">
                                     <ul class="list-group list-group-flush w-100">
                                         <li class="list-group-item">
                                             <div class="d-flex align-items-center">
                                                 <div class="flex-shrink-0">
-                                                    <img src="{{ asset('assets/images/favicon.png') }}" alt="user-image" class="wid-25">
+                                                    <img src="{{ asset('assets/images/favicon.png') }}" alt="user-image"
+                                                        class="wid-25">
                                                 </div>
                                                 <div class="flex-grow-1 mx-3">
-                                                    <?php
-                                                        $nombre = explode(" ",MsGraph::get('me')['givenName']);
-                                                        $apellido = explode(" ",MsGraph::get('me')['surname']);
-                                                        $nombreCompleto = $nombre[0]. " ". $apellido[0];
-                                                        strlen($nombreCompleto) <= 1 ? $nombreCompleto = MsGraph::get('me')['displayName'] : $nombreCompleto;
-                                                    ?>
                                                     <h5 class="mb-0">{{ $nombreCompleto }}</h5>
-                                                    <a class="link-primary" href="mailto:{{ MsGraph::get('me')['mail'] }}">{{ MsGraph::get('me')['mail'] }}</a>
+                                                    <a class="link-primary" href="mailto:test@test.com">{{ $user->email }}</a>
                                                 </div>
-                                                {{-- <span class="badge bg-primary">PRO</span> --}}
+                                                <!-- <span class="badge bg-primary">PRO</span> -->
+                                            </div>
+                                            <div class="d-flex aling-item-center">
+                                                <div class="col-md-6 col-xl-6">
+                                                    <div class="card user-card __mi_card">
+                                                        <div class="card-body __mi_card_body">
+                                                            <div class="saprator mt-1">
+                                                                <span>Puesto</span>
+                                                            </div>
+                                                            <div class="row g-3 mb-1 text-center">
+                                                                <div class="col-12 pe-3">
+                                                                    {{-- <small class="text-muted">Su Puesto</small> --}}
+                                                                    {{-- <span class="badge bg-primary">Su Puesto</span> --}}
+                                                                    <h6 class="mb-0">{{ $puesto->nombre }}</h6>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6 col-xl-6">
+                                                    <div class="card user-card __mi_card">
+                                                        <div class="card-body __mi_card_body">
+                                                            <div class="saprator mt-1">
+                                                                <span>Rol</span>
+                                                            </div>
+                                                            <div class="row g-3 mb-1 text-center">
+                                                                <div class="col-12 border-start">
+                                                                    {{-- <small class="text-muted">Su Rol</small> --}}
+                                                                    {{-- <span class="badge bg-primary">Su Rol</span> --}}
+                                                                    <h6 class="mb-0">{{ $role->name }}</h6>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </li>
+
                                         <li class="list-group-item">
                                             <div class="dropdown-item">
                                                 <span class="d-flex align-items-center">
                                                     <i class="ph ph-moon"></i>
-                                                    <span>Dark mode</span>
+                                                    <span>Modo oscuro</span>
                                                 </span>
                                                 <div class="form-check form-switch form-check-reverse m-0">
-                                                    <input class="form-check-input f-18" id="dark-mode" type="checkbox" onclick="dark_mode()"
-                                                        role="switch">
+                                                    <input class="form-check-input f-18 __mi_cursor_pointer" id="dark-mode" type="checkbox"
+                                                        onclick="dark_mode()" role="switch">
                                                 </div>
                                             </div>
                                         </li>
@@ -274,7 +321,7 @@
                                             <a href="#" class="dropdown-item">
                                                 <span class="d-flex align-items-center">
                                                     <i class="ph ph-user-circle"></i>
-                                                    <span>Edit profile</span>
+                                                    <span>Editar perfil</span>
                                                 </span>
                                             </a>
                                         </li>
@@ -282,7 +329,7 @@
                                             <a href="{{ route('logout') }}" class="dropdown-item">
                                                 <span class="d-flex align-items-center">
                                                     <i class="ph ph-power"></i>
-                                                    <span>Logout</span>
+                                                    <span>Cerrar Sesion</span>
                                                 </span>
                                             </a>
                                         </li>
@@ -291,7 +338,7 @@
                             </div>
                         </div>
                     </li>
-                    {{-- [Profile] end --}}
+                    <!-- [Profile] end -->
                 </ul>
             </div>
         </div>
@@ -332,10 +379,12 @@
                             <h5>Seccion del Contenido</h5>
                             <hr>
                             @auth
-                              <pre class="text-start" style="font-size: 1rem;">
+                            <pre class="text-start" style="font-size: 1rem;">
                                 {{-- {{ print_r($user) }} --}}
-                                {{ $user[0]->inicio_sesion }}
-                                {{ $user[0]->puesto->nombre }}
+                                Hora de inicio secion: {{ $user->inicio_sesion }}
+                                Puesto: {{ $puesto->nombre }}
+                                Rol: {{ $role->name }}
+                                ip: {{ $ip }}
                                   {{-- {{print_r(MsGraph::get('me'))}} --}}
                               </pre>
                             @endauth
@@ -358,14 +407,6 @@
                     <p class="m-0">Copyright © 2024 MSPV by Funnel MKT. Todos los derechos reservados
                         <a class="text-primary" href="https://www.mspv.com.mx/" target="_blank">MSPV</a>
                     </p>
-                </div>
-                {{-- <div class="col-sm-6 ms-auto my-1">
-                    <ul class="list-inline footer-link mb-0 justify-content-sm-end d-flex">
-                        <li class="list-inline-item"><a href="../index.html">Home</a></li>
-                        <li class="list-inline-item"><a href="https://codedthemes.gitbook.io/gradient-able-bootstrap/"
-                                target="_blank">Documentation</a></li>
-                        <li class="list-inline-item"><a href="https://codedthemes.support-hub.io/" target="_blank">Support</a></li>
-                    </ul> --}}
                 </div>
             </div>
         </div>
@@ -408,24 +449,28 @@
                             <div class="row theme-color theme-layout">
                                 <div class="col-4">
                                     <div class="d-grid">
-                                        <button class="preset-btn btn active" data-value="true" onclick="layout_change('light');">
+                                        <button class="preset-btn btn active" data-value="true"
+                                            onclick="layout_change('light');">
                                             <span class="btn-label">Claro</span>
-                                            <span class="pc-lay-icon"><span></span><span></span><span></span><span></span></span>
+                                            <span
+                                                class="pc-lay-icon"><span></span><span></span><span></span><span></span></span>
                                         </button>
                                     </div>
                                 </div>
                                 <div class="col-4">
                                     <div class="d-grid">
-                                        <button class="preset-btn btn" data-value="false" onclick="layout_change('dark');">
+                                        <button class="preset-btn btn" data-value="false"
+                                            onclick="layout_change('dark');">
                                             <span class="btn-label">Oscuro</span>
-                                            <span class="pc-lay-icon"><span></span><span></span><span></span><span></span></span>
+                                            <span
+                                                class="pc-lay-icon"><span></span><span></span><span></span><span></span></span>
                                         </button>
                                     </div>
                                 </div>
                                 <div class="col-4">
                                     <div class="d-grid">
-                                        <button class="preset-btn btn" data-value="default" onclick="layout_change_default();"
-                                            data-bs-toggle="tooltip"
+                                        <button class="preset-btn btn" data-value="default"
+                                            onclick="layout_change_default();" data-bs-toggle="tooltip"
                                             title="Automatically sets the theme based on user's operating system's color scheme.">
                                             <span class="btn-label">Defecto</span>
                                             <span class="pc-lay-icon d-flex align-items-center justify-content-center">
@@ -443,17 +488,21 @@
                         <div class="row theme-color theme-sidebar-color">
                             <div class="col-6">
                                 <div class="d-grid">
-                                    <button class="preset-btn btn" data-value="true" onclick="layout_sidebar_change('dark');">
+                                    <button class="preset-btn btn" data-value="true"
+                                        onclick="layout_sidebar_change('dark');">
                                         <span class="btn-label">Oscuro</span>
-                                        <span class="pc-lay-icon"><span></span><span></span><span></span><span></span></span>
+                                        <span
+                                            class="pc-lay-icon"><span></span><span></span><span></span><span></span></span>
                                     </button>
                                 </div>
                             </div>
                             <div class="col-6">
                                 <div class="d-grid">
-                                    <button class="preset-btn btn active" data-value="false" onclick="layout_sidebar_change('light');">
+                                    <button class="preset-btn btn active" data-value="false"
+                                        onclick="layout_sidebar_change('light');">
                                         <span class="btn-label">Claro</span>
-                                        <span class="pc-lay-icon"><span></span><span></span><span></span><span></span></span>
+                                        <span
+                                            class="pc-lay-icon"><span></span><span></span><span></span><span></span></span>
                                     </button>
                                 </div>
                             </div>

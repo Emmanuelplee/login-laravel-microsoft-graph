@@ -33,7 +33,7 @@
                                     <a href="https://mspv.servicecamp.com/portal/forms" class="text-primary" target="_blank" rel="noopener noreferrer">
                                         ¿Olvidaste tu contraseña?</a>
                                     <span class="tooltiptext">
-                                        <i>Por favor genera un ticket solicitando el restablecimiento de su contraseña (clic para ir al formulario)</i>
+                                        <i>Por favor genera un ticket solicitando el restablecimiento de su contraseña (clic para ir al formulario)</i>
                                     </span>
                                 </div>
                             </div>
