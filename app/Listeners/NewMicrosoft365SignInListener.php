@@ -4,6 +4,7 @@ namespace App\Listeners;
 
 use App\Models\User;
 use Dcblogdev\MsGraph\MsGraph;
+use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Http;
@@ -11,6 +12,9 @@ use Illuminate\Support\Facades\Storage;
 
 class NewMicrosoft365SignInListener
 {
+    public function __construct(Request $request) {
+        $this->request = $request;
+    }
     public function handle(object $event): void
     {
         error_log('NewMicrosoft365SignInListener handle');
@@ -26,8 +30,16 @@ class NewMicrosoft365SignInListener
             'inicio_sesion' => Carbon::now()->format('H:i:s'),
             'password' => '',
         ]);
-        // Actualizame el incio de sesion del usuario
-        $user->update(['inicio_sesion' => Carbon::now()->format('H:i:s')]);
+        //Actualizar ip_equipo si es diferente de la bd
+        $ip = $this->request->ip();
+        if ($user->ip_equipo != $ip) {
+            $user->update(['ip_equipo' => $ip,]);
+        }
+        // Actualizame el incio_sesion
+        $user->update([
+            'inicio_sesion' => Carbon::now()->format('H:i:s')
+        ]);
+
         // Asigar rol y puesto por defecto (Nuevo)
         if (is_null($user->id_role) || is_null($user->id_puesto)) {
             $user->update([

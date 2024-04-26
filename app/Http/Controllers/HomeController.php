@@ -7,8 +7,8 @@ use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
-    // MARK:GLOBAL
-    function welcome(Request $request)
+    // MARK:WELCOME
+    function welcome()
     {
         // Obtener informacion del usuario autentificado
         $user = auth()->user();
@@ -22,7 +22,6 @@ class HomeController extends Controller
         $puesto = User::find($user->id)->puesto;
         $role = User::find($user->id)->role;
 
-        $ip = $request->ip();
-        return view('welcome', compact('user','nombreCompleto','puesto','role','ip'));
+        return view('welcome', compact('user','nombreCompleto','puesto','role'));
     }
 }

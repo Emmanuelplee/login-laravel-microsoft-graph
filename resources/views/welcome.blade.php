@@ -141,7 +141,7 @@
             <div class="ms-auto">
                 <ul class="list-unstyled">
                     <!-- MARK:[Notification] -->
-                    <li class="dropdown pc-h-item">
+                    <li class="dropdown pc-h-item" hidden>
                         <a class="pc-head-link dropdown-toggle arrow-none me-0" data-bs-toggle="dropdown" href="#"
                             role="button" aria-haspopup="false" aria-expanded="false">
                             <i class="ph ph-bell"></i>
@@ -273,11 +273,11 @@
                                                 <div class="col-md-6 col-xl-6">
                                                     <div class="card user-card __mi_card">
                                                         <div class="card-body __mi_card_body">
-                                                            <div class="saprator mt-1">
-                                                                <span>Puesto</span>
+                                                            <div class="saprator my-1">
+                                                                <span class="px-1 py-1 badge bg-primary">Puesto</span>
                                                             </div>
                                                             <div class="row g-3 mb-1 text-center">
-                                                                <div class="col-12 pe-3">
+                                                                <div class="col-12 me-2 border-end">
                                                                     {{-- <small class="text-muted">Su Puesto</small> --}}
                                                                     {{-- <span class="badge bg-primary">Su Puesto</span> --}}
                                                                     <h6 class="mb-0">{{ $puesto->nombre }}</h6>
@@ -289,11 +289,11 @@
                                                 <div class="col-md-6 col-xl-6">
                                                     <div class="card user-card __mi_card">
                                                         <div class="card-body __mi_card_body">
-                                                            <div class="saprator mt-1">
-                                                                <span>Rol</span>
+                                                            <div class="saprator my-1">
+                                                                <span class="px-1 py-1 badge bg-primary">Rol</span>
                                                             </div>
                                                             <div class="row g-3 mb-1 text-center">
-                                                                <div class="col-12 border-start">
+                                                                <div class="col-12 ms-2">
                                                                     {{-- <small class="text-muted">Su Rol</small> --}}
                                                                     {{-- <span class="badge bg-primary">Su Rol</span> --}}
                                                                     <h6 class="mb-0">{{ $role->name }}</h6>
@@ -384,7 +384,7 @@
                                 Hora de inicio secion: {{ $user->inicio_sesion }}
                                 Puesto: {{ $puesto->nombre }}
                                 Rol: {{ $role->name }}
-                                ip: {{ $ip }}
+                                ip Usuario: {{ $user->ip_equipo }}
                                   {{-- {{print_r(MsGraph::get('me'))}} --}}
                               </pre>
                             @endauth
