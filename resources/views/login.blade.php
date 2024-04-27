@@ -17,6 +17,7 @@
 <body>
     <div class="auth-wrapper">
         <div class="auth-content">
+            {{-- MARK:Login --}}
             <div class="card">
                 <div class="row align-items-center text-center">
                     <div class="col-md-12">
@@ -41,10 +42,11 @@
                     </div>
                 </div>
             </div>
+
         </div>
     </div>
 
-@include('layouts.login.scripts')
+    @include('layouts.login.scripts')
 
 </body>
 </html>

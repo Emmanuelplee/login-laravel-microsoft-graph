@@ -1,4 +1,10 @@
+
 [
+    {
+        "nombre": "PUESTO NUEVO",
+        "estatus": 1,
+        "id_puesto_tipo": 1
+    },
     {
         "nombre": "GERENCIA DE SUCURSAL",
         "estatus": 1,
@@ -444,10 +450,5 @@
         "nombre": "VERIFICADOR",
         "estatus": 1,
         "id_puesto_tipo": 2
-    },
-    {
-        "nombre": "PUESTO NUEVO",
-        "estatus": 1,
-        "id_puesto_tipo": 1
     }
 ]

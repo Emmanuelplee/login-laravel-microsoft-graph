@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('puesto_tipos', function (Blueprint $table) {
             $table->id();
             $table->string('nombre',50);
-            $table->string('descripcion',500)->nullable();
+            $table->longText('descripcion',500)->nullable();
             $table->boolean('estatus')->default(1);
             $table->timestamps();
         });

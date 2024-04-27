@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('nombre',50);
             $table->boolean('estatus')->default(1)->comment('Activo(1) Inactivo(0)');
             $table->timestamps();
+            $table->softDeletes(); // Agregar columna deleted_at
         });
     }
 

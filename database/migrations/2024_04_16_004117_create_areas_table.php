@@ -17,6 +17,7 @@ return new class extends Migration
             $table->longText('descripcion',500)->nullable();
             $table->boolean('estatus')->default(1);
             $table->timestamps();
+            $table->softDeletes(); // Agregar columna deleted_at
         });
     }
 

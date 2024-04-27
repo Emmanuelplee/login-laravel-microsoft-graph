@@ -2,6 +2,7 @@
 
 namespace App\Listeners;
 
+use App\Models\Puesto;
 use App\Models\User;
 use Dcblogdev\MsGraph\MsGraph;
 use Illuminate\Http\Request;
@@ -9,9 +10,12 @@ use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Storage;
+use Spatie\Permission\Models\Role;
 
 class NewMicrosoft365SignInListener
 {
+    private $request;
+
     public function __construct(Request $request) {
         $this->request = $request;
     }
@@ -42,9 +46,11 @@ class NewMicrosoft365SignInListener
 
         // Asigar rol y puesto por defecto (Nuevo)
         if (is_null($user->id_role) || is_null($user->id_puesto)) {
+            $role = Role::where('name', '=', 'Nuevo')->first();
+            $puesto = Puesto::where('nombre', '=', 'PUESTO NUEVO')->first();
             $user->update([
-                'id_role' => 21, // 21 role -> Nuevo
-                'id_puesto' => 90, // 90 puesto -> Nuevo
+                'id_role' => $role->id, // role -> Nuevo id 21
+                'id_puesto' => $puesto->id, // puesto -> Nuevo id 1
             ]);
         }
         // Obtener token de MsGraph
@@ -57,7 +63,11 @@ class NewMicrosoft365SignInListener
         );
 
         // Guardar foto de perfil ========================================
-        $this->guardar_foto_perfil($event->token['accessToken'], $user);
+
+        $path = public_path('/storage/' . $user->path_foto_perfil);
+        if (!file_exists($path)) {
+            $this->guardar_foto_perfil($event->token['accessToken'], $user);
+        }
         // ===============================================================
 
         // Token de acceso laravel
@@ -71,13 +81,13 @@ class NewMicrosoft365SignInListener
 
         if ($response->successful()) {
             $photoData = $response->body();
-
+            $mkdir = 'users';
+            $extension = $extension = explode('/', $response->header('Content-Type'))[1];
             // Guardar la foto del perfil en el sistema de almacenamiento
-            $path = $user->id . '_profile_photo.jpg';
-            Storage::put('public/profile-photos/' . $path, $photoData);
-
+            $path = $user->id . '_' . uniqid() . '.' . $extension;
+            Storage::put("public/$mkdir/" . $path, $photoData);
             // Asociar la ruta de la foto del perfil con el usuario en la base de datos
-            $user->path_foto_perfil = 'profile-photos/' . $path;
+            $user->path_foto_perfil = "$mkdir/" . $path;
             $user->save();
         } else {
             // Manejar el error o proporcionar un valor predeterminado para la foto del perfil

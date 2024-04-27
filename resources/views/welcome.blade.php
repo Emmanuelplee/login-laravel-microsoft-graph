@@ -259,13 +259,16 @@
                                     <ul class="list-group list-group-flush w-100">
                                         <li class="list-group-item">
                                             <div class="d-flex align-items-center">
-                                                <div class="flex-shrink-0">
-                                                    <img src="{{ asset('assets/images/favicon.png') }}" alt="user-image"
-                                                        class="wid-25">
+                                                <div class="flex-shrink-0 round">
+                                                    @if ($data['image'] == 'assets/images/default.png')
+                                                    <img src="{{ asset('assets/images/default.png') }}" alt="user-image" class="rounded wid-35">
+                                                    @else
+                                                    <img src="{{ asset($data['image']) }}" alt="user-image" class="rounded-circle wid-40">
+                                                    @endif
                                                 </div>
                                                 <div class="flex-grow-1 mx-3">
-                                                    <h5 class="mb-0">{{ $nombreCompleto }}</h5>
-                                                    <a class="link-primary" href="mailto:test@test.com">{{ $user->email }}</a>
+                                                    <h5 class="mb-0">{{ $data['nombre_completo'] }}</h5>
+                                                    <a class="link-primary" href="mailto:test@test.com">{{ $data['email'] }}</a>
                                                 </div>
                                                 <!-- <span class="badge bg-primary">PRO</span> -->
                                             </div>
@@ -280,7 +283,7 @@
                                                                 <div class="col-12 me-2 border-end">
                                                                     {{-- <small class="text-muted">Su Puesto</small> --}}
                                                                     {{-- <span class="badge bg-primary">Su Puesto</span> --}}
-                                                                    <h6 class="mb-0">{{ $puesto->nombre }}</h6>
+                                                                    <h6 class="mb-0">{{ $data['puesto'] }}</h6>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -296,7 +299,7 @@
                                                                 <div class="col-12 ms-2">
                                                                     {{-- <small class="text-muted">Su Rol</small> --}}
                                                                     {{-- <span class="badge bg-primary">Su Rol</span> --}}
-                                                                    <h6 class="mb-0">{{ $role->name }}</h6>
+                                                                    <h6 class="mb-0">{{ $data['role'] }}</h6>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -380,12 +383,7 @@
                             <hr>
                             @auth
                             <pre class="text-start" style="font-size: 1rem;">
-                                {{-- {{ print_r($user) }} --}}
-                                Hora de inicio secion: {{ $user->inicio_sesion }}
-                                Puesto: {{ $puesto->nombre }}
-                                Rol: {{ $role->name }}
-                                ip Usuario: {{ $user->ip_equipo }}
-                                  {{-- {{print_r(MsGraph::get('me'))}} --}}
+                                data: {{ print_r($data) }}
                               </pre>
                             @endauth
                         </div>
@@ -404,7 +402,7 @@
         <div class="footer-wrapper container-fluid">
             <div class="row">
                 <div class="col-sm-8 my-1">
-                    <p class="m-0">Copyright © 2024 MSPV by Funnel MKT. Todos los derechos reservados
+                    <p class="m-0">Copyright © <span id="year"></span>. Todos los derechos reservados
                         <a class="text-primary" href="https://www.mspv.com.mx/" target="_blank">MSPV</a>
                     </p>
                 </div>
@@ -427,6 +425,10 @@
     <script>layout_rtl_change('false');</script>
     <script>preset_change("preset-1");</script>
     <script>header_change("header-1");</script>
+
+    {{-- Poner año actual en footer --}}
+    <script>document.getElementById("year").innerHTML = new Date().getFullYear();</script>
+
     {{-- MARK:[Settings] --}}
     <div class="pct-c-btn">
         <a href="#" data-bs-toggle="offcanvas" data-bs-target="#offcanvas_pc_layout">

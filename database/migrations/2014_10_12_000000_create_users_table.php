@@ -27,8 +27,8 @@ return new class extends Migration
             $table->enum('tipo', ['NUEVO', 'EXTERNO', 'NOEXTERNO'])->default('NUEVO')->comment('Tipo de usuario');
 
             $table->rememberToken();
-            $table->softDeletes(); // Agregar columna deleted_at
             $table->timestamps();
+            $table->softDeletes(); // Agregar columna deleted_at
         });
     }
 

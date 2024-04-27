@@ -62,10 +62,19 @@ class User extends Authenticatable
 
         'inicio_sesion' => "datetime",
     ];
-    // MARK: Atributos
+    // MARK:Accessor Atribute
     public function getInicioSesionAttribute($value): String
     {
         return Carbon::parse($value)->format('h:i:s A');
+    }
+    // Obtener ruta de la imagen
+    public function getImageRoute($image , $mkdir){
+        if ($image != null) {
+            $path = public_path('/storage/'.$mkdir.'/' . $image);
+            return file_exists($path) ? ''.$mkdir.'/' . $image : 'noimg.jpg';
+        }else{
+            return 'noimg.jpg';
+        }
     }
     // MARK: Relaciones
     // El usuario tiene un rol
