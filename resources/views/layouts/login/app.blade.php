@@ -17,8 +17,10 @@
 <body>
     <div class="auth-wrapper">
         <div class="auth-content">
+
             {{-- MARK:Login --}}
             @yield('content')
+
         </div>
     </div>
 
