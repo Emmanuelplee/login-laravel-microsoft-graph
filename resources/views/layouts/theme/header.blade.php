@@ -163,15 +163,15 @@
                                     <li class="list-group-item">
                                         <div class="d-flex align-items-center">
                                             <div class="flex-shrink-0 round">
-                                                @if ($data['image'] == 'assets/images/default.png')
+                                                @if ($authUserInfo['image'] == 'assets/images/default.png')
                                                 <img src="{{ asset('assets/images/default.png') }}" alt="user-image" class="rounded wid-35">
                                                 @else
-                                                <img src="{{ asset($data['image']) }}" alt="user-image" class="rounded-circle wid-40">
+                                                <img src="{{ asset($authUserInfo['image']) }}" alt="user-image" class="rounded-circle wid-40">
                                                 @endif
                                             </div>
                                             <div class="flex-grow-1 mx-3">
-                                                <h5 class="mb-0">{{ $data['nombre_completo'] }}</h5>
-                                                <a class="link-primary" href="mailto:test@test.com">{{ $data['email'] }}</a>
+                                                <h5 class="mb-0">{{ $authUserInfo['full_name'] }}</h5>
+                                                <a class="link-primary" href="mailto:test@test.com">{{ $authUserInfo['email'] }}</a>
                                             </div>
                                             <!-- <span class="badge bg-primary">PRO</span> -->
                                         </div>
@@ -186,7 +186,7 @@
                                                             <div class="col-12 me-2 border-end">
                                                                 {{-- <small class="text-muted">Su Puesto</small> --}}
                                                                 {{-- <span class="badge bg-primary">Su Puesto</span> --}}
-                                                                <h6 class="mb-0">{{ $data['puesto'] }}</h6>
+                                                                <h6 class="mb-0">{{ $authUserInfo['position'] }}</h6>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -202,7 +202,7 @@
                                                             <div class="col-12 ms-2">
                                                                 {{-- <small class="text-muted">Su Rol</small> --}}
                                                                 {{-- <span class="badge bg-primary">Su Rol</span> --}}
-                                                                <h6 class="mb-0">{{ $data['role'] }}</h6>
+                                                                <h6 class="mb-0">{{ $authUserInfo['role'] }}</h6>
                                                             </div>
                                                         </div>
                                                     </div>

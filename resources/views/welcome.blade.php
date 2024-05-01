@@ -31,14 +31,14 @@
                     <div class="card">
                         <div class="card-header">
                             <h5>Seccion del Contenido</h5>
-                            <hr>
+                        </div>
+                        <div class="card-body">
+                            <hr class="p-0 m-0">
                             @auth
                             <pre class="text-start" style="font-size: 1rem;">
                                 data: {{ print_r($data) }}
                               </pre>
                             @endauth
-                        </div>
-                        <div class="card-body">
                         </div>
                     </div>
                 </div>

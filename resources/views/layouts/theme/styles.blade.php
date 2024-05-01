@@ -17,3 +17,6 @@
 <!-- [Mis Archivos CSS] -->
 <link rel="stylesheet" href="{{ asset('assets/css/mis-css/settings.css') }}">
 <link rel="stylesheet" href="{{ asset('assets/css/mis-css/nav-header.css') }}">
+
+{{-- Livewire --}}
+@livewireStyles

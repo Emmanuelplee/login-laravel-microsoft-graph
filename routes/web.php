@@ -1,8 +1,9 @@
 <?php
 
+use App\Livewire\UsersController;
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
-use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,6 +31,9 @@ Route::group(['middleware' => ['web', 'guest']], function(){
 Route::group(['middleware' => ['web', 'MsGraphAuthenticated']], function(){
     Route::get('/home', [HomeController::class, 'welcome'])->name('app');
     Route::get('logout', [AuthController::class, 'logout'])->name('logout');
+
+    // Livewire Components
+    Route::get('usuarios',UsersController::class);
 });
 
 // Route::view('test', 'welcome-test');
