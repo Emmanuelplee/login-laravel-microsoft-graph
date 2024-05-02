@@ -16,14 +16,14 @@
                 </li>
                 <li class="pc-item pc-hasmenu">
                     <a href="#!" class="pc-link"><span class="pc-micon">
-                            <i class="ph ph-gauge"></i></span><span class="pc-mtext">Principal</span><span
+                            <i class="ph ph-gauge"></i></span><span class="pc-mtext">Administracion</span><span
                             class="pc-arrow"><i data-feather="chevron-right"></i></span></a>
                     <ul class="pc-submenu">
-                        <li class="pc-item"><a class="pc-link" href="../dashboard/index.html">Sales</a></li>
+                        <li class="pc-item"><a class="pc-link" href="{{ route('app') }}">Principal</a></li>
                         <li class="pc-item"><a class="pc-link"
-                                href="../dashboard/index-analytics.html">Analytics</a></li>
+                                href="{{ url('/usuarios') }}">Usuarios</a></li>
                         <li class="pc-item"><a class="pc-link"
-                                href="../dashboard/index-affiliate.html">Affiliate</a></li>
+                                href="#">Vamos</a></li>
                     </ul>
                 </li>
                 <li class="pc-item pc-hasmenu">
@@ -31,11 +31,11 @@
                             <i class="ph ph-layout"></i></span><span class="pc-mtext">Otros</span><span
                             class="pc-arrow"><i data-feather="chevron-right"></i></span></a>
                     <ul class="pc-submenu">
-                        <li class="pc-item"><a class="pc-link" href="../demo/layout-compact.html">Compact</a></li>
-                        <li class="pc-item"><a class="pc-link" href="../demo/layout-horizontal.html">Horizontal</a>
+                        <li class="pc-item"><a class="pc-link" href="#">Compact</a></li>
+                        <li class="pc-item"><a class="pc-link" href="#">Horizontal</a>
                         </li>
-                        <li class="pc-item"><a class="pc-link" href="../demo/layout-tab.html">Tab</a></li>
-                        <li class="pc-item"><a class="pc-link" href="../demo/layout-vertical.html">Vertical</a></li>
+                        <li class="pc-item"><a class="pc-link" href="#">Tab</a></li>
+                        <li class="pc-item"><a class="pc-link" href="#">Vertical</a></li>
                     </ul>
                 </li>
             </ul>

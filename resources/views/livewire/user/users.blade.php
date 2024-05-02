@@ -1,4 +1,4 @@
-<!-- [ Main Content ] start -->
+<!-- [ Pc Content ] start -->
 <div class="pc-content">
   <!-- [ breadcrumb ] start -->
   <div class="page-header">
@@ -102,5 +102,18 @@
     <!-- [ sample-page ] end -->
   </div>
   <!-- [ Main Content ] end -->
+
+  <!-- [ Script table ] end -->
+  <!-- [Page Specific JS] start -->
+  <script src="{{ asset('assets/js/plugins/simple-datatables.js') }}"></script>
+  <script>
+      const dataTable = new simpleDatatables.DataTable('#pc-dt-simple', {
+      sortable: false,
+      searchable: true,
+      perPage: 5
+      });
+  </script>
+  <!-- [Page Specific JS] end -->
+
 </div>
-<!-- [ Main Content ] end -->
+<!-- [ Pc Content ] end -->
