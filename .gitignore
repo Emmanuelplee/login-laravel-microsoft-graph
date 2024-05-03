@@ -17,3 +17,31 @@ yarn-error.log
 /.fleet
 /.idea
 /.vscode
+
+# LINUX carpetas
+CachedData/
+CachedProfilesData/
+logs/
+User/
+# LINUX archivos
+Cookies
+Cookies-journal
+Network Persistent State
+Preferences
+TransportSecurity
+Trust Tokens
+Trust Tokens-journal
+languagepacks.json
+machineid
+Cache/
+Code Cache/
+Crashpad/
+DawnCache/
+Dictionaries/
+GPUCache/
+Local Storage/
+Service Worker/
+Session Storage/
+Shared Dictionary/
+WebStorage/
+databases/

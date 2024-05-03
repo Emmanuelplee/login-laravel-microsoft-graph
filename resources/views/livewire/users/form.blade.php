@@ -1,6 +1,6 @@
 @include('common.modalHead')
 <div class="row">
-  <p>Usuario: ID</p><hr>
+  <p>Usuario: {{ $selected_id }}</p><hr>
   <!-- email -->
   <div class="col-sm-12 col-md-6 col-lg-6">
     <div class="form-floating mb-3">
@@ -23,7 +23,7 @@
       <input type="checkbox"
         wire:model.lazy="activo"
         class="form-check-input input-success f-16"
-        >
+        {{ $activo == 1 ? 'checked' : '' }}>
       <label class="form-check-label">Activo</label>
     </div>
     {{-- @error('email')
@@ -60,7 +60,7 @@
   </div>
 
   <!-- Puestos -->
-  <div wire:ignore class="col-sm-12 col-md-6 col-lg-6">
+  <div class="col-sm-12 col-md-6 col-lg-6">
     <div class="form-group">
       <label>Puesto</label>
       <select  wire:model.lazy="id_puesto"
@@ -80,7 +80,7 @@
 
 
   <!-- roles -->
-  <div wire:ignore class="col-sm-12 col-md-6 col-lg-6">
+  <div class="col-sm-12 col-md-6 col-lg-6">
     <div class="form-group">
       <label>Perfil</label>
       <select wire:model.lazy="id_role"
@@ -103,8 +103,8 @@
 
 {{-- Input Select Buscador --}}
 <script>
-  document.addEventListener('DOMContentLoaded', function () {
-    var selectPuesto = new Choices('#puesto-select-choices');
-    var selectPerfil = new Choices('#role-select-choices');
-  });
+    document.addEventListener('DOMContentLoaded', function () {
+      var selectPuesto = new Choices('#puesto-select-choices');
+      var selectPerfil = new Choices('#role-select-choices');
+    });
 </script>

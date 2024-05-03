@@ -118,67 +118,68 @@
   </div>
   <!-- [ Main Content ] end -->
 
-  <!-- [ Script table ] end -->
-  <!-- [Page Specific JS] start -->
-  <script src="{{ asset('assets/js/plugins/simple-datatables.js') }}"></script>
-  <script>
-      const dataTable = new simpleDatatables.DataTable('#pc-dt-simple', {
-      sortable: false,
-      searchable: true,
-      perPage: 5
-      });
-  </script>
-  <!-- [Page Specific JS] end -->
-
   <!-- Modal id="#theModal" -->
   @include('livewire.users.form')
 
+
 </div>
 <!-- [ Pc Content ] end -->
+
+<!-- [Page Specific JS] start -->
+@push('scripts')
+    <script>
+        const dataTable = new simpleDatatables.DataTable("#pc-dt-simple", {
+            sortable: false,
+            searchable: true,
+            perPage: 5
+        });
+    </script>
+@endpush
+<!-- [Page Specific JS] end -->
 @script
-  <script>
-    Livewire.on('item-modal-edit', (postId) => {
-      console.log("item-modal-edit " + postId);
-      $('#theModal').modal('show');
-    })
-  </script>
+    <script>
+        Livewire.on('item-modal-edit', (postId) => {
+        console.log("item-modal-edit " + JSON.stringify(postId));
+        $('#theModal').modal('show');
+        })
+    </script>
 @endscript
-<script>
-  document.addEventListener("livewire:load", function(event) {
-    // window.livewire.on('item-added', msg => {
-    // $('#theModal').modal('hide');
-    // noty(msg)
-    // });
-    window.livewire.on('item-modal-edit', msg => {
-        console.log('livewire:load');
-    // $('#theModal').modal('show');
+  {{-- <script>
+    document.addEventListener("livewire:load", function(event) {
+      // window.livewire.on('item-added', msg => {
+      // $('#theModal').modal('hide');
+      // noty(msg)
+      // });
+      window.livewire.on('item-modal-edit', msg => {
+          console.log('livewire:load');
+      // $('#theModal').modal('show');
+      });
+      window.livewire.on('item-modal-updated', msg => {
+      $('#theModal').modal('hide');
+      // noty(msg)
+      });
+      // window.livewire.on('item-deleted', msg => {
+      // $('#theModal').modal('hide');
+      // noty(msg)
+      // });
+      // window.livewire.on('user-withsales', msg =>{
+      //     noty(msg)
+      // })
+      /* Modal hide */
+      window.livewire.on('modal-hide', msg => {
+      console.log('Emit modal-hide msg:', msg)
+      $('#theModal').modal('hide');
+      });
+      /* Modal borrar Errors del form */
+      // $('#theModal').on('hidden.bs.modal', function(e) {
+      // console.log('borrar errores y resetUI');
+      // $('.er').css('display','none');
+      // window.livewire.emit('resetUI');
+      // });
+      /* Modal focus input del form */
+      // $('#theModal').on('shown.bs.modal', msg => {
+      // $('.__focus_active').focus();
+      // });
     });
-    window.livewire.on('item-modal-updated', msg => {
-    $('#theModal').modal('hide');
-    // noty(msg)
-    });
-    // window.livewire.on('item-deleted', msg => {
-    // $('#theModal').modal('hide');
-    // noty(msg)
-    // });
-    // window.livewire.on('user-withsales', msg =>{
-    //     noty(msg)
-    // })
-    /* Modal hide */
-    window.livewire.on('modal-hide', msg => {
-    console.log('Emit modal-hide msg:', msg)
-    $('#theModal').modal('hide');
-    });
-    /* Modal borrar Errors del form */
-    // $('#theModal').on('hidden.bs.modal', function(e) {
-    // console.log('borrar errores y resetUI');
-    // $('.er').css('display','none');
-    // window.livewire.emit('resetUI');
-    // });
-    /* Modal focus input del form */
-    // $('#theModal').on('shown.bs.modal', msg => {
-    // $('.__focus_active').focus();
-    // });
-  });
-</script>
+  </script> --}}
 

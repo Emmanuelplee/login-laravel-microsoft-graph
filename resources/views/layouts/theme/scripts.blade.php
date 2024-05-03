@@ -9,6 +9,8 @@
 <script src="{{ asset('assets/js/plugins/bootstrap.min.js') }}"></script>
 <script src="{{ asset('assets/js/plugins/feather.min.js') }}"></script>
 <script src="{{ asset('assets/js/plugins/choices.min.js') }}"></script>
+<script src="{{ asset('assets/js/plugins/simple-datatables.js') }}"></script>
+
 {{-- Funcionalidad de los Settings --}}
 <script>layout_change('light');</script>
 <script>layout_sidebar_change('light');</script>
@@ -22,3 +24,5 @@
 <script>document.getElementById("year").innerHTML = new Date().getFullYear();</script>
 
 @livewireScripts
+
+@stack('scripts')

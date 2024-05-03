@@ -63,10 +63,10 @@ class NewMicrosoft365SignInListener
         );
 
         // Guardar foto de perfil ========================================
-
         $path = public_path('/storage/' . $user->path_foto_perfil);
-        if (!file_exists($path)) {
-            error_log('No file_exists '. $path);
+        error_log($path);
+        if (($user->path_foto_perfil === null) || !file_exists($path)) {
+            error_log('Guardar foto de perfil '. $path);
             $this->guardar_foto_perfil($event->token['accessToken'], $user);
         }
         // ===============================================================

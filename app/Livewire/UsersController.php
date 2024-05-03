@@ -31,7 +31,7 @@ class UsersController extends Component
 		$this->pageTitle        = 'Listado';
         $this->selected_id      = 0;
         $this->id_puesto        = 'elegir_puesto';
-        $this->role             = 'elegir_rol';
+        $this->id_role          = 'elegir_rol';
         // $this->email            = 'test@test.com';
 	}
     public function render()
@@ -80,8 +80,11 @@ class UsersController extends Component
             $this->name         = $user->name;
             $this->surname      = $user->surname;
             $this->email        = $user->email;
-            $this->activo       = $user->activo;
+            $this->activo       = $user->activo == 1 ? true : false;
             $this->tipo         = $user->tipo;
+
+            $this->id_puesto    = $user->id_puesto;
+            $this->id_role      = $user->id_role;
             // dd($user);
             $this->dispatch('item-modal-edit', title: 'Mostar modal del Registro!');
             return;
@@ -109,7 +112,7 @@ class UsersController extends Component
         $this->path_foto_perfil = '';
         $this->inicio_sesion    = '';
         $this->ip_equipo        = '';
-        $this->activo           = 1;
+        $this->activo           = '';
         $this->tipo             = '';
         $this->role             = 'elegir_rol';
         $this->id_puesto        = 'elejir_puesto';
