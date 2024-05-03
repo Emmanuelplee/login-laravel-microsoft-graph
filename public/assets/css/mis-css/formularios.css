@@ -1,0 +1,15 @@
+/* * Antes */
+/* .form-floating > label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: auto;
+    height: 100%;
+    padding: 1rem 0.75rem;
+    overflow: hidden;
+    text-align: start;
+} */
+/* * Modificacion */
+.form-floating > label {
+    z-index: auto !important;
+}
