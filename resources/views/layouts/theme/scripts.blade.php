@@ -11,6 +11,9 @@
 <script src="{{ asset('assets/js/plugins/choices.min.js') }}"></script>
 <script src="{{ asset('assets/js/plugins/simple-datatables.js') }}"></script>
 
+<script src="{{ asset('assets/js/plugins/bouncer.min.js') }}"></script>
+<script src="{{ asset('assets/js/pages/form-validation.js') }}"></script>
+
 {{-- Funcionalidad de los Settings --}}
 <script>layout_change('light');</script>
 <script>layout_sidebar_change('light');</script>
@@ -25,4 +28,5 @@
 
 @livewireScripts
 
+{{-- Aqui todos los scrips por la @push()...@endpush --}}
 @stack('scripts')
