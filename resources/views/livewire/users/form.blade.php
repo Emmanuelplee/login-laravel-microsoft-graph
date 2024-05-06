@@ -8,11 +8,10 @@
           <div class="col-sm-12 col-md-6 col-lg-6">
             <div class="form-floating mb-3">
               <input type="email"
-                wire:model.blur="email"
+                wire:ignore.change="email"
                 class="form-control"
                 placeholder="Correo electrónico"
                 value="correo@mspv.com.mx"
-                wire:model.blur="email"
                 disabled>
               <label>Correo electrónico</label>
             </div>
@@ -25,7 +24,7 @@
           <div class="col-sm-12 col-md-6 col-lg-6">
             <div class="form-check form-switch switch-lg mt-3">
               <input type="checkbox"
-                wire:model.blur="activo"
+                wire:ignore.change="activo"
                 class="form-check-input input-success f-16"
                 {{ $activo == 1 ? 'checked' : '' }}>
               <label class="form-check-label">Activo</label>
@@ -36,10 +35,10 @@
           </div>
 
           <!-- Nombre usuario -->
-          <div wire:ignore class="col-sm-12 col-md-6 col-lg-6">
+          <div wire:ignore.change class="col-sm-12 col-md-6 col-lg-6">
             <div class="form-floating mb-3">
               <input type="text"
-                wire:model.blur="name"
+                wire:model="name"
                 class="form-control"
                 placeholder="Nombre"
                 required>
@@ -55,7 +54,7 @@
           </div>
 
           <!-- Apellido usuario -->
-          <div wire:ignore class="col-sm-6 col-md-6 col-lg-6">
+          <div wire:ignore.change class="col-sm-6 col-md-6 col-lg-6">
             <div class="form-floating mb-3">
               <input type="text"
                 wire:model.blur="surname"
@@ -73,7 +72,7 @@
           <div class="col-sm-12 col-md-6 col-lg-6">
             <div class="form-group">
               <label>Puesto</label>
-              <select  wire:model="id_puesto"
+              <select  wire:model.live="id_puesto"
                 class="form-control mb-3"
                 name="puesto-select-choices"
                 id="puesto-select-choices">
@@ -93,7 +92,7 @@
           <div  class="col-sm-12 col-md-6 col-lg-6">
             <div class="form-group">
               <label>Perfil</label>
-              <select wire:model="id_role"
+              <select wire:model.live="id_role"
                 class="form-control mb-3"
                 name="role-select-choices"
                 id="role-select-choices">
@@ -112,16 +111,6 @@
     </form>
 </div>
 @include('common.modalFooter')
-
-{{-- Input Select Buscador --}}
-@push('scripts')
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-      var selectPuesto = new Choices('#puesto-select-choices');
-      var selectPerfil = new Choices('#role-select-choices');
-    });
-</script>
-@endpush
 
 @script
   <script>

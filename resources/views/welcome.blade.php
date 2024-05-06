@@ -11,7 +11,7 @@
                             <div class="page-header-title">
                                 <div class="d-flex align-items-center">
                                     <div class="flex-grow-1 ms-1">
-                                        <h4 class="mb-0">Titulo de contenido | Listado</h4>
+                                        <h4 class="mb-0 py-3">Titulo de contenido | Listado</h4>
                                     </div>
                                     <span>
                                         <a href="#" class="rounded btn btn-button bg-info text-white">Creacion</a>

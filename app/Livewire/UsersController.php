@@ -105,6 +105,7 @@ class UsersController extends Component
     public function update()
     {
         error_log('update');
+        // dd($this->id_puesto);
         $rules = [
             'name'        => 'required|min:3',
             'surname'     => 'required|min:3',
@@ -145,10 +146,10 @@ class UsersController extends Component
 
     }
     // Ya no son necesarios
-    protected $listeners = [
+    // protected $listeners = [
         // 'deleteRow' => 'destroy',
-        'resetUI' => 'resetUI',
-    ];
+        // 'resetUI' => 'resetUI',
+    // ];
 
     public function destroy($id)
     {

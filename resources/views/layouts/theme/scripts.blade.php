@@ -26,7 +26,22 @@
 {{-- Poner año actual en footer --}}
 <script>document.getElementById("year").innerHTML = new Date().getFullYear();</script>
 
-@livewireScripts
-
+{{-- Tabla de vista usuarios --}}
+<script>
+  // Verificar si existe el elemento con ID #pc-dt-simple
+  const dataTableElement = document.getElementById('pc-dt-simple');
+  if (dataTableElement !== null) {
+    // El elemento existe, haz algo con él
+    console.log('dataTableElement existe.');
+    // Por ejemplo, podrías hacer algo como esto:
+    const dataTable = new simpleDatatables.DataTable("#pc-dt-simple", {
+        sortable: false,
+        searchable: true,
+        perPage: 5
+    });
+  } else {
+    // El elemento no existe
+    console.log('dataTableElement no existe.');
+  }
+</script>
 {{-- Aqui todos los scrips por la @push()...@endpush --}}
-@stack('scripts')
