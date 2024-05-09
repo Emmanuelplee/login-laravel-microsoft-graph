@@ -4,6 +4,7 @@ use App\Livewire\UsersController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
+use App\Livewire\WelcomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,10 +30,11 @@ Route::group(['middleware' => ['web', 'guest']], function(){
 
 // Solo usuarios autinticados en msgraph
 Route::group(['middleware' => ['web', 'MsGraphAuthenticated']], function(){
-    Route::get('/home', [HomeController::class, 'welcome'])->name('app');
     Route::get('logout', [AuthController::class, 'logout'])->name('logout');
 
+    // Route::get('/home', [HomeController::class, 'welcome'])->name('app');
     // Livewire Components
+    Route::get('/home',WelcomeController::class)->name('app');
     Route::get('usuarios',UsersController::class);
 });
 

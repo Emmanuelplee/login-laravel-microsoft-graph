@@ -18,6 +18,6 @@ class HomeController extends Controller
         $user = User::find($user_auth->id);
         $data = $user_auth->only('alias','name','surname','email','path_foto_perfil',
                             'inicio_sesion','ip_equipo','activo','tipo','id_role','id_puesto');
-        return view('welcome', compact('data'));
+        return view('welcome_old', compact('data'));
     }
 }

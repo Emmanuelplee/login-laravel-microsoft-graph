@@ -25,6 +25,21 @@
   </div>
   <!-- [ breadcrumb ] end -->
 
+  {{-- <div>
+      <livewire:select-controller
+        nameChoice="select-choices"
+        nameLabel="Puesto"
+        selectedOption=5
+        :options="$positions"
+        />
+  </div> --}}
+  {{-- <div>
+    @livewire('common.select-positions-controller',[
+        'selectedOption' => $id_puesto,
+        'options' => $positions
+    ])
+  </div> --}}
+
   <!-- [ Main Content ] start -->
   <div class="row">
     <!-- [ sample-page ] start -->
@@ -129,6 +144,11 @@
 
 @script
   <script>
+    Livewire.on('newPositionId', function (value) {
+      console.log('Valor seleccionado id puesto:', value);
+    });
+
+
     Livewire.on('item-modal-edit', (msg) => {
       console.log("item-modal-edit " + JSON.stringify(msg));
       $('#theModal').modal('show');

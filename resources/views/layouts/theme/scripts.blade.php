@@ -28,20 +28,24 @@
 
 {{-- Tabla de vista usuarios --}}
 <script>
-  // Verificar si existe el elemento con ID #pc-dt-simple
   const dataTableElement = document.getElementById('pc-dt-simple');
   if (dataTableElement !== null) {
-    // El elemento existe, haz algo con él
     console.log('dataTableElement existe.');
-    // Por ejemplo, podrías hacer algo como esto:
     const dataTable = new simpleDatatables.DataTable("#pc-dt-simple", {
         sortable: false,
         searchable: true,
         perPage: 5
     });
   } else {
-    // El elemento no existe
     console.log('dataTableElement no existe.');
   }
+// Componente select
+//   const selects = document.getElementById('select-choices');
+//   if (selects !== null) {
+//     console.log('select-choices existe.');
+//     var selectChoices = new Choices('#select-choices');
+//   } else {
+//     console.log('select-choices no existe.');
+//   }
 </script>
 {{-- Aqui todos los scrips por la @push()...@endpush --}}

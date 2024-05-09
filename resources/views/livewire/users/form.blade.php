@@ -6,14 +6,14 @@
 
           <!-- email -->
           <div class="col-sm-12 col-md-6 col-lg-6">
-            <div class="form-floating mb-3">
+            <div class="form-group">
+              <label class="form-label">Correo electrónico</label>
               <input type="email"
-                wire:ignore.change="email"
+                wire:model="email"
                 class="form-control"
                 placeholder="Correo electrónico"
                 value="correo@mspv.com.mx"
                 disabled>
-              <label>Correo electrónico</label>
             </div>
             {{-- @error('email')
                 <span class="text-danger er">{{ $message }}</span>
@@ -22,12 +22,15 @@
 
           <!-- activo-->
           <div class="col-sm-12 col-md-6 col-lg-6">
-            <div class="form-check form-switch switch-lg mt-3">
-              <input type="checkbox"
-                wire:ignore.change="activo"
-                class="form-check-input input-success f-16"
-                {{ $activo == 1 ? 'checked' : '' }}>
-              <label class="form-check-label">Activo</label>
+            <div class="form-group">
+                <div class="form-check form-switch mt-3 ps-5 py-3">
+                    <input type="checkbox"
+                    {{-- wire:model.live="activo" --}}
+                    wire:model="activo"
+                    class="form-check-input input-success f-16"
+                    {{ $activo == 1 ? 'checked' : '' }}>
+                    <label class="form-check-label pt-1">Activo</label>
+                </div>
             </div>
             {{-- @error('email')
               <span class="text-danger er">{{ $message }}</span>
@@ -35,14 +38,14 @@
           </div>
 
           <!-- Nombre usuario -->
-          <div wire:ignore.change class="col-sm-12 col-md-6 col-lg-6">
-            <div class="form-floating mb-3">
+          <div class="col-sm-12 col-md-6 col-lg-6">
+            <div class="form-group">
+              <label class="form-label">Nombre</label>
               <input type="text"
                 wire:model="name"
                 class="form-control"
                 placeholder="Nombre"
                 required>
-              <label for="">Nombre</label>
               {{-- <small id="file-error-msg" class="form-text text-danger"></small> --}}
               {{-- <div class="error-message" id="bouncer-error_ date">Please fill out this field.</div> --}}
               {{-- <div class="error-message" id="bouncer-error_select">Please fill out this field.</div>
@@ -54,14 +57,14 @@
           </div>
 
           <!-- Apellido usuario -->
-          <div wire:ignore.change class="col-sm-6 col-md-6 col-lg-6">
-            <div class="form-floating mb-3">
+          <div class="col-sm-6 col-md-6 col-lg-6">
+            <div class="form-group">
+              <label class="form-label">Apellido</label>
               <input type="text"
-                wire:model.blur="surname"
+                wire:model="surname"
                 class="form-control"
                 placeholder="Apellido"
                 required>
-              <label for="">Apellido</label>
             </div>
             {{-- @error('surname')
               <span class="text-danger er">{{ $message }}</span>
@@ -70,42 +73,46 @@
 
           <!-- Puestos -->
           <div class="col-sm-12 col-md-6 col-lg-6">
-            <div class="form-group">
-              <label>Puesto</label>
+              {{-- <livewire:users.dynamic-select-component --}}
+              <livewire:users.dynamic-select-controller
+              wire:model="id_puesto"
+              :options="$positions"
+              nameLabel="Puesto"
+              optionDefault="Selecciona un puesto"
+              />
+            {{-- <div class="form-group">
+              <label class="form-label">Puesto</label>
               <select  wire:model.live="id_puesto"
-                class="form-control mb-3"
-                name="puesto-select-choices"
-                id="puesto-select-choices">
+                class="form-control mb-3">
                 <option value="ELEGIR_PUESTO" disabled>Selecciona un puesto</option>
                 @foreach ($positions as $position)
-                  <option value="{{ $position->id }}">{{ $position->nombre }}</option>
+                  <option value="{{ $position->id }}">{{ $position->name }}</option>
                 @endforeach
               </select>
-              {{-- @error('role')
-                <span class="text-danger er">{{ $message }}</span>
-              @enderror --}}
-            </div>
+            </div> --}}
           </div>
 
 
           <!-- roles -->
           <div  class="col-sm-12 col-md-6 col-lg-6">
-            <div class="form-group">
+              {{-- <livewire:users.dynamic-select-component --}}
+            <livewire:users.dynamic-select-controller
+                wire:model="id_role"
+                :options="$roles"
+                nameLabel="Perfil"
+                optionDefault="Selecciona un perfil/rol"
+                />
+            {{-- <div class="form-group">
               <label>Perfil</label>
               <select wire:model.live="id_role"
-                class="form-control mb-3"
-                name="role-select-choices"
-                id="role-select-choices">
+                class="form-control mb-3">
                 <option value="ELEGIR_ROL" disabled>Selecciona un perfil</option>
                 @foreach ($roles as $rol)
                   <option value="{{ $rol->id }}">{{ $rol->name }}</option>
                 @endforeach
               </select>
-              {{-- @error('role')
-                <span class="text-danger er">{{ $message }}</span>
-              @enderror --}}
             </div>
-          </div>
+          </div> --}}
 
         </div>
     </form>
@@ -114,13 +121,10 @@
 
 @script
   <script>
-    document.addEventListener('livewire:init', () => {
-      // Se ejecuta después de cargar Livewire pero antes de que se inicialice
-    })
-    document.addEventListener('livewire:initialized', () => {
-      // Se ejecuta inmediatamente después de que Livewire haya terminado de inicializarse
-        var selectPuesto = new Choices('#puesto-select-choices');
-        var selectPerfil = new Choices('#role-select-choices');
-    })
+    Livewire.on('optionSelected', (value) => {
+        // Realizar alguna acción cuando se selecciona una opción
+        console.log('Opción seleccionada:', value);
+        // Aquí puedes actualizar el valor del otro campo o realizar cualquier otra acción necesaria
+    });
   </script>
 @endscript

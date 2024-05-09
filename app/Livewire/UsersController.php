@@ -2,14 +2,15 @@
 
 namespace App\Livewire;
 
-use App\Models\Puesto;
 use App\Models\User;
+use App\Models\Puesto;
 use Livewire\Component;
+use Livewire\Attributes\On;
 use Livewire\WithPagination;
 use Livewire\WithFileUploads;
 use App\Repositories\Activities;
+use Illuminate\Support\Facades\DB;
 use Spatie\Permission\Models\Role;
-use Livewire\Attributes\On;
 
 class UsersController extends Component
 {
@@ -21,54 +22,53 @@ class UsersController extends Component
         $inicio_sesion, $ip_equipo, $activo, $tipo, $id_role, $id_puesto;
 
     // Para los Select con busqueda
-    public $roles, $roleSelectedId, $roleSelectedName;
-    public $positions, $positionSelectedId, $positionSelectedName;
+    public $roles;
+    public $positions;
 
     public $user_auth;
 	private $pagination = 3;
-	public function mount(Activities $act)
+
+	public function mount()
 	{
         $this->user_auth = auth()->user()->id;
-        $this->activities = $act;
+        $this->activities = new Activities;
 
 		$this->componentName    = 'Usuarios';
 		$this->pageTitle        = 'Listado';
         $this->selected_id      = 0;
-        $this->id_puesto        = 'ELEGIR_PUESTO';
-        $this->id_role          = 'ELEGIR_ROL';
+        $this->id_puesto        = 'ELEGIR';
+        $this->id_role          = 'ELEGIR';
         // $this->email            = 'test@test.com';
 
         $this->roles            = [];
         $this->positions        = [];
 	}
+    #[On('changeOption')]
+    public function updateSelects($value)
+    {
+        // dd($value);
+        $this->dispatch('newPositionId', $value);
+    }
+
     public function render()
 	{
-		// if (strlen($this->search) > 0) {
-            // 	$data = User::where('name', 'like', '%' . $this->search . '%')
-            // 		->paginate($this->pagination);
-            // } else {
-			// $users = User::query()->select('alias','name','surname','email','path_foto_perfil',
-            // 'inicio_sesion','ip_equipo','activo','tipo','id_role','id_puesto')
-            //     ->with('role:id,name,estatus,id_role_tipo','position:id,nombre,descripcion')
-            //     ->orderBy('id', 'desc')
-			// 	->paginate($this->pagination);
-		// }
-
         $data = User::query()->select('id','alias','name','surname','email','path_foto_perfil',
             'inicio_sesion','ip_equipo','activo','tipo','id_role','id_puesto')
-                ->with('role:id,name,estatus,id_role_tipo','position:id,nombre,descripcion')
-                ->orderBy('id', 'asc')
-				->paginate($this->pagination);
+            ->with('role:id,name,estatus,id_role_tipo','position:id,nombre,descripcion')
+            ->orderBy('id', 'asc')
+			->paginate($this->pagination);
 
-        // foreach ($data as $key => $value) {
-            //     $data[$key]['image'] = $this->activities->getImageRoute($value['path_foto_perfil']);
-            // }
         $this->roles = Role::orderBy('name', 'asc')->get();
-        $this->positions = Puesto::orderBy('nombre', 'asc')->get();
+        $this->positions = DB::table('puestos')->select(
+                DB::raw('id AS id'),
+                DB::raw('nombre AS name'),
+            )
+            ->orderBy('nombre', 'asc')
+            ->get()
+            ->toArray();
 		return view('livewire.users.component', [
             'data'      => $data,
-            // 'puestos'   => $puestos,
-            // 'roles'     => $roles,
+            // 'puestos'   => $puestos,// 'roles'     => $roles,
             ])
 			->extends('layouts.theme.app')
             // ->layoutData(['data' => $data])
@@ -93,7 +93,6 @@ class UsersController extends Component
 
             $this->id_puesto    = $user->id_puesto;
             $this->id_role      = $user->id_role;
-            // dd($user);
             $this->dispatch('item-modal-edit', title: 'Mostar modal del Registro!');
             return;
         }else {
@@ -146,11 +145,6 @@ class UsersController extends Component
 
     }
     // Ya no son necesarios
-    // protected $listeners = [
-        // 'deleteRow' => 'destroy',
-        // 'resetUI' => 'resetUI',
-    // ];
-
     public function destroy($id)
     {
         error_log('destroy');
@@ -180,8 +174,8 @@ class UsersController extends Component
         $this->ip_equipo        = '';
         $this->activo           = false;
         $this->tipo             = '';
-        $this->id_puesto        = 'ELEGIR_PUESTO';
-        $this->id_role          = 'ELEGIR_ROL';
+        $this->id_puesto        = 'ELEGIR';
+        $this->id_role          = 'ELEGIR';
         $this->resetValidation();
         // $this->resetPage();
     }
