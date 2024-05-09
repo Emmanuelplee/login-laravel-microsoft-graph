@@ -141,14 +141,12 @@
 
 {{-- Escucha eventos globales Livewire desde JavaScript global --}}
 
-
 @script
   <script>
+    // Eventos del componente padre
     Livewire.on('newPositionId', function (value) {
-      console.log('Valor seleccionado id puesto:', value);
+      console.log('Valor seleccionado id puesto o role componente dinamico:', value);
     });
-
-
     Livewire.on('item-modal-edit', (msg) => {
       console.log("item-modal-edit " + JSON.stringify(msg));
       $('#theModal').modal('show');
@@ -159,65 +157,27 @@
       location.reload();
       // noty(msg)
     });
-
-    /* Item error */
-    //   Livewire.on('item-error', (msg) => {
-        // console.log('item-error msg:', msg)
-        // alert(msg)
-        // noty(msg)
-    //   });
-      /* Modal hide */
     Livewire.on('item-modal-close', (msg) => {
       console.log('item-modal-close msg:', msg)
       $('#theModal').modal('hide');
       dataTable.update();
     });
-
-    document.addEventListener('livewire:init', () => {
-      // Se ejecuta después de cargar Livewire pero antes de que se inicialice
+    Livewire.on('item-error', (msg) => {
+      console.log('item-error msg:', msg)
+      // alert(msg)
+      // noty(msg)
     });
-
-    document.addEventListener('livewire:initialized', () => {
-      // Se ejecuta inmediatamente después de que Livewire haya terminado de inicializarse
+    // =================================================================
+    // Al cerrar Modal borrar Errors del form clase er y resetUI del controller
+    $('#theModal').on('hidden.bs.modal', function(e) {
+      console.log('borrar errores y resetUI');
+      $('.er').css('display','none');
+      Livewire.dispatch('resetUI');
+    });
+    // Modal focus input del form inicial clase __focus_active
+    $('#theModal').on('shown.bs.modal', msg => {
+      // $('.__focus_active').focus();
     });
   </script>
-    {{-- <script>
-        document.addEventListener("livewire:init", function(event) {
-            // window.livewire.on('item-added', msg => {
-            // $('#theModal').modal('hide');
-            // noty(msg)
-            // });
-            Livewire.on('item-modal-edit', (msg) => {
-              console.log('livewire:init');
-              $('#theModal').modal('show');
-            });
-            // window.livewire.on('item-modal-updated', msg => {
-            // $('#theModal').modal('hide');
-            // // noty(msg)
-            // });
-            // window.livewire.on('item-deleted', msg => {
-            // $('#theModal').modal('hide');
-            // noty(msg)
-            // });
-            // window.livewire.on('user-withsales', msg =>{
-            //     noty(msg)
-            // })
-            /* Modal hide */
-            // window.livewire.on('modal-hide', msg => {
-            // console.log('Emit modal-hide msg:', msg)
-            // $('#theModal').modal('hide');
-            // });
-            /* Modal borrar Errors del form */
-            // $('#theModal').on('hidden.bs.modal', function(e) {
-            // console.log('borrar errores y resetUI');
-            // $('.er').css('display','none');
-            // window.livewire.emit('resetUI');
-            // });
-            /* Modal focus input del form */
-            // $('#theModal').on('shown.bs.modal', msg => {
-            // $('.__focus_active').focus();
-            // });
-        });
-    </script> --}}
 @endscript
 

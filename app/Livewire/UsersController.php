@@ -12,6 +12,8 @@ use App\Repositories\Activities;
 use Illuminate\Support\Facades\DB;
 use Spatie\Permission\Models\Role;
 
+use function Laravel\Prompts\error;
+
 class UsersController extends Component
 {
     use WithFileUploads;
@@ -46,8 +48,21 @@ class UsersController extends Component
     #[On('changeOption')]
     public function updateSelects($value)
     {
-        // dd($value);
         $this->dispatch('newPositionId', $value);
+    }
+
+    public function boot()
+    {
+        $this->withValidator(function ($validator) {
+            $validator->after(function ($validator) {
+                if ($validator->errors()->count() > 0) {
+                    $errors = $validator->errors()->messages();
+                    $firstKey = array_key_first($errors);
+                    $this->dispatch('form-focus-error', firstName: $firstKey);
+                    return;
+                }
+            });
+        });
     }
 
     public function render()
@@ -111,8 +126,8 @@ class UsersController extends Component
             'email'       => "required|email|unique:users,email,{$this->selected_id}",
             'activo'      => 'required',
 
-            'id_puesto'   => 'required|not_in:ELEGIR_PUESTO',
-            'id_role'     => 'required|not_in:ELEGIR_ROL',
+            'id_puesto'   => 'required|not_in:ELEGIR',
+            'id_role'     => 'required|not_in:ELEGIR',
         ];
         $messages = [
             'name.required'       => 'El nombre del usuario es requerido',
@@ -129,6 +144,7 @@ class UsersController extends Component
             'id_role.required'    => 'Secciona el perfil/rol del usuario',
             'id_role.not_in'      => 'El campo debe ser diferente de Selecciona un perfil',
         ];
+
         $this->validate($rules, $messages);
 
         $user = User::find($this->selected_id);
@@ -162,6 +178,7 @@ class UsersController extends Component
             $this->dispatch('item-error','No existe el registro!');
         }
     }
+    #[On('resetUI')]
     public function resetUI()
     {
         error_log('resetUI');
@@ -178,5 +195,9 @@ class UsersController extends Component
         $this->id_role          = 'ELEGIR';
         $this->resetValidation();
         // $this->resetPage();
+    }
+
+    public function dehydrate(){
+        $this->dispatch('scripts');
     }
 }

@@ -10,14 +10,15 @@ class DynamicSelectController extends Component
     #[Modelable]
     public $selectedOption = '';
 
+    public $idBox = '';
     public $options = [];
     public $nameLabel = '';
     public $optionDefault = '';
 
-    public function mount($options, $nameLabel, $optionDefault)
+    public function mount($idBox,$options, $nameLabel, $optionDefault)
     {
         // $this->selectedOption = $selectedOption;
-
+        $this->idBox = $idBox;
         $this->options = $options;
         $this->nameLabel = $nameLabel;
         $this->optionDefault = $optionDefault;

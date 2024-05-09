@@ -12,7 +12,12 @@
         </h5>
         {{-- <h6 class="text-center text-warning" wire:loading>POR FAVOR ESPERE...</h6> --}}
         <h6 class="text-end text-warning col-5 m-0" wire:loading>PROCESANDO ESPERE...</h6>
-        <button type="button" class="btn-close col-1" data-bs-dismiss="modal" aria-label="Close"></button>
+        <button type="button"
+          wire:click="resetUI()"
+          class="btn-close col-1"
+          data-bs-dismiss="modal"
+          aria-label="Close">
+        </button>
       </div>
       <div class="modal-body">
         <!-- <p>Modal body Start.</p> -->
