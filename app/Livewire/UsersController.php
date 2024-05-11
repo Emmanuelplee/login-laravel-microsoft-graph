@@ -20,7 +20,7 @@ class UsersController extends Component
 	use WithPagination;
 
     public $pageTitle, $componentName, $search;
-    public $selected_id, $name, $surname, $email, $path_foto_perfil,
+    public $selected_id = 0, $name, $surname, $email, $path_foto_perfil,
         $inicio_sesion, $ip_equipo, $activo, $tipo, $id_role, $id_puesto;
 
     // Para los Select con busqueda
@@ -37,7 +37,7 @@ class UsersController extends Component
 
 		$this->componentName    = 'Usuarios';
 		$this->pageTitle        = 'Listado';
-        $this->selected_id      = 0;
+        // $this->selected_id      = 0;
         $this->id_puesto        = 'ELEGIR';
         $this->id_role          = 'ELEGIR';
         // $this->email            = 'test@test.com';
@@ -63,6 +63,10 @@ class UsersController extends Component
                 }
             });
         });
+    }
+
+    public function updated(){
+        $this->selected_id = $this->selected_id;
     }
 
     public function render()
@@ -115,11 +119,15 @@ class UsersController extends Component
             return;
         }
     }
+    #[On('afterEdit')]
+    public function afterEdit() {
+        error_log('afterEdit');
+        $this->selected_id = $this->selected_id;
+    }
 
     public function update()
     {
         error_log('update');
-        // dd($this->id_puesto);
         $rules = [
             'name'        => 'required|min:3',
             'surname'     => 'required|min:3',
@@ -160,7 +168,7 @@ class UsersController extends Component
         $this->dispatch('item-modal-updated','Registro Actualizado!');
 
     }
-    // Ya no son necesarios
+    #[On('destroy')]
     public function destroy($id)
     {
         error_log('destroy');
@@ -195,9 +203,5 @@ class UsersController extends Component
         $this->id_role          = 'ELEGIR';
         $this->resetValidation();
         // $this->resetPage();
-    }
-
-    public function dehydrate(){
-        $this->dispatch('scripts');
     }
 }

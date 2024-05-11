@@ -19,5 +19,20 @@
 <link rel="stylesheet" href="{{ asset('assets/css/mis-css/nav-header.css') }}">
 <link rel="stylesheet" href="{{ asset('assets/css/mis-css/formularios.css') }}">
 
+<link rel="stylesheet" href="{{ asset('assets/plugins/sweetalert2/sweetalert2.min.css') }}">
+<link rel="stylesheet" href="{{ asset('assets/plugins/snackbar/snackbar.min.css')}}">
 {{-- Livewire --}}
 @livewireStyles
+
+<style>
+    /* sweetalerts 2 icons */
+    .swal2-icon.swal2-warning {
+      font-size: 18px !important;
+    }
+    .swal2-icon.swal2-info {
+      font-size: 18px !important;
+    }
+    .swal2-popup .swal2-styled.swal2-cancel {
+      color: #fff !important;
+    }
+</style>

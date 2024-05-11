@@ -23,13 +23,13 @@ class DynamicSelectController extends Component
         $this->nameLabel = $nameLabel;
         $this->optionDefault = $optionDefault;
     }
-    // public function updated($propertyName)
-    // {
-    //     error_log('updated dynamic select');
-    //     if ($propertyName === 'selectedOption') {
-    //         $this->dispatch('changeOption', $this->selectedOption);
-    //     }
-    // }
+    public function updated($propertyName)
+    {
+        if ($propertyName === 'selectedOption') {
+            error_log('updated dynamic select');
+            // $this->dispatch('changeOption', $this->selectedOption);
+        }
+    }
     public function render()
     {
         return view('livewire.users.dynamic-select-component');

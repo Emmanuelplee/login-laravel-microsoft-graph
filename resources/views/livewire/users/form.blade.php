@@ -12,7 +12,8 @@
               <input type="email"
                 id="email"
                 wire:model="email"
-                class="form-control"
+                class="form-control
+                @error('email') border border-danger border-1 @enderror"
                 placeholder="Correo electrónico"
                 value="correo@mspv.com.mx"
                 disabled>
@@ -47,7 +48,8 @@
               <input type="text"
                 id="name"
                 wire:model="name"
-                class="form-control"
+                class="form-control
+                    @error('name') border border-danger border-1 @enderror"
                 placeholder="Nombre"
                 required>
                 @error('name')
@@ -64,7 +66,8 @@
               <input type="text"
                 id="surname"
                 wire:model="surname"
-                class="form-control"
+                class="form-control
+                    @error('surname') border border-danger border-1 @enderror"
                 placeholder="Apellido"
                 required>
                 @error('surname')
@@ -76,9 +79,9 @@
           <!-- Puestos -->
           <div class="col-sm-12 col-md-6 col-lg-6">
             <div class="form-group">
-              {{-- <livewire:users.dynamic-select-component --}}
+              {{-- <livewire:users.DynamicSelectController --}}
               <livewire:users.dynamic-select-controller key='select-1'
-                idBox="id_puesto"
+                idBox="choises-id-puesto"
                 wire:model="id_puesto"
                 :options="$positions"
                 nameLabel="Puesto"
@@ -93,9 +96,9 @@
 
           <!-- roles -->
           <div  class="col-sm-12 col-md-6 col-lg-6">
-              {{-- <livewire:users.dynamic-select-component --}}
+              {{-- <livewire:users.DynamicSelectController --}}
             <livewire:users.dynamic-select-controller key='select-2'
-                idBox="id_role"
+                idBox="choises-id-role"
                 wire:model="id_role"
                 :options="$roles"
                 nameLabel="Perfil"
@@ -136,5 +139,39 @@
       input.focus();
       // input.select();
     });
+    // Registra una devolución de llamada para ejecutarla en un gancho Livewire interno determinado
+    Livewire.hook('morph.added',  ({ el, component }) => {
+        // console.log('hook morph.added');
+        // Componente selects choices
+        const selectsIdPuestos = document.getElementById('choises-id-puesto');
+        const selectsIdRole = document.getElementById('choises-id-role');
+        const defaultIdPuesto = $wire.$get('id_puesto');
+        const defaultIdRole = $wire.$get('id_role');
+        // Agrega un event listener para el evento 'change' del select
+        selectsIdPuestos.addEventListener('change', function(event) {
+            // console.log(event.target.value);
+            $wire.$set('id_puesto', event.target.value)
+        });
+        selectsIdRole.addEventListener('change', function(event) {
+            // console.log(event.target.value);
+            $wire.$set('id_role', event.target.value)
+        });
+        if (selectsIdPuestos !== null && selectsIdRole !== null) {
+            // console.log('choises-id-puesto y choises-id-role existe.');
+            var config = {
+                searchEnabled: true,
+                itemSelectText: 'Seleccionar',
+                noResultsText:"No se encontraron resultados",
+                allowHTML: true,
+            }
+            var selectChoicesIdPuesto = new Choices('#choises-id-puesto', config);
+            var selectChoicesIdRole = new Choices('#choises-id-role', config);
+            // Agremas otro registro y lo seleccionamos
+            // selectChoicesIdPuesto.setChoices([{value: '100', label:'OTRO PUESTO' selected:true}]);
+            // Elegimos uno por default
+            selectChoicesIdPuesto.setChoiceByValue(defaultIdPuesto.toString());
+            selectChoicesIdRole.setChoiceByValue(defaultIdRole.toString());
+        }
+    })
   </script>
 @endscript
