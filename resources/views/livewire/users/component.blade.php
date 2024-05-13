@@ -1,5 +1,5 @@
 <!-- [ Pc Content ] start -->
-<div class="pc-content">
+<div class="pc-content pt-4">
   <!-- [ breadcrumb ] start -->
   <div class="page-header">
     <div class="page-block card mb-0">
@@ -96,7 +96,7 @@
                         <li class="list-inline-item m-0">
                           <a href="javascript:void(0)"
                             {{-- wire:confirm="¿CONFIRMAS ELINIMAR EL REGISTRO?" --}}
-                            wire:click="$dispatch('Confirm',{ id: {{ $item->id }},eventName:'destroy',text:'¿CONFIRMAS ELINIMAR EL REGISTRO?'})"
+                            wire:click="$dispatch('Confirm',{ id: {{ $item->id }},eventName:'destroy',text:'¿ESTA SEGURO DE ELINIMAR EL REGISTRO?'})"
                             {{-- onclick="Confirm('{{$item->id}}','destroy','¿CONFIRMAS ELINIMAR EL REGISTRO?')" --}}
                             class="avtar avtar-s btn bg-white btn-link-danger">
                             <i class="ti ti-trash f-18"></i>
@@ -208,9 +208,9 @@
             }else if(result.dismiss === Swal.DismissReason.cancel) {
                 swal({
                     title: 'Cancelado',
-                    text: 'Tu registro esta a salvo :)',
+                    text: 'No se realizó modificación',
                     type: 'error',
-                    timer: 2000
+                    timer: 5000
                 })
             }
         })

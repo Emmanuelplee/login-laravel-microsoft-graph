@@ -179,8 +179,9 @@
                                             <div class="col-md-6 col-xl-6">
                                                 <div class="card user-card __mi_card">
                                                     <div class="card-body __mi_card_body">
-                                                        <div class="saprator my-1">
-                                                            <span class="px-1 py-1 badge bg-primary">Puesto</span>
+                                                        <div class="saprator my-3">
+                                                            {{-- <span class="px-3 py-1 badge bg-primary">Puesto</span> --}}
+                                                            <span class="px-3 py-1">Puesto</span>
                                                         </div>
                                                         <div class="row g-3 mb-1 text-center">
                                                             <div class="col-12 me-2 border-end">
@@ -194,9 +195,10 @@
                                             </div>
                                             <div class="col-md-6 col-xl-6">
                                                 <div class="card user-card __mi_card">
-                                                    <div class="card-body __mi_card_body">
-                                                        <div class="saprator my-1">
-                                                            <span class="px-1 py-1 badge bg-primary">Rol</span>
+                                                    <div class="card-body __mi_card_body ps-2">
+                                                        <div class="saprator my-3">
+                                                            {{-- <span class="px-3 py-1 badge bg-primary">Rol</span> --}}
+                                                            <span class="px-3 py-1">Rol</span>
                                                         </div>
                                                         <div class="row g-3 mb-1 text-center">
                                                             <div class="col-12 ms-2">
@@ -223,7 +225,7 @@
                                             </div>
                                         </div>
                                     </li>
-                                    <li class="list-group-item">
+                                    <li class="list-group-item" hidden>
                                         <a href="#" class="dropdown-item">
                                             <span class="d-flex align-items-center">
                                                 <i class="ph ph-user-circle"></i>

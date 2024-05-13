@@ -1,7 +1,7 @@
 @include('common.modalHead')
 <div>
     {{-- <form class="validate-me" id="validate-me" data-validate> --}}
-    <form wire.ignore>
+    <form wire.ignore.self>
         <div class="row">
           <b><p>Usuario: {{ $selected_id }}</p><hr></b>
 
@@ -44,7 +44,7 @@
           <!-- Nombre usuario -->
           <div class="col-sm-12 col-md-6 col-lg-6">
             <div class="form-group">
-              <label class="form-label">Nombre</label>
+              <label class="form-label">Nombre(s)</label>
               <input type="text"
                 id="name"
                 wire:model="name"
@@ -62,7 +62,7 @@
           <!-- Apellido usuario -->
           <div class="col-sm-6 col-md-6 col-lg-6">
             <div class="form-group">
-              <label class="form-label">Apellido</label>
+              <label class="form-label">Apellidos</label>
               <input type="text"
                 id="surname"
                 wire:model="surname"
