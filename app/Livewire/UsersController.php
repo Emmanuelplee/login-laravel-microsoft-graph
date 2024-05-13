@@ -73,7 +73,7 @@ class UsersController extends Component
 	{
         $data = User::query()->select('id','alias','name','surname','email','path_foto_perfil',
             'inicio_sesion','ip_equipo','activo','tipo','id_role','id_puesto')
-            ->with('role:id,name,estatus,id_role_tipo','position:id,nombre,descripcion')
+            ->with('role:id,name,status,id_role_tipo','position:id,nombre,descripcion')
             ->orderBy('id', 'asc')
 			->paginate($this->pagination);
 

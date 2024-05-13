@@ -27,7 +27,7 @@ class RolesSeeer extends Seeder
             // print_r($obj);
             Role::create([
                 'name'          => $obj['name'],
-                'estatus'       => $obj['estatus'],
+                'status'       => $obj['status'],
                 'id_role_tipo'  => $obj['id_role_tipo'],
             ]);
         }

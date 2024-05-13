@@ -12,9 +12,9 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('roles', function (Blueprint $table) {
-            $table->boolean('estatus')->default(1)->after('name');
+            $table->boolean('status')->default(1)->after('name');
 
-            $table->unsignedBigInteger('id_role_tipo')->after('estatus');
+            $table->unsignedBigInteger('id_role_tipo')->after('status');
             $table->foreign('id_role_tipo')->references('id')->on('role_tipos')
                 ->onUpdate('cascade')->onDelete('cascade');
         });

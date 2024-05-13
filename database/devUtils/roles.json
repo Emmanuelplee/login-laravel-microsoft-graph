@@ -1,107 +1,107 @@
 [
     {
         "name": "Desarrollador",
-        "estatus": 1,
+        "status": 1,
         "id_role_tipo": 1
     },
     {
         "name": "Administrador",
-        "estatus": 1,
+        "status": 1,
         "id_role_tipo": 2
     },
     {
         "name": "Dirección general",
-        "estatus": 1,
+        "status": 1,
         "id_role_tipo": 3
     },
     {
         "name": "Direcciones área",
-        "estatus": 1,
+        "status": 1,
         "id_role_tipo": 4
     },
     {
         "name": "Direcciones sucursal",
-        "estatus": 1,
+        "status": 1,
         "id_role_tipo": 5
     },
     {
         "name": "Direcciones de cuentas",
-        "estatus": 1,
+        "status": 1,
         "id_role_tipo": 6
     },
     {
         "name": "Gerencias de área Operación",
-        "estatus": 1,
+        "status": 1,
         "id_role_tipo": 4
     },
     {
         "name": "Gerencias regionales de sucursal",
-        "estatus": 1,
+        "status": 1,
         "id_role_tipo": 5
     },
     {
         "name": "Gerencias de sucursal Operación",
-        "estatus": 1,
+        "status": 1,
         "id_role_tipo": 5
     },
     {
         "name": "Gerente cuentas Operación",
-        "estatus": 1,
+        "status": 1,
         "id_role_tipo": 6
     },
     {
         "name": "Jefaturas área",
-        "estatus": 1,
+        "status": 1,
         "id_role_tipo": 4
     },
     {
         "name": "Jefaturas Sucursal",
-        "estatus": 1,
+        "status": 1,
         "id_role_tipo": 5
     },
     {
         "name": "Coordinaciones área",
-        "estatus": 1,
+        "status": 1,
         "id_role_tipo": 4
     },
     {
         "name": "Coordinaciones sucursal",
-        "estatus": 1,
+        "status": 1,
         "id_role_tipo": 5
     },
     {
         "name": "Coordinaciones cuentas",
-        "estatus": 1,
+        "status": 1,
         "id_role_tipo": 6
     },
     {
         "name": "Analistas área",
-        "estatus": 1,
+        "status": 1,
         "id_role_tipo": 4
     },
     {
         "name": "Analistas sucursal",
-        "estatus": 1,
+        "status": 1,
         "id_role_tipo": 5
     },
     {
         "name": "Proveedores",
-        "estatus": 1,
+        "status": 1,
         "id_role_tipo": 8
     },
     {
         "name": "Clientes",
-        "estatus": 1,
+        "status": 1,
         "id_role_tipo": 8
     },
     {
         "name": "Externos",
-        "estatus": 1,
+        "status": 1,
         "id_role_tipo": 8
     },
     {
         "name": "Nuevo",
-        "estatus": 1,
+        "status": 1,
         "id_role_tipo": 7
     }
 ]
