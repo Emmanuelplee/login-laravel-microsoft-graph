@@ -20,7 +20,7 @@ class DatabaseSeeder extends Seeder
         // ]);
 
         // Ejecutar todo => php artisan migrate --seed
-        // Ejecutar clase => php artisan db:seed --class=TestSeeader
+        // Ejecutar clase => php artisan db:seed --class=TestSeeder
         $this->call([
             // TestSeeder::class,
             AreasSeeder::class,
@@ -34,7 +34,11 @@ class DatabaseSeeder extends Seeder
             PuestoTiposSeeder::class,
             PuestosSeeder::class,
 
-            RolesSeeer::class,
+            RolesSeeer::class,// Ejecutar clase => php artisan db:seed --class=RoleSeeder
         ]);
+        // Seedeer para pruebas
+        // Ejecutar clase => php artisan db:seed --class=RoleFactorySeeder
+
+        // Eliminar datos de las tablas => php artisan db:undo-seeders
     }
 }
