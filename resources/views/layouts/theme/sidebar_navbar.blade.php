@@ -19,11 +19,18 @@
                             <i class="ph ph-gauge"></i></span><span class="pc-mtext">Administracion</span><span
                             class="pc-arrow"><i data-feather="chevron-right"></i></span></a>
                     <ul class="pc-submenu">
-                        <li class="pc-item"><a class="pc-link" href="{{ route('app') }}">Principal</a></li>
-                        <li class="pc-item"><a class="pc-link"
-                                href="{{ url('/usuarios') }}">Usuarios</a></li>
-                        <li class="pc-item"><a class="pc-link"
-                                href="#">Vamos</a></li>
+                        <li class="pc-item">
+                            <a class="pc-link" href="{{ route('app') }}">Principal</a>
+                        </li>
+                        <li class="pc-item">
+                            <a class="pc-link" href="{{ url('/usuarios') }}">Usuarios</a>
+                        </li>
+                        <li class="pc-item">
+                            <a class="pc-link" href="{{ url('/roles') }}">Roles</a>
+                        </li>
+                        <li class="pc-item">
+                            <a class="pc-link" href="#">Vamos</a>
+                        </li>
                     </ul>
                 </li>
                 <li class="pc-item pc-hasmenu">
