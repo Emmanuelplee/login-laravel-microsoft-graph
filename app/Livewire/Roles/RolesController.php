@@ -13,14 +13,11 @@ class RolesController extends Component
 	use WithPagination;
 
 
-    public $pageTitle, $componentName, $search;
-
+    public $pageTitle, $componentName;
 
     public $selected_id, $name;
 
-
     public $user_auth;
-	private $pagination = 3;
 
     public function mount()
 	{
