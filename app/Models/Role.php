@@ -25,7 +25,7 @@ class Role extends SpatieRole
     //Un rol pertenece a un único role_tipo
     public function roleTipo(): BelongsTo
     {
-        return $this->belongsTo(RoleTipo::class, 'role_tipo_id');
+        return $this->belongsTo(RoleTipo::class, 'id_role_tipo');
     }
 
     // Por ejemplo, podrías agregar un método para obtener todos los usuarios asignados a un rol específico

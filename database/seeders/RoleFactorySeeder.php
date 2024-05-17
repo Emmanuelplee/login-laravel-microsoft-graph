@@ -16,7 +16,7 @@ class RoleFactorySeeder extends Seeder
     {
 
         DB::statement('SET FOREIGN_KEY_CHECKS = 0;');
-        Role::factory()->count(979)->create();// Para los 1000 con los 21 de los roles
+        Role::factory()->count(479)->create();// Para los 500 con los 21 de los roles
         DB::statement('SET FOREIGN_KEY_CHECKS = 1;');
     }
 

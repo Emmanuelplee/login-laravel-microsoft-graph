@@ -32,7 +32,7 @@ class RolesController extends Component
 	}
     public function render()
     {
-        $data = Role::query()->take(10);
+        $data = Role::query()->select('id','name','status','id_role_tipo','created_at','updated_at')->take(2)->get();
         return view('livewire.roles.roles-component', [
             'data'      => $data,
             ])

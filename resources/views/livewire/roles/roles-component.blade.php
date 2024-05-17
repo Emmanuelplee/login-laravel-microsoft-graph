@@ -10,9 +10,9 @@
                 <div class="flex-grow-1 ms-1">
                   <h4 class="mb-0 py-3">{{ $componentName }} | {{ $pageTitle }}</h4>
                 </div>
-                <span hidden>
+                <span>
                   <a href="#" class="rounded btn btn-button bg-info text-white"
-                      data-bs-toggle="modal" data-bs-target="#theModal">Modal</a>
+                      data-bs-toggle="modal" data-bs-target="#theModal">Crear</a>
                 </span>
               </div>
             </div>
@@ -46,6 +46,17 @@
                   @endforeach
                 </tbody>
               </table> --}}
+              {{-- <pre>
+                {{ print_r(json_encode($data)) }}
+              </pre> --}}
+              <livewire:roles.roles-table />
+              {{-- <livewire:users.dynamic-select-controller key='select-1'
+              idBox="choises-id-puesto"
+              wire:model="id_puesto"
+              :options="$positions"
+              nameLabel="Puesto"
+              optionDefault="Selecciona un puesto"
+            /> --}}
             </div>
           </div>
         </div>

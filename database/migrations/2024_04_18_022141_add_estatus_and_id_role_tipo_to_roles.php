@@ -17,6 +17,8 @@ return new class extends Migration
             $table->unsignedBigInteger('id_role_tipo')->after('status');
             $table->foreign('id_role_tipo')->references('id')->on('role_tipos')
                 ->onUpdate('cascade')->onDelete('cascade');
+
+            $table->softDeletes(); // Agregar columna deleted_at
         });
     }
 
