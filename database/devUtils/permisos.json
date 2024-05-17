@@ -1,0 +1,102 @@
+[
+    {
+        "id": 1,
+        "name": "Roles_Index",
+        "description": "Mostar vista rol"
+    },
+    {
+        "id": 2,
+        "name": "Roles_Show",
+        "description": "Mostar rol"
+    },
+    {
+        "id": 3,
+        "name": "Roles_Edit",
+        "description": "Editar rol"
+    },
+    {
+        "id": 4,
+        "name": "Roles_Update",
+        "description": "Actualizar rol"
+    },
+    {
+        "id": 5,
+        "name": "Roles_Delete",
+        "description": "Eliminar rol"
+    },
+    {
+        "id": 6,
+        "name": "Users_Index",
+        "description": "Mostar vista usuario"
+    },
+    {
+        "id": 7,
+        "name":"Users_Show",
+        "description": "Mostrar usuario"
+    },
+    {
+        "id": 8,
+        "name": "Users_Edit",
+        "description":"Editar usuario"
+    },
+    {
+        "id": 9,
+        "name": "Users_Update",
+        "description": "Actualizar usuario"
+    },
+    {
+        "id": 10,
+        "name": "Users_Delete",
+        "description": "Eliminar usuario"
+    },
+    {
+        "id": 11,
+        "name": "Permissions_Index",
+        "description": "Mostar vista permisos"
+    },
+    {
+        "id": 12,
+        "name":"Permissions_Show",
+        "description": "Mostrar permisos"
+    },
+    {
+        "id": 13,
+        "name": "Permissions_Edit",
+        "description":"Editar permisos"
+    },
+    {
+        "id": 14,
+        "name": "Permissions_Update",
+        "description": "Actualizar permisos"
+    },
+    {
+        "id": 15,
+        "name": "Permissions_Delete",
+        "description": "Eliminar permisos"
+    },
+    {
+        "id": 16,
+        "name": "Report_Permissions_Index",
+        "description": "Mostar vista reporte de permisos"
+    },
+    {
+        "id": 17,
+        "name":"Report_Permissions_Show",
+        "description": "Mostrar reporte de permisos"
+    },
+    {
+        "id": 18,
+        "name": "Report_Permissions_Edit",
+        "description":"Editar reporte de permisos"
+    },
+    {
+        "id": 19,
+        "name": "Report_Permissions_Update",
+        "description": "Actualizar reporte de permisos"
+    },
+    {
+        "id": 20,
+        "name": "Report_Permissions_Delete",
+        "description": "Eliminar reporte de permisos"
+    }
+]
