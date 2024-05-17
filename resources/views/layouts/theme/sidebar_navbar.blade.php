@@ -29,7 +29,10 @@
                             <a class="pc-link" href="{{ url('/roles') }}">Roles</a>
                         </li>
                         <li class="pc-item">
-                            <a class="pc-link" href="#">Vamos</a>
+                            <a class="pc-link" href="{{ url('/permisos') }}">Permisos</a>
+                        </li>
+                        <li class="pc-item">
+                            <a class="pc-link" href="#">Reportes Permisos</a>
                         </li>
                     </ul>
                 </li>

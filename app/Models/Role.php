@@ -14,7 +14,8 @@ class Role extends SpatieRole
     use HasFactory;
     use SoftDeletes;
 
-    // Definimos los campos que pueden ser llenados masivamente (fillable)
+    protected $table = 'roles';
+
     protected $fillable = [
         'name',
         'guard_name',

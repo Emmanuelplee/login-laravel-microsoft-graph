@@ -12,7 +12,6 @@ class RolesController extends Component
     use WithFileUploads;
 	use WithPagination;
 
-
     public $pageTitle, $componentName;
 
     public $selected_id, $name;
@@ -29,7 +28,9 @@ class RolesController extends Component
 	}
     public function render()
     {
-        $data = Role::query()->select('id','name','status','id_role_tipo','created_at','updated_at')->take(2)->get();
+        $data = Role::query()
+            ->select('id','name','status','id_role_tipo','created_at','updated_at')
+            ->with('roleTipo:id,nombre,descripcion')->take(2)->get();
         return view('livewire.roles.roles-component', [
             'data'      => $data,
             ])

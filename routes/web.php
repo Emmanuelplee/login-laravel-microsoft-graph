@@ -1,11 +1,12 @@
 <?php
 
 use App\Livewire\UsersController;
+use App\Livewire\WelcomeController;
 use Illuminate\Support\Facades\Route;
+use App\Livewire\Roles\RolesController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
-use App\Livewire\Roles\RolesController;
-use App\Livewire\WelcomeController;
+use App\Livewire\Permissions\PermissionsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,8 +37,9 @@ Route::group(['middleware' => ['web', 'MsGraphAuthenticated']], function(){
     // Route::get('/home', [HomeController::class, 'welcome'])->name('app');
     // Livewire Components
     Route::get('/home',WelcomeController::class)->name('app');
-    Route::get('usuarios',UsersController::class);
-    Route::get('roles', RolesController::class);
+    Route::get('/usuarios',UsersController::class);
+    Route::get('/roles', RolesController::class);
+    Route::get('/permisos',PermissionsController::class);
 });
 
 // Route::view('test', 'welcome-test');
