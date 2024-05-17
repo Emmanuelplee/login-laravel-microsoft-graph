@@ -7,6 +7,7 @@ use App\Livewire\Roles\RolesController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
 use App\Livewire\Permissions\PermissionsController;
+use App\Livewire\ReportPermissions\ReportPermissionsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -40,6 +41,7 @@ Route::group(['middleware' => ['web', 'MsGraphAuthenticated']], function(){
     Route::get('/usuarios',UsersController::class);
     Route::get('/roles', RolesController::class);
     Route::get('/permisos',PermissionsController::class);
+    Route::get('/reporte-permisos',ReportPermissionsController::class);
 });
 
 // Route::view('test', 'welcome-test');

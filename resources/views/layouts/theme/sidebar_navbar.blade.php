@@ -32,7 +32,7 @@
                             <a class="pc-link" href="{{ url('/permisos') }}">Permisos</a>
                         </li>
                         <li class="pc-item">
-                            <a class="pc-link" href="#">Reportes Permisos</a>
+                            <a class="pc-link" href="{{ url('/reporte-permisos') }}">Reportes Permisos</a>
                         </li>
                     </ul>
                 </li>
