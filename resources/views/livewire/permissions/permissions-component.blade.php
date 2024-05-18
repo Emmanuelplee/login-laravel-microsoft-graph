@@ -29,27 +29,10 @@
         <div class="card">
           <div class="table-card user-profile-list card-body">
             <div class="table-responsive">
-              {{-- <table class="table table-hover" id="pc-dt-simple">
-                <thead>
-                  <tr>
-                    <th>Id</th>
-                    <th>Imagen</th>
-                    <th>Correo</th>
-                    <th>Nombre Completo</th>
-                    <th>Puesto</th>
-                    <th>Rol</th>
-                    <th>Activo</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  @foreach ($data as $item)
-                  @endforeach
-                </tbody>
-              </table> --}}
               <span class="fs-6 fst-itali">
                 {{ print_r(json_encode($data)) }}
               </span>
-              {{-- <livewire:roles.roles-table /> --}}
+              <livewire:permissions.permissions-table />
               {{-- <livewire:users.dynamic-select-controller key='select-1'
               idBox="choises-id-puesto"
               wire:model="id_puesto"

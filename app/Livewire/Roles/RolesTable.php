@@ -28,7 +28,7 @@ class RolesTable extends DataTableComponent
     {
         $this->setPrimaryKey('id');
 
-        // ======= Busqueda global============================================================
+        // ======= Búsqueda global============================================================
         $this->setSearchEnabled();
         $this->setEmptyMessage('No se encontraron registros');
         // $this->setSearchDisabled();
@@ -36,8 +36,8 @@ class RolesTable extends DataTableComponent
         $this->setSearchDebounce(1000); // esperará 1 segundo antes de enviar la solicitud.
         // $this->setSearchBlur(); // Búsqueda una vez que cambie el foco
 
-        //========= Paginacion ===============================================================
-        $this->setPageName('rolPage');
+        //========= Paginado ===============================================================
+        $this->setPageName('rolePage');
         $this->setPerPageVisibilityStatus(true);// variable de pagina en la url
         $this->setPerPageAccepted([25, 50, 100]);// array de registros a visualizar
         $this->setPerPageFieldAttributes([
@@ -46,10 +46,10 @@ class RolesTable extends DataTableComponent
             'default-styles' => true, // Output the default styling
         ]);
 
-        // ======= Ordenamiento o clasificacion ==============================================
+        // ======= Ordenamiento o clasificación ==============================================
         $this->setSortingStatus(true);
         // $this->setSortingStatus(false);
-        $this->setDefaultSortingLabels('Asc', 'Desc'); // Default A-Z y Z-A
+        // $this->setDefaultSortingLabels('Asc', 'Desc'); // Default A-Z y Z-A
 
         // ======= Tabla ====================================================================
         $this->setTheadAttributes([
@@ -62,7 +62,7 @@ class RolesTable extends DataTableComponent
         // ===== Filtros ===================================================================
         $this->setFiltersStatus(true);
         $this->setFiltersVisibilityEnabled();
-        $this->setFilterLayoutPopover();
+        // $this->setFilterLayoutPopover();
         // $this->setFilterLayoutSlideDown();
 
     }
@@ -99,7 +99,7 @@ class RolesTable extends DataTableComponent
                         $builder->where('roles.status', 0);
                     }
             }),
-            DateRangeFilter::make('Fecha creacion', 'created_at')
+            DateRangeFilter::make('Fecha creación', 'created_at')
                 ->config([
                     'allowInput' => true,   // Permitir la entrada manual de fechas
                     'altFormat' => 'd/m/y', // Formato de fecha que se mostrará una vez seleccionado
@@ -115,7 +115,7 @@ class RolesTable extends DataTableComponent
                         ->whereDate('roles.created_at', '>=', $dateRange['minDate']) // minDate fecha de inicio seleccionada
                         ->whereDate('roles.created_at', '<=', $dateRange['maxDate']); // maxDate fecha de finalización seleccionada
                 }),
-            DateRangeFilter::make('Fecha actualizacion', 'updated_at')
+            DateRangeFilter::make('Fecha actualización', 'updated_at')
                 ->config([
                     'allowInput' => true,   // Permitir la entrada manual de fechas
                     'altFormat' => 'd/m/y', // Formato de fecha que se mostrará una vez seleccionado
@@ -161,10 +161,12 @@ class RolesTable extends DataTableComponent
                 ->searchable(),
 
             DateColumn::make("Creado", "created_at")
-                ->outputFormat('d-m-Y h:m A')
+                ->outputFormat('d-m-Y h:i:s A')
+                ->sortable()
                 ->collapseOnTablet(),
             DateColumn::make('Actualizado', 'updated_at')
-                ->outputFormat('d-m-Y h:m A')
+                ->outputFormat('d-m-Y h:i:s A')
+                ->sortable()
                 ->collapseOnTablet(),
         ];
     }
@@ -172,7 +174,7 @@ class RolesTable extends DataTableComponent
     {
         return [
             'exportExcel' => 'EXCEL',
-            'exportPdf' => 'PDF',
+            // 'exportPdf' => 'PDF',
         ];
     }
 
