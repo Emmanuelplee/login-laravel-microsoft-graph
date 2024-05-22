@@ -33,7 +33,8 @@ return [
     /**
      * Customise Script & Styles Paths
      */
-    'script_base_path' => '/rappasoft/laravel-livewire-tables',
+    // 'script_base_path' => 'rappasoft/laravel-livewire-tables',
+    'script_base_path' => 'vendor/rappasoft/livewire-tables',
 
     /**
      * Filter Default Configuration Options
@@ -59,7 +60,6 @@ return [
             'pillFormat' => 'd M Y - H:i', // Used to display in the Filter Pills
         ],
     ],
-
     /**
      * Configuration options for DateRangeFilter
      */

@@ -227,7 +227,8 @@ class RolesTable extends DataTableComponent
                 ->label((
                     fn($row) => view('livewire.roles.acciones', compact('row'))
                 ))
-                ->excludeFromColumnSelect(),
+                ->excludeFromColumnSelect()
+            ->html(),
         ];
     }
     public function bulkActions(): array
@@ -243,9 +244,7 @@ class RolesTable extends DataTableComponent
         // User::whereIn('id', $this->getSelected())->update(['active' => true]);
         error_log('exportExcel');
         $roles = $this->getSelected();
-
         $this->clearSelected();
-
         return Excel::download(new ExcelRolesExport($roles), 'roles.xlsx');
     }
 
@@ -253,7 +252,6 @@ class RolesTable extends DataTableComponent
     {
         // User::whereIn('id', $this->getSelected())->update(['active' => false]);
         error_log('exportPdf');
-
         $this->clearSelected();
     }
 }

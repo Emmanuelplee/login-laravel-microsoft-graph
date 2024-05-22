@@ -29,9 +29,9 @@
         <div class="card">
           <div class="table-card user-profile-list card-body">
             <div class="table-responsive">
-              <span class="fs-6 fst-itali">
+              {{-- <span class="fs-6 fst-itali">
                 {{ print_r(json_encode($data)) }}
-              </span>
+              </span> --}}
               <livewire:permissions.permissions-table />
               {{-- <livewire:users.dynamic-select-controller key='select-1'
               idBox="choises-id-puesto"
