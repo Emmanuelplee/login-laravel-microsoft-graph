@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Roles;
 
+use Carbon\Carbon;
 use App\Models\Role;
 use App\Exports\ExcelRolesExport;
 use function Laravel\Prompts\error;
@@ -10,23 +11,33 @@ use Illuminate\Database\Eloquent\Builder;
 use Rappasoft\LaravelLivewireTables\Views\Column;
 use Rappasoft\LaravelLivewireTables\DataTableComponent;
 use Rappasoft\LaravelLivewireTables\Views\Columns\DateColumn;
+use Rappasoft\LaravelLivewireTables\Views\Filters\DateFilter;
+use Rappasoft\LaravelLivewireTables\Views\Filters\TextFilter;
 use Rappasoft\LaravelLivewireTables\Views\Filters\SelectFilter;
 use Rappasoft\LaravelLivewireTables\Views\Columns\BooleanColumn;
-
 use Rappasoft\LaravelLivewireTables\Views\Filters\DateRangeFilter;
 
 class RolesTable extends DataTableComponent
 {
     protected $model = Role::class;
 
-    public array $filters = [
-        'start_date' => null,
-        'end_date' => null,
-    ];
+    // public $filters = [
+    //     'start_date' => null,
+    // ];
+    public $dateMin, $dateMax;
+
+    public function mount()
+    {
+        $this->dateMin = '2024-01-01 00:00:01';
+        $this->dateMax = Carbon::parse(Carbon::now())->format('Y-m-d');
+    }
 
     public function configure(): void
     {
         $this->setPrimaryKey('id');
+        $this->setLoadingPlaceholderStatus(true);
+        $this->setLoadingPlaceholderBlade('livewire.common.dataTable.loading');
+        // $this->setLoadingPlaceholderContent('cargando ...');
 
         // ======= Búsqueda global============================================================
         $this->setSearchEnabled();
@@ -48,7 +59,6 @@ class RolesTable extends DataTableComponent
 
         // ======= Ordenamiento o clasificación ==============================================
         $this->setSortingStatus(true);
-        // $this->setSortingStatus(false);
         // $this->setDefaultSortingLabels('Asc', 'Desc'); // Default A-Z y Z-A
 
         // ======= Tabla ====================================================================
@@ -60,11 +70,13 @@ class RolesTable extends DataTableComponent
         // $this->setOfflineIndicatorDisabled();
 
         // ===== Filtros ===================================================================
-        $this->setFiltersStatus(true);
         $this->setFiltersVisibilityEnabled();
         // $this->setFilterLayoutPopover();
-        // $this->setFilterLayoutSlideDown();
+        $this->setFilterLayoutSlideDown();
 
+        // $this->setSecondaryHeaderTrAttributes(function($rows) {
+        //     return ['class' => 'bg-success p-2 text-white bg-opacity-75'];
+        // });
     }
     public function builder(): Builder
     {
@@ -72,20 +84,22 @@ class RolesTable extends DataTableComponent
             ->with('roleTipo:id,nombre,descripcion,estatus');
             // ->join() // Join some tables
             // ->select(); // Select some things
-
         // if ($this->filters['start_date']) {
         //     $query->where('roles.created_at', '>=', Carbon::parse($this->filters['start_date'])->startOfDay());
         // }
-
-        // if ($this->filters['end_date']) {
-        //     $query->where('roles.created_at', '<=', Carbon::parse($this->filters['end_date'])->endOfDay());
-        // }
-
         return $query;
     }
     public function filters(): array
     {
         return [
+            TextFilter::make('Nombre')
+                ->config([
+                    'placeholder' => 'Buscar nombre',
+                    'maxlength' => '25',
+                ])
+                ->filter(function(Builder $builder, string $value) {
+                    $builder->where('roles.name', 'like', '%'.$value.'%');
+            }),
             SelectFilter::make('Activo', 'status')
                 ->options([
                     '' => 'Todos',
@@ -99,14 +113,30 @@ class RolesTable extends DataTableComponent
                         $builder->where('roles.status', 0);
                     }
             }),
-            DateRangeFilter::make('Fecha creación', 'created_at')
+            TextFilter::make('Rol Tipo')
+                ->config([
+                    'placeholder' => 'Buscar rol tipo nombre',
+                    'maxlength' => '25',
+                ])
+                ->filter(function(Builder $builder, string $value) {
+                    $builder->where('roleTipo.nombre', 'like', '%'.$value.'%');
+            }),
+            TextFilter::make('Rol Tipo Descrip')
+                ->config([
+                    'placeholder' => 'Buscar rol tipo descripción',
+                    'maxlength' => '25',
+                ])
+                ->filter(function(Builder $builder, string $value) {
+                    $builder->where('roleTipo.descripcion', 'like', '%'.$value.'%');
+            }),
+            DateRangeFilter::make('Fecha Creado')
                 ->config([
                     'allowInput' => true,   // Permitir la entrada manual de fechas
-                    'altFormat' => 'd/m/y', // Formato de fecha que se mostrará una vez seleccionado
-                    'ariaDateFormat' => 'd/m/y', // Un formato de fecha compatible con aria
+                    'altFormat' => 'd-m-y', // Formato de fecha que se mostrará una vez seleccionado
+                    'ariaDateFormat' => 'd-m-y', // Un formato de fecha compatible con aria
                     'dateFormat' => 'Y-m-d', // Formato de fecha que recibirá el filtro
-                    'earliestDate' => '2024-01-01', // La fecha más temprana aceptable
-                    'latestDate' => '2024-12-31', // La última fecha aceptable
+                    'earliestDate' => $this->dateMin, // La fecha más temprana aceptable
+                    'latestDate' => $this->dateMax, // La última fecha aceptable
                     'placeholder' => 'Rango de fechas',
                 ])
                 ->setFilterPillValues([0 => 'minDate', 1 => 'maxDate']) // Los valores que se mostrarán para los valores de fecha mínima/máxima
@@ -114,15 +144,15 @@ class RolesTable extends DataTableComponent
                     $builder
                         ->whereDate('roles.created_at', '>=', $dateRange['minDate']) // minDate fecha de inicio seleccionada
                         ->whereDate('roles.created_at', '<=', $dateRange['maxDate']); // maxDate fecha de finalización seleccionada
-                }),
-            DateRangeFilter::make('Fecha actualización', 'updated_at')
+            }),
+            DateRangeFilter::make('Fecha Actualizado')
                 ->config([
                     'allowInput' => true,   // Permitir la entrada manual de fechas
-                    'altFormat' => 'd/m/y', // Formato de fecha que se mostrará una vez seleccionado
-                    'ariaDateFormat' => 'd/m/y', // Un formato de fecha compatible con aria
+                    'altFormat' => 'd-m-Y', // Formato de fecha que se mostrará una vez seleccionado
+                    'ariaDateFormat' => 'd-m-Y', // Un formato de fecha compatible con aria
                     'dateFormat' => 'Y-m-d', // Formato de fecha que recibirá el filtro
-                    'earliestDate' => '2024-01-01', // La fecha más temprana aceptable
-                    'latestDate' => '2024-12-31', // La última fecha aceptable
+                    'earliestDate' => $this->dateMin, // La fecha más temprana aceptable
+                    'latestDate' => $this->dateMax, // La última fecha aceptable
                     'placeholder' => 'Rango de fechas',
                 ])
                 ->setFilterPillValues([0 => 'minDate', 1 => 'maxDate']) // Los valores que se mostrarán para los valores de fecha mínima/máxima
@@ -130,7 +160,27 @@ class RolesTable extends DataTableComponent
                     $builder
                         ->whereDate('roles.updated_at', '>=', $dateRange['minDate']) // minDate fecha de inicio seleccionada
                         ->whereDate('roles.updated_at', '<=', $dateRange['maxDate']); // maxDate fecha de finalización seleccionada
-                }),
+            }),
+            DateFilter::make('Fecha Creado Mismo día','created_at')
+                    ->config([
+                        'min' => $this->dateMin,
+                        'max' => $this->dateMax,
+                    ])
+                    ->filter(function(Builder $builder, string $value) {
+                        $from = Carbon::parse($value)->format('Y-m-d') . ' 00:00:00';
+                        $to = Carbon::parse($value)->format('Y-m-d') . ' 23:59:59';
+                        $builder->whereBetween('roles.created_at',array($from, $to));
+            }),
+            DateFilter::make('Fecha Actualizado Mismo día','updated_at')
+                    ->config([
+                        'min' => $this->dateMin,
+                        'max' => $this->dateMax,
+                    ])
+                    ->filter(function(Builder $builder, string $value) {
+                        $from = Carbon::parse($value)->format('Y-m-d') . ' 00:00:00';
+                        $to = Carbon::parse($value)->format('Y-m-d') . ' 23:59:59';
+                        $builder->whereBetween('roles.updated_at',array($from, $to));
+            }),
         ];
     }
     public function columns(): array
@@ -138,36 +188,46 @@ class RolesTable extends DataTableComponent
         return [
             Column::make("Id", "id")
                 ->searchable() // Search general
-                ->sortable(),
+                ->sortable()
+                ->excludeFromColumnSelect()
+                // ->secondaryHeader(function($rows) {
+                //     return $rows->sum('id');
+                // }),
+                // ->footer(function($rows) {
+                //     return 'Subtotal: ' . $rows->sum('id');
+                // }),
+            ->html(),
             Column::make("Nombre", "name")
                 ->sortable()
-                ->searchable(),
-            // Column::make("Guard name", "guard_name")
-            //     ->sortable(),
+                ->searchable()
+                ->excludeFromColumnSelect()
+            ->html(),
             BooleanColumn::make('Activo', 'status')
-                ->setView('common.dataTable.status'),
-            SelectFilter::make('Activo', 'status')
-            ->setCustomFilterLabel('common.dataTable.status'),
-                // ->setSuccessValue(false),
-            // Column::make("Id_rolTipo", "id_role_tipo")
-            //     ->sortable()
-            //     ->collapseOnTablet(),
-            // ===================================================
+                ->setView('livewire.common.dataTable.status')
+            ->html(),
             Column::make('Rol Tipo', 'roleTipo.nombre')
                 ->sortable()
-                ->searchable(),
-            Column::make('Rol Tipo Descrip.', 'roleTipo.descripcion')
+                ->searchable()
+            ->html(),
+            Column::make('Rol Tipo Descrip', 'roleTipo.descripcion')
                 ->sortable()
-                ->searchable(),
-
-            DateColumn::make("Creado", "created_at")
+                ->searchable()
+            ->html(),
+            DateColumn::make("Fecha Creado", "created_at")
                 ->outputFormat('d-m-Y h:i:s A')
                 ->sortable()
-                ->collapseOnTablet(),
-            DateColumn::make('Actualizado', 'updated_at')
+                ->collapseOnTablet()
+            ->html(),
+            DateColumn::make('Fecha Actualizado', 'updated_at')
                 ->outputFormat('d-m-Y h:i:s A')
                 ->sortable()
-                ->collapseOnTablet(),
+                ->collapseOnTablet()
+            ->html(),
+            Column::make('Acciones')
+                ->label((
+                    fn($row) => view('livewire.roles.acciones', compact('row'))
+                ))
+                ->excludeFromColumnSelect(),
         ];
     }
     public function bulkActions(): array

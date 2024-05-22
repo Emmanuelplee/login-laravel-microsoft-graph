@@ -33,8 +33,6 @@
                 <thead>
                   <tr>
                     <th>Id</th>
-                    <th>Imagen</th>
-                    <th>Correo</th>
                     <th>Nombre Completo</th>
                     <th>Puesto</th>
                     <th>Rol</th>
@@ -56,7 +54,7 @@
               :options="$positions"
               nameLabel="Puesto"
               optionDefault="Selecciona un puesto"
-            /> --}}
+              /> --}}
             </div>
           </div>
         </div>

@@ -2,12 +2,12 @@
     {
         "id": 1,
         "name": "Roles_Index",
-        "description": "Mostar vista rol"
+        "description": "Mostrar vista rol"
     },
     {
         "id": 2,
         "name": "Roles_Show",
-        "description": "Mostar rol"
+        "description": "Mostrar rol"
     },
     {
         "id": 3,
@@ -16,7 +16,7 @@
     },
     {
         "id": 4,
-        "name": "Roles_Update",
+        "name": "Roles_Create",
         "description": "Actualizar rol"
     },
     {
@@ -27,7 +27,7 @@
     {
         "id": 6,
         "name": "Users_Index",
-        "description": "Mostar vista usuario"
+        "description": "Mostrar vista usuario"
     },
     {
         "id": 7,
@@ -41,7 +41,7 @@
     },
     {
         "id": 9,
-        "name": "Users_Update",
+        "name": "Users_Create",
         "description": "Actualizar usuario"
     },
     {
@@ -52,7 +52,7 @@
     {
         "id": 11,
         "name": "Permissions_Index",
-        "description": "Mostar vista permisos"
+        "description": "Mostrar vista permisos"
     },
     {
         "id": 12,
@@ -66,7 +66,7 @@
     },
     {
         "id": 14,
-        "name": "Permissions_Update",
+        "name": "Permissions_Create",
         "description": "Actualizar permisos"
     },
     {
@@ -77,7 +77,7 @@
     {
         "id": 16,
         "name": "Report_Permissions_Index",
-        "description": "Mostar vista reporte de permisos"
+        "description": "Mostrar vista reporte de permisos"
     },
     {
         "id": 17,
@@ -91,7 +91,7 @@
     },
     {
         "id": 19,
-        "name": "Report_Permissions_Update",
+        "name": "Report_Permissions_Create",
         "description": "Actualizar reporte de permisos"
     },
     {

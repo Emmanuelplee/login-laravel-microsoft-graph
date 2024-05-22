@@ -91,7 +91,7 @@
                             x-on:click="clearSelected"
                             wire:loading.attr="disabled"
                             type="button"
-                            class="btn btn-primary btn-sm"
+                            class="btn btn-primary btn-sm rounded px-1 py-0 fs-6"
                         >
                             @lang('Deselect All')
                         </button>
@@ -111,7 +111,7 @@
                             x-on:click="selectAllOnPage"
                             wire:loading.attr="disabled"
                             type="button"
-                            class="btn btn-primary btn-sm"
+                            class="btn btn-primary btn-sm rounded px-1 py-0 fs-6"
                         >
                             @lang('Select All On Page')
                         </button>&nbsp;
@@ -120,7 +120,7 @@
                             x-on:click="setAllSelected"
                             wire:loading.attr="disabled"
                             type="button"
-                            class="btn btn-primary btn-sm"
+                            class="btn btn-primary btn-sm rounded px-1 py-0 fs-6"
                         >
                             @lang('Select All')
                         </button>
@@ -129,7 +129,7 @@
                             x-on:click="clearSelected"
                             wire:loading.attr="disabled"
                             type="button"
-                            class="btn btn-primary btn-sm"
+                            class="btn btn-primary btn-sm rounded px-1 py-0 fs-6"
                         >
                             @lang('Deselect All')
                         </button>

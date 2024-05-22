@@ -79,7 +79,6 @@
           <!-- Puestos -->
           <div class="col-sm-12 col-md-6 col-lg-6">
             <div class="form-group">
-              {{-- <livewire:users.DynamicSelectController --}}
               <livewire:users.dynamic-select-controller key='select-1'
                 idBox="choises-id-puesto"
                 wire:model="id_puesto"
@@ -96,7 +95,6 @@
 
           <!-- roles -->
           <div  class="col-sm-12 col-md-6 col-lg-6">
-              {{-- <livewire:users.DynamicSelectController --}}
             <livewire:users.dynamic-select-controller key='select-2'
                 idBox="choises-id-role"
                 wire:model="id_role"

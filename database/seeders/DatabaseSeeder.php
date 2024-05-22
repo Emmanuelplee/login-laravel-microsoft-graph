@@ -34,10 +34,10 @@ class DatabaseSeeder extends Seeder
             PuestoTiposSeeder::class,
             PuestosSeeder::class,
 
-            RolesSeeer::class,// Ejecutar clase => php artisan db:seed --class=RoleSeeder
+            RoleSeeder::class,// Ejecutar clase => php artisan db:seed --class=RoleSeeder
             // PermisosSeeder::class,// Ejecutar clase => php artisan db:seed --class=PermisosSeeder
         ]);
-        // Seedeer para pruebas
+        // Seeder para pruebas
         // Ejecutar clase => php artisan db:seed --class=RoleFactorySeeder
 
 
