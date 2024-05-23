@@ -39,7 +39,7 @@
                     class="form-control mb-3">
                     <option value="ELEGIR" disabled>Selecciona un tipo de rol</option>
                     @foreach ($role_tipos as $value)
-                    <option value="{{ $value->id }}">{{ $value->name }}</option>
+                     <option value="{{ $value->id }}">{{ $value->name }}</option>
                     @endforeach
                 </select>
                 @error('id_role_tipo')

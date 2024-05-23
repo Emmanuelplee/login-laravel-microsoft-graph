@@ -4,7 +4,6 @@ namespace App\Livewire\Roles;
 
 use App\Models\Role;
 use Livewire\Component;
-use App\Models\RoleTipo;
 use Livewire\Attributes\On;
 use Livewire\WithPagination;
 use Livewire\WithFileUploads;
@@ -19,7 +18,7 @@ class RolesController extends Component
     public $selected_id, $name, $status, $id_role_tipo;
     public $user_auth;
 
-    public $tableControllerKey;// key para refrescar el componente
+    public $tableControllerKey;// key refrescar RolesTableController
 
     public $showModal;
 
@@ -79,9 +78,52 @@ class RolesController extends Component
             ->extends('layouts.theme.app')
             ->section('content');
     }
-
-    public function store()
+    public function storeShow()
     {
+        $this->selected_id      = 0;
+        $this->name             = '';
+        $this->status           = true;
+        $this->id_role_tipo     = 7;//rol tipo por default nuevo
+        // $this->dispatch('item-modal-edit', title: 'Mostrar modal storeShow!');
+        // return;
+    }
+    public function store(){
+        $rules = [
+            'name'          => 'required|min:3|unique:roles',
+            'id_role_tipo'  => 'required|not_in:ELEGIR',
+            'status'        => 'required',
+        ];
+        $messages = [
+            'name.required'         => 'Nombre del rol requerido',
+            'name.min'              => 'El nombre debe tener al menos 3 caracteres',
+            'name.unique'           => 'Ya existe el nombre del rol',
+            'id_role_tipo.required' => 'El rol tipo es requerido',
+            'id_role_tipo.not_in'   => 'Elige un rol tipo diferente a ELEGIR',
+            'status.required'       => 'El estatus es requerido',
+        ];
+
+        $this->validate($rules, $messages);
+
+        $createItem = Role::create([
+            'name'          => $this->name,
+            'status'        => $this->status,
+            'id_role_tipo'  => $this->id_role_tipo,
+        ]);
+        if ($createItem) {
+            /* Guardamos registro en tabla product_stocks */
+            // ProductStock::create([
+            //     'old'           => 0,
+            //     'add'           => $this->stock,
+            //     'current'       => $this->stock,
+            //     'product_id'    => $createItem->id,
+            //     'stock_description'=> '',
+            //     'user_id'       => Auth::user()->id,
+            // ]);
+        }
+
+        $this->resetUI();
+        $this->dispatch('item-added','Rol Agregado!');
+        $this->refreshChildTable();
 
     }
     public function show($id)
@@ -154,7 +196,7 @@ class RolesController extends Component
             'name'      => $this->name,
             'surname'   => $this->surname,
             // 'email'     => $this->email,
-            'activo'    => $this->activo,
+            'activo'    => $this->status,
             'id_puesto' => $this->id_puesto,
             'id_role'   => $this->id_role,
         ]);
@@ -182,14 +224,8 @@ class RolesController extends Component
         error_log('resetUI');
         $this->selected_id      = 0;
         $this->name             = '';
-        $this->surname          = '';
-        $this->email            = '';
-        $this->path_foto_perfil = '';
-        $this->inicio_sesion    = '';
-        $this->ip_equipo        = '';
-        $this->activo           = false;
-        $this->tipo             = '';
-        $this->id_puesto        = 'ELEGIR';
+        $this->status           = false;
+        $this->id_role_tipo     = 'ELEGIR';
 
         $this->showModal        = false;
         $this->resetValidation();

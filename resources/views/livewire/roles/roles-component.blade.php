@@ -11,11 +11,11 @@
                   <h4 class="mb-0 py-3">{{ $componentName }} | {{ $pageTitle }}</h4>
                 </div>
                 <span>
-                  {{-- <a href="#" class="rounded btn btn-button bg-info text-white"
-                      data-bs-toggle="modal" data-bs-target="#theModal">Crear</a> --}}
-                <a href="javascript:void(0)"
-                class="rounded btn btn-info fs-6">
-                <i class="ti ti-plus" style="font-size: 1.5rem;"></i>
+                  <a href="#"
+                    wire:click.prevent="storeShow()"
+                    class="rounded btn btn-info fs-6"
+                    data-bs-toggle="modal" data-bs-target="#theModal">
+                    <i class="ti ti-plus" style="font-size: 1.5rem;"></i>
                   </a>
                 </span>
               </div>
@@ -85,9 +85,13 @@
       Livewire.on('newPositionId', function (value) {
         console.log('Valor seleccionado id puesto o role componente dinamico:', value);
       });
+      Livewire.on('item-added', (msg) => {
+        console.log("item-added " + JSON.stringify(msg));
+        $('#theModal').modal('hide');
+        noty(msg[0],1);//Exito
+      });
       Livewire.on('item-modal-edit', (msg) => {
         console.log("item-modal-edit " + JSON.stringify(msg));
-        // Livewire.dispatch('afterEdit');// Por el selected_id no se carga la primera vez
         $('#theModal').modal('show');
       });
       Livewire.on('item-modal-updated', (msg) => {

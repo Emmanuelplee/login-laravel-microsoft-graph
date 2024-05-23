@@ -20,7 +20,7 @@ class RoleFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => $this->faker->unique(true, 20000)->sentence(4, true),
+            'name' => $this->faker->unique(true, 20000)->sentence(2, true),
             'guard_name' => 'web', // Puedes cambiar esto si necesitas otros valores
             'status' => $this->faker->boolean,
             'id_role_tipo' => rand(1,8),
