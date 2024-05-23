@@ -181,7 +181,7 @@ class PermissionsTable extends DataTableComponent
             ->html(),
             Column::make('Acciones')
                 ->label((
-                    fn($row) => view('livewire.roles.acciones', compact('row'))
+                    fn($item) => view('livewire.permissions.acciones', compact('item'))
                 ))
                 ->excludeFromColumnSelect()
             ->html(),

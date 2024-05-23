@@ -8,7 +8,11 @@
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title col-6">
-          <b>{{ $componentName }}</b> | {{ $selected_id > 0 ? 'EDITAR' : 'CREAR' }}
+          @if ($showModal)
+            <b>{{ $componentName }}</b> | MOSTRAR
+          @else
+            <b>{{ $componentName }}</b> | {{ $selected_id > 0 ? 'EDITAR' : 'CREAR' }}
+          @endif
         </h5>
         {{-- <h6 class="text-center text-warning" wire:loading>POR FAVOR ESPERE...</h6> --}}
         <h6 class="text-end text-warning col-5 m-0" wire:loading>PROCESANDO ESPERE...</h6>

@@ -17,7 +17,7 @@ use Rappasoft\LaravelLivewireTables\Views\Filters\SelectFilter;
 use Rappasoft\LaravelLivewireTables\Views\Columns\BooleanColumn;
 use Rappasoft\LaravelLivewireTables\Views\Filters\DateRangeFilter;
 
-class RolesTable extends DataTableComponent
+class RolesTableController extends DataTableComponent
 {
     protected $model = Role::class;
 
@@ -77,6 +77,7 @@ class RolesTable extends DataTableComponent
         // $this->setSecondaryHeaderTrAttributes(function($rows) {
         //     return ['class' => 'bg-success p-2 text-white bg-opacity-75'];
         // });
+        // $this->setRefreshMethod('refresh');
     }
     public function builder(): Builder
     {
@@ -225,7 +226,7 @@ class RolesTable extends DataTableComponent
             ->html(),
             Column::make('Acciones')
                 ->label((
-                    fn($row) => view('livewire.roles.acciones', compact('row'))
+                    fn($item) => view('livewire.roles.acciones', compact('item'))
                 ))
                 ->excludeFromColumnSelect()
             ->html(),
