@@ -11,8 +11,12 @@
                   <h4 class="mb-0 py-3">{{ $componentName }} | {{ $pageTitle }}</h4>
                 </div>
                 <span>
-                  <a href="#" class="rounded btn btn-button bg-info text-white"
-                      data-bs-toggle="modal" data-bs-target="#theModal">Crear</a>
+                  {{-- <a href="#" class="rounded btn btn-button bg-info text-white"
+                      data-bs-toggle="modal" data-bs-target="#theModal">Crear</a> --}}
+                <a href="javascript:void(0)"
+                class="rounded btn btn-info fs-6">
+                <i class="ti ti-plus" style="font-size: 1.5rem;"></i>
+                  </a>
                 </span>
               </div>
             </div>
@@ -47,7 +51,7 @@
               {{-- <pre>
                 {{ print_r(json_encode($data)) }}
               </pre> --}}
-              <livewire:roles.roles-table />
+              <livewire:roles.RolesTableController  :key="$tableControllerKey"/>
               {{-- <livewire:users.dynamic-select-controller key='select-1'
               idBox="choises-id-puesto"
               wire:model="id_puesto"
@@ -64,77 +68,40 @@
     <!-- [ Main Content ] end -->
 
     <!-- Modal id="#theModal" -->
-    {{-- @include('livewire.users.form') --}}
+    @include('livewire.roles.form')
 
   </div>
   <!-- [ Pc Content ] end -->
   @script
     <script>
-      // Se ejecuta inmediatamente después de que Livewire haya terminado de inicializarse
+      // Se ejecuta inmediatamente después que Livewire se inizialeze
       document.addEventListener('livewire:initialized', () => {
-          const dataTableElement = document.getElementById('pc-dt-simple');
-          if (dataTableElement !== null) {
-              console.log('dataTableElement existe.');
-              const dataTable = new simpleDatatables.DataTable("#pc-dt-simple", {
-                  sortable: false,
-                  searchable: true,
-                  perPage: 5,
-                  headings: true,
-                  labels: {
-                      "placeholder": "Buscar...",
-                      "searchTitle": "Buscar dentro de la tabla",
-                      "perPage": "entradas por página",
-                      "noRows": "entradas no encontradas",
-                      "noResults": "Ningún resultado coincide con su consulta de búsqueda",
-                      "info": "Mostrando {start} a {end} de {rows} entradas"
-                  },
-              });
-          }
       })
-      // Registra una devolución de llamada para ejecutarla en un gancho Livewire interno determinado
+      // Registra una devolución gancho Livewire interno determinado
       Livewire.hook('morph.added',  ({ el, directiva, component, cleanup}) => {
-          // Tabla de la lista usuarios
-          const dataTableElement = document.getElementById('pc-dt-simple');
-          if (dataTableElement !== null) {
-              console.log('dataTableElement existe.');
-              const dataTable = new simpleDatatables.DataTable("#pc-dt-simple", {
-                  sortable: false,
-                  searchable: true,
-                  perPage: 5,
-                  headings: true,
-                  labels: {
-                      "placeholder": "Buscar...",
-                      "searchTitle": "Buscar dentro de la tabla",
-                      "perPage": "entradas por página",
-                      "noRows": "entradas no encontradas",
-                      "noResults": "Ningún resultado coincide con su consulta de búsqueda",
-                      "info": "Mostrando {start} a {end} de {rows} entradas"
-                  },
-              });
-          }
       })
-      // =================================================================
-      //              Eventos del componente padre
+      // {{-- *========================================================= --}}
+      //              EVENTOS DEL COMPONENTE PADRE
       Livewire.on('newPositionId', function (value) {
         console.log('Valor seleccionado id puesto o role componente dinamico:', value);
       });
       Livewire.on('item-modal-edit', (msg) => {
         console.log("item-modal-edit " + JSON.stringify(msg));
-        Livewire.dispatch('afterEdit');// Por el selected_id no se carga la primera vez
+        // Livewire.dispatch('afterEdit');// Por el selected_id no se carga la primera vez
         $('#theModal').modal('show');
       });
       Livewire.on('item-modal-updated', (msg) => {
         $('#theModal').modal('hide');
         noty(msg[0],1)//Exito
       });
-      Livewire.on('item-deleted', (msg) => {
-        console.log('item-deleted msg:', msg)
-        noty(msg[0],1)//Exito
-      });
+      // {{-- *======================================================== --}}
+      //            EVENTO DE ERROR
       Livewire.on('item-error', (msg) => {
         console.log('item-error msg:', msg)
         noty(msg[0],0)//Error
       });
+      // {{-- *======================================================== --}}
+      //            EVENTO DE ELIMINACION
       Livewire.on('Confirm', (value) => {
           console.log('id,eventName,text', value.id, value.eventName, value.text);
           swal({
@@ -161,6 +128,13 @@
               }
           })
       })
+      Livewire.on('item-deleted', (msg) => {
+        console.log('item-deleted msg:', msg)
+        noty(msg[0],1)//Exito
+        // setTimeout(() => Livewire.dispatch('refreshChildTable'), 5000);
+        Livewire.dispatch('refreshChildTable')
+
+      });
       // =================================================================
       // Cerrar Modal form borrar Errors clase er y resetUI al controller
       $('#theModal').on('hidden.bs.modal', function(e) {

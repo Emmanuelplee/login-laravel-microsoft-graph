@@ -1,6 +1,5 @@
 @include('common.modalHead')
 <div>
-    {{-- <form class="validate-me" id="validate-me" data-validate> --}}
     <form wire.ignore.self>
         <div class="row">
           <b><p>Usuario: {{ $selected_id }}</p><hr></b>

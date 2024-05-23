@@ -23,12 +23,13 @@ class UsersController extends Component
     public $selected_id = 0, $name, $surname, $email, $path_foto_perfil,
         $inicio_sesion, $ip_equipo, $activo, $tipo, $id_role, $id_puesto;
 
-    // Para los Select con busqueda
+    // Para los Select con búsqueda
     public $roles;
     public $positions;
 
     public $user_auth;
 	private $pagination = 3;
+    public $showModal;
 
 	public function mount()
 	{
