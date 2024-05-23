@@ -139,14 +139,14 @@
         Livewire.dispatch('refreshChildTable')
 
       });
-      // =================================================================
-      // Cerrar Modal form borrar Errors clase er y resetUI al controller
+      // {{-- *=========================================================== --}}
+      //            CERRAR MODAL
       $('#theModal').on('hidden.bs.modal', function(e) {
-          console.log('borrar errores y resetUI');
+          console.log('borrar Errors clase(er) ejecutar resetUI');
           $('.er').css('display','none');
           Livewire.dispatch('resetUI');
       });
-      // Focus primer input del Modal form clase __focus_active
+      // Foco primer input del Modal clase __focus_active
       $('#theModal').on('shown.bs.modal', msg => {
           $('.__focus_active').focus();
         });

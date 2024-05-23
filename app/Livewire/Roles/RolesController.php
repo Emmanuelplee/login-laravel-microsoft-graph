@@ -90,16 +90,16 @@ class RolesController extends Component
     public function store(){
         $rules = [
             'name'          => 'required|min:3|unique:roles',
-            'id_role_tipo'  => 'required|not_in:ELEGIR',
             'status'        => 'required',
+            'id_role_tipo'  => 'required|not_in:ELEGIR',
         ];
         $messages = [
             'name.required'         => 'Nombre del rol requerido',
             'name.min'              => 'El nombre debe tener al menos 3 caracteres',
             'name.unique'           => 'Ya existe el nombre del rol',
+            'status.required'       => 'El estatus es requerido',
             'id_role_tipo.required' => 'El rol tipo es requerido',
             'id_role_tipo.not_in'   => 'Elige un rol tipo diferente a ELEGIR',
-            'status.required'       => 'El estatus es requerido',
         ];
 
         $this->validate($rules, $messages);
@@ -122,7 +122,7 @@ class RolesController extends Component
         }
 
         $this->resetUI();
-        $this->dispatch('item-added','Rol Agregado!');
+        $this->dispatch('item-added','Registro Creado!');
         $this->refreshChildTable();
 
     }
@@ -168,40 +168,30 @@ class RolesController extends Component
     {
         error_log('update');
         $rules = [
-            'name'        => 'required|min:3',
-            'surname'     => 'required|min:3',
-            'email'       => "required|email|unique:users,email,{$this->selected_id}",
-            'activo'      => 'required',
-
-            'id_puesto'   => 'required|not_in:ELEGIR',
+            'name'          => "required|min:3|unique:roles,name,{$this->selected_id}",
+            'status'        => 'required',
+            'id_role_tipo'  => 'required|not_in:ELEGIR',
         ];
         $messages = [
-            'name.required'       => 'El nombre del usuario es requerido',
-            'name.min'            => 'El nombre del usuario debe tener al menos 3 caracteres',
-            'surname.required'    => 'El apellido del usuario es requerido',
-            'surname.min'         => 'El apellido del usuario debe tener al menos 3 caracteres',
-            'email.required'      => 'El email es requerido',
-            'email.email'         => 'El de tipo email',
-            'email.unique'        => 'El email ya existe en el sistema',
-            'activo.required'     => 'El campo activo es requerido',
-
-            'id_puesto.required'  => 'Secciona el puesto del usuario',
-            'id_puesto.not_in'    => 'El campo debe ser diferente a Selecciona un puesto',
+            'name.required'         => 'Nombre del rol requerido',
+            'name.min'              => 'El nombre debe tener al menos 3 caracteres',
+            'name.unique'           => 'Ya existe el nombre del rol',
+            'id_role_tipo.required' => 'El rol tipo es requerido',
+            'id_role_tipo.not_in'   => 'Elige un rol tipo diferente a ELEGIR',
+            'status.required'       => 'El estatus es requerido',
         ];
 
         $this->validate($rules, $messages);
 
         $item = Role::find($this->selected_id);
         $item->update([
-            'name'      => $this->name,
-            'surname'   => $this->surname,
-            // 'email'     => $this->email,
-            'activo'    => $this->status,
-            'id_puesto' => $this->id_puesto,
-            'id_role'   => $this->id_role,
+            'name'          => $this->name,
+            'status'        => $this->status,
+            'id_role_tipo'  => $this->id_role_tipo,
         ]);
         $this->resetUI();
         $this->dispatch('item-modal-updated','Registro Actualizado!');
+        $this->refreshChildTable();
 
     }
     #[On('destroy')]

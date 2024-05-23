@@ -17,7 +17,7 @@
                 <input type="text"
                     id="name"
                     wire:model="name"
-                    class="form-control
+                    class="form-control __focus_active
                         @error('name') border border-danger border-1 @enderror"
                     placeholder="Nombre"
                     required>
