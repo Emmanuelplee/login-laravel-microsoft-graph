@@ -2,7 +2,7 @@
 <div>
     <form wire.ignore.self>
         <div class="row">
-          <b><p>Rol: {{ $selected_id }}</p><hr></b>
+          <b><p>Rol: {{ $selected_id == 0 ? '' : $selected_id }}</p><hr></b>
 
           {{-- * MOSTRAR INFO --}}
           @if ($showModal)

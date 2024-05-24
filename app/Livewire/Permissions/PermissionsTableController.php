@@ -5,17 +5,16 @@ namespace App\Livewire\Permissions;
 use Carbon\Carbon;
 use App\Models\Permissions;
 use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\ExcelPermissionsExport;
 use Illuminate\Database\Eloquent\Builder;
 use Rappasoft\LaravelLivewireTables\Views\Column;
 use Rappasoft\LaravelLivewireTables\DataTableComponent;
 use Rappasoft\LaravelLivewireTables\Views\Columns\DateColumn;
 use Rappasoft\LaravelLivewireTables\Views\Filters\DateFilter;
 use Rappasoft\LaravelLivewireTables\Views\Filters\TextFilter;
-use Rappasoft\LaravelLivewireTables\Views\Filters\SelectFilter;
-use Rappasoft\LaravelLivewireTables\Views\Columns\BooleanColumn;
 use Rappasoft\LaravelLivewireTables\Views\Filters\DateRangeFilter;
 
-class PermissionsTable extends DataTableComponent
+class PermissionsTableController extends DataTableComponent
 {
     protected $model = Permissions::class;
 
@@ -196,10 +195,10 @@ class PermissionsTable extends DataTableComponent
     public function exportExcel()
     {
         error_log('exportExcel');
-        // $roles = $this->getSelected();
+        $data = $this->getSelected();
 
-        // $this->clearSelected();
+        $this->clearSelected();
 
-        // return Excel::download(new ExcelRolesExport($roles), 'roles.xlsx');
+        return Excel::download(new ExcelPermissionsExport($data), 'permisos.xlsx');
     }
 }

@@ -33,21 +33,6 @@
         <div class="card">
           <div class="table-card user-profile-list card-body">
             <div class="table-responsive">
-              {{-- <table class="table table-hover" id="pc-dt-simple">
-                <thead>
-                  <tr>
-                    <th>Id</th>
-                    <th>Nombre Completo</th>
-                    <th>Puesto</th>
-                    <th>Rol</th>
-                    <th>Activo</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  @foreach ($data as $item)
-                  @endforeach
-                </tbody>
-              </table> --}}
               {{-- <pre>
                 {{ print_r(json_encode($data)) }}
               </pre> --}}
@@ -72,84 +57,84 @@
 
   </div>
   <!-- [ Pc Content ] end -->
-  @script
-    <script>
-      // Se ejecuta inmediatamente después que Livewire se inizialeze
-      document.addEventListener('livewire:initialized', () => {
-      })
-      // Registra una devolución gancho Livewire interno determinado
-      Livewire.hook('morph.added',  ({ el, directiva, component, cleanup}) => {
-      })
-      // {{-- *========================================================= --}}
-      //              EVENTOS DEL COMPONENTE PADRE
-      Livewire.on('newPositionId', function (value) {
-        console.log('Valor seleccionado id puesto o role componente dinamico:', value);
-      });
-      Livewire.on('item-added', (msg) => {
-        console.log("item-added " + JSON.stringify(msg));
-        $('#theModal').modal('hide');
-        noty(msg[0],1);//Exito
-      });
-      Livewire.on('item-modal-edit', (msg) => {
-        console.log("item-modal-edit " + JSON.stringify(msg));
-        $('#theModal').modal('show');
-      });
-      Livewire.on('item-modal-updated', (msg) => {
-        $('#theModal').modal('hide');
-        noty(msg[0],1)//Exito
-      });
-      // {{-- *======================================================== --}}
-      //            EVENTO DE ERROR
-      Livewire.on('item-error', (msg) => {
-        console.log('item-error msg:', msg)
-        noty(msg[0],0)//Error
-      });
-      // {{-- *======================================================== --}}
-      //            EVENTO DE ELIMINACION
-      Livewire.on('Confirm', (value) => {
-          console.log('id,eventName,text', value.id, value.eventName, value.text);
-          swal({
-              title: 'Estas Seguro',
-              text: value.text,
-              type: 'warning',
-              showCancelButton: true,
-              cancelButtonText: 'Cancelar',
-              cancelButtonColor: '#dc3545',
-              confirmButtonColor: '#28a745',
-              confirmButtonText: 'Eliminar',
-              reverseButtons: true,
-          }).then(function(result) {
-              if (result.value) {
-              Livewire.dispatch(value.eventName,[value.id]);
-              swal.close()
-              }else if(result.dismiss === Swal.DismissReason.cancel) {
-                  swal({
-                      title: 'Cancelado',
-                      text: 'No se realizó modificación',
-                      type: 'error',
-                      timer: 5000
-                  })
-              }
-          })
-      })
-      Livewire.on('item-deleted', (msg) => {
-        console.log('item-deleted msg:', msg)
-        noty(msg[0],1)//Exito
-        // setTimeout(() => Livewire.dispatch('refreshChildTable'), 5000);
-        Livewire.dispatch('refreshChildTable')
+@script
+<script>
+    // Se ejecuta inmediatamente después que Livewire se inizialeze
+    document.addEventListener('livewire:initialized', () => {
+    })
+    // Registra una devolución gancho Livewire interno determinado
+    Livewire.hook('morph.added',  ({ el, directiva, component, cleanup}) => {
+    })
+    // {{-- *========================================================= --}}
+    //              EVENTOS DEL COMPONENTE PADRE
+    Livewire.on('newPositionId', function (value) {
+    console.log('Valor seleccionado id puesto o role componente dinamico:', value);
+    });
+    Livewire.on('item-added', (msg) => {
+    console.log("item-added " + JSON.stringify(msg));
+    $('#theModal').modal('hide');
+    noty(msg[0],1);//Exito
+    });
+    Livewire.on('item-modal-edit', (msg) => {
+    console.log("item-modal-edit " + JSON.stringify(msg));
+    $('#theModal').modal('show');
+    });
+    Livewire.on('item-modal-updated', (msg) => {
+    $('#theModal').modal('hide');
+    noty(msg[0],1)//Exito
+    });
+    // {{-- *======================================================== --}}
+    //            EVENTO DE ERROR
+    Livewire.on('item-error', (msg) => {
+    console.log('item-error msg:', msg)
+    noty(msg[0],0)//Error
+    });
+    // {{-- *======================================================== --}}
+    //            EVENTO DE ELIMINACION
+    Livewire.on('Confirm', (value) => {
+        console.log('id,eventName,text', value.id, value.eventName, value.text);
+        swal({
+            title: 'Estas Seguro',
+            text: value.text,
+            type: 'warning',
+            showCancelButton: true,
+            cancelButtonText: 'Cancelar',
+            cancelButtonColor: '#dc3545',
+            confirmButtonColor: '#28a745',
+            confirmButtonText: 'Eliminar',
+            reverseButtons: true,
+        }).then(function(result) {
+            if (result.value) {
+            Livewire.dispatch(value.eventName,[value.id]);
+            swal.close()
+            }else if(result.dismiss === Swal.DismissReason.cancel) {
+                swal({
+                    title: 'Cancelado',
+                    text: 'No se realizó modificación',
+                    type: 'error',
+                    timer: 5000
+                })
+            }
+        })
+    })
+    Livewire.on('item-deleted', (msg) => {
+    console.log('item-deleted msg:', msg)
+    noty(msg[0],1)//Exito
+    // setTimeout(() => Livewire.dispatch('refreshChildTable'), 5000);
+    Livewire.dispatch('refreshChildTable')
 
-      });
-      // {{-- *=========================================================== --}}
-      //            CERRAR MODAL
-      $('#theModal').on('hidden.bs.modal', function(e) {
-          console.log('borrar Errors clase(er) ejecutar resetUI');
-          $('.er').css('display','none');
-          Livewire.dispatch('resetUI');
-      });
-      // Foco primer input del Modal clase __focus_active
-      $('#theModal').on('shown.bs.modal', msg => {
-          $('.__focus_active').focus();
-        });
-    </script>
-  @endscript
+    });
+    // {{-- *=========================================================== --}}
+    //            CERRAR MODAL
+    $('#theModal').on('hidden.bs.modal', function(e) {
+        console.log('borrar Errors clase(er) ejecutar resetUI');
+        $('.er').css('display','none');
+        Livewire.dispatch('resetUI');
+    });
+    // Foco primer input del Modal clase __focus_active
+    $('#theModal').on('shown.bs.modal', msg => {
+        $('.__focus_active').focus();
+    });
+</script>
+@endscript
 
