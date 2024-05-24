@@ -2,7 +2,10 @@
     </div>
       <div class="modal-footer">
       {{-- <button type="button" wire:click.prevent="resetUI()" class="btn btn-danger close-btn" data-bs-dismiss="modal">CERRAR</button> --}}
-      <button type="button" wire:click="resetUI()" class="btn btn-danger rounded" data-bs-dismiss="modal">CERRAR</button>
+      <button type="button"
+        {{-- wire:click="resetUI()" --}}
+        class="btn btn-danger rounded"
+        data-bs-dismiss="modal">CERRAR</button>
       @if ($selected_id === 0)
         <button type="button" wire:click="store()" class="btn btn-info rounded">GUARDAR</button>
       @endif

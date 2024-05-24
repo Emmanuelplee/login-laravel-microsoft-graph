@@ -14,13 +14,11 @@ class RolesController extends Component
     use WithFileUploads;
 	use WithPagination;
 
-    public $pageTitle, $componentName;
+    public $pageTitle, $componentName, $showModal;
     public $selected_id, $name, $status, $id_role_tipo;
     public $user_auth;
 
     public $tableControllerKey;// key refrescar RolesTableController
-
-    public $showModal;
 
     // Para los Select con búsqueda
     public $role_tipos;
@@ -84,8 +82,6 @@ class RolesController extends Component
         $this->name             = '';
         $this->status           = true;
         $this->id_role_tipo     = 7;//rol tipo por default nuevo
-        // $this->dispatch('item-modal-edit', title: 'Mostrar modal storeShow!');
-        // return;
     }
     public function store(){
         $rules = [
@@ -110,15 +106,7 @@ class RolesController extends Component
             'id_role_tipo'  => $this->id_role_tipo,
         ]);
         if ($createItem) {
-            /* Guardamos registro en tabla product_stocks */
-            // ProductStock::create([
-            //     'old'           => 0,
-            //     'add'           => $this->stock,
-            //     'current'       => $this->stock,
-            //     'product_id'    => $createItem->id,
-            //     'stock_description'=> '',
-            //     'user_id'       => Auth::user()->id,
-            // ]);
+            // Si existe se hace
         }
 
         $this->resetUI();
@@ -132,10 +120,8 @@ class RolesController extends Component
         $item = Role::find($id);
         if (isset($item)) {
             $this->selected_id  = $item->id;
-
             $this->name         = $item->name;
             $this->status       = $item->status == 1 ? true : false;
-            // $this->id_role_tipo = $item->id_role_tipo;
             $this->id_role_tipo = $item->roleTipo->only('id','nombre','descripcion');
 
             $this->showModal = true;
@@ -189,7 +175,7 @@ class RolesController extends Component
             'status'        => $this->status,
             'id_role_tipo'  => $this->id_role_tipo,
         ]);
-        $this->resetUI();
+        // $this->resetUI();
         $this->dispatch('item-modal-updated','Registro Actualizado!');
         $this->refreshChildTable();
 
@@ -200,10 +186,9 @@ class RolesController extends Component
         error_log('destroy');
         $item = Role::find($id);
         if (isset($item)) {
-            // dd($item);
             $item->delete();
             // $this->resetUI();
-            $this->dispatch('item-deleted','Usuario Eliminado!');
+            $this->dispatch('item-deleted','Registro Eliminado!');
         }else {
             $this->dispatch('item-error','No existe el registro!');
         }
