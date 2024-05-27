@@ -62,7 +62,7 @@ class User extends Authenticatable
 
         'inicio_sesion' => "datetime",
     ];
-    // MARK:Accessor Atribute
+    // MARK:Accessor Attribute
     public function getInicioSesionAttribute($value): String
     {
         return Carbon::parse($value)->format('h:i:s A');
@@ -78,7 +78,7 @@ class User extends Authenticatable
     }
     // MARK: Relaciones
     // El usuario tiene un rol
-    public function role(): BelongsTo
+    public function my_role_is(): BelongsTo
     {
         return $this->belongsTo(Role::class, 'id_role');
     }

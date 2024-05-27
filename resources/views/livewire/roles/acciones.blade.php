@@ -4,6 +4,7 @@
         <li class="list-inline-item m-1">
         <a href="javascript:void(0)"
             wire:click.prevent="$parent.show({{ $item->id }})"
+            wire:loading.class="loading-disabled"
             class="avtar avtar-s btn btn-info"
             style="width:30px; height:30px;">
             <i class="ti ti-eye f-18"></i>
@@ -12,6 +13,7 @@
         <li class="list-inline-item m-1">
         <a href="javascript:void(0)"
             wire:click.prevent="$parent.edit({{ $item->id }})"
+            wire:loading.class="loading-disabled"
             class="avtar avtar-s btn btn-primary"
             style="width:30px; height:30px;">
             <i class="ti ti-pencil f-18"></i>

@@ -13,6 +13,7 @@
                 <span>
                   <a href="#"
                     wire:click.prevent="storeShow()"
+                    wire:loading.attr="disabled"
                     class="rounded btn btn-info fs-6"
                     data-bs-toggle="modal" data-bs-target="#theModal">
                     <i class="ti ti-plus" style="font-size: 1.5rem;"></i>
@@ -94,7 +95,7 @@
     Livewire.on('Confirm', (value) => {
         console.log('id,eventName,text', value.id, value.eventName, value.text);
         swal({
-            title: 'Estas Seguro',
+            title: 'Atención',
             text: value.text,
             type: 'warning',
             showCancelButton: true,

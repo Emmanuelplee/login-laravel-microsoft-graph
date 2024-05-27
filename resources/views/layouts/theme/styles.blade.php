@@ -38,21 +38,27 @@
     /* class laravel-livewire-table table */
     /* Asegúrate de que la tabla se desplace verticalmente */
     /* .table-responsive { */
-.table-responsive-sticky {
-    height: 450px !important;
-    overflow-y: auto !important;
-}
+    .table-responsive-sticky {
+        height: 450px !important;
+        overflow-y: auto !important;
+    }
 
-/* Estilos para los encabezados fijos */
-.table-responsive-sticky table thead tr th {
-    position: sticky !important;
-    top: 0 !important;
-    background: #DAF3F8 !important;
-    z-index: 99 !important;
-    box-shadow: 0 2px 2px -1px rgba(0, 0, 0, 0.4) !important;
-}
-table tbody {
-    z-index: 1 !important;
-}
+    /* Estilos para los encabezados fijos */
+    .table-responsive-sticky table thead tr th {
+        position: sticky !important;
+        top: 0 !important;
+        background: #DAF3F8 !important;
+        z-index: 99 !important;
+        box-shadow: 0 2px 2px -1px rgba(0, 0, 0, 0.4) !important;
+    }
+    table tbody {
+        z-index: 1 !important;
+    }
 
+    /* Clase para desabilitar el etiquetas a con class loading-disabled */
+    .loading-disabled {
+        cursor: none !important;
+        pointer-events: none !important;
+        opacity: 0.5 !important;
+    }
 </style>

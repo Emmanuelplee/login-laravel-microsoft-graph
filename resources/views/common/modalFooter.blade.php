@@ -7,10 +7,16 @@
         class="btn btn-danger rounded"
         data-bs-dismiss="modal">CERRAR</button>
       @if ($selected_id === 0)
-        <button type="button" wire:click="store()" class="btn btn-info rounded">GUARDAR</button>
+        <button type="button"
+          wire:click="store()"
+          wire:loading.attr="disabled"
+          class="btn btn-info rounded">GUARDAR</button>
       @endif
       @if ($selected_id >= 1 && !$showModal)
-        <button type="button" wire:click="update()" class="btn btn-info rounded">ACTUALIZAR</button>
+        <button type="button"
+          wire:click="update()"
+          wire:loading.attr="disabled"
+          class="btn btn-info rounded">ACTUALIZAR</button>
       @endif
       </div>
     </div>

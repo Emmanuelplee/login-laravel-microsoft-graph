@@ -74,7 +74,7 @@ class UsersController extends Component
 	{
         $data = User::query()->select('id','alias','name','surname','email','path_foto_perfil',
             'inicio_sesion','ip_equipo','activo','tipo','id_role','id_puesto')
-            ->with('role:id,name,status,id_role_tipo','position:id,nombre,descripcion')
+            ->with('my_role_is:id,name,status,id_role_tipo','position:id,nombre,descripcion')
             ->orderBy('id', 'asc')
 			->paginate($this->pagination);
 
@@ -113,7 +113,7 @@ class UsersController extends Component
 
             $this->id_puesto    = $user->id_puesto;
             $this->id_role      = $user->id_role;
-            $this->dispatch('item-modal-edit', title: 'Mostar modal del Registro!');
+            $this->dispatch('item-modal-edit', title: 'Mostrar modal del Registro!');
             return;
         }else {
             $this->dispatch('item-error', 'No existe el registro!');

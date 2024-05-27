@@ -36,7 +36,7 @@ class ShareAuthUserInfo
             $data['full_name'] = $full_name;
 
             $position = User::find($user->id)->position;
-            $role = User::find($user->id)->role;
+            $role = User::find($user->id)->my_role_is;
 
             $data['position'] = $position->nombre;
             $data['role'] = $role->name;

@@ -87,7 +87,7 @@
     Livewire.on('Confirm', (value) => {
         console.log('id,eventName,text', value.id, value.eventName, value.text);
         swal({
-            title: 'Estas Seguro',
+            title: 'Atención',
             text: value.text,
             type: 'warning',
             showCancelButton: true,

@@ -49,8 +49,7 @@
               </thead>
               <tbody>
                 @foreach ($data as $item)
-                {{-- {{ $item }}
-                --}}
+                {{-- {{ $item }} --}}
                 <tr>
                   <td>{{ $item->id }}</td>
                   <td>
@@ -59,12 +58,6 @@
                         alt="foto perfil"
                         class="{{ ($item->getImageRoute($item->path_foto_perfil) === 'assets/images/default.png') ? '' : 'img-radius' }} align-top m-r-15"
                         style="width: 40px" />
-                      {{--
-                      <div class="d-inline-block">
-                        <h6 class="m-b-0">Quinn Flynn</h6>
-                        <p class="m-b-0 text-primary">Android developer</p>
-                      </div>
-                      --}}
                     </div>
                   </td>
                   <td>{{ $item->email }}</td>
@@ -72,7 +65,7 @@
                     {{ $item->name }} {{ $item->surname }}
                   </td>
                   <td>{{ $item->position->nombre }}</td>
-                  <td>{{ $item->role->name }}</td>
+                  <td>{{ $item->my_role_is->name }}</td>
                   <td>
                     @if ($item->activo == 1)
                     <span class="badge bg-light-success">Activo</span>
