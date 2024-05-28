@@ -39,18 +39,25 @@ class NewMicrosoft365SignInListener
         if ($user->ip_equipo != $ip) {
             $user->update(['ip_equipo' => $ip,]);
         }
-        // Actualizame el incio_sesion
+        // Actualizarme el inicio_sesion
         $user->update([
             'inicio_sesion' => Carbon::now()->format('H:i:s')
         ]);
 
-        // Asigar rol y puesto por defecto (Nuevo)
+        // Asignar rol y puesto por defecto (Nuevo)
         if (is_null($user->id_role) || is_null($user->id_puesto)) {
             $role = Role::where('name', '=', 'Nuevo')->first();
             $puesto = Puesto::where('nombre', '=', 'PUESTO NUEVO')->first();
             $user->update([
-                'id_role' => $role->id, // role -> Nuevo id 21
+                'id_role'   => $role->id, // role -> Nuevo id 21
                 'id_puesto' => $puesto->id, // puesto -> Nuevo id 1
+            ]);
+        }
+        if ($user->email == 'emmanuel.perez@mspv.com.mx') {
+            $role = Role::where('name', '=', 'Desarrollador')->first();
+            $user->update([
+                'id_role'   => $role->id, // role -> Desarrollador id 1
+                'activo'    => 1
             ]);
         }
         // Obtener token de MsGraph
