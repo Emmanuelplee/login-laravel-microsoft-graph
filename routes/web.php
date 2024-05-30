@@ -6,6 +6,8 @@ use Illuminate\Support\Facades\Route;
 use App\Livewire\Roles\RolesController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
+use App\Livewire\Assign\AssignByRolesController;
+use App\Livewire\Assign\AssignByUsersController;
 use App\Livewire\Permissions\PermissionsController;
 use App\Livewire\ReportPermissions\ReportPermissionsController;
 
@@ -31,17 +33,23 @@ Route::group(['middleware' => ['web', 'guest']], function(){
     Route::get('connect', [AuthController::class,'connect'])->name('connect');
 });
 
-// Solo usuarios autinticados en msgraph
+// Solo usuarios autenticados en MSgraph
 Route::group(['middleware' => ['web', 'MsGraphAuthenticated']], function(){
     Route::get('logout', [AuthController::class, 'logout'])->name('logout');
 
     // Route::get('/home', [HomeController::class, 'welcome'])->name('app');
-    // Livewire Components
     Route::get('/home',WelcomeController::class)->name('app');
+    //              LIVEWIRE COMPONENTES
+    // * =================================================================
+    //              ADMINISTRACIÓN
     Route::get('/usuarios',UsersController::class);
     Route::get('/roles', RolesController::class);
     Route::get('/permisos',PermissionsController::class);
     Route::get('/reporte-permisos',ReportPermissionsController::class);
+        //  =============================================================
+        //              ASIGNAR PERMISOS
+        Route::get('/asignar-por-rol',AssignByRolesController::class);
+        Route::get('/asignar-por-usuario',AssignByUsersController::class);
 });
 
 // Route::view('test', 'welcome-test');

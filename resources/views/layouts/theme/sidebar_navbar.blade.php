@@ -38,14 +38,17 @@
                 </li>
                 <li class="pc-item pc-hasmenu">
                     <a href="#!" class="pc-link"><span class="pc-micon">
-                            <i class="ph ph-layout"></i></span><span class="pc-mtext">Otros</span><span
+                            <i class="ti ti-shield-check"></i></span><span class="pc-mtext">Asignar Permisos</span><span
                             class="pc-arrow"><i data-feather="chevron-right"></i></span></a>
                     <ul class="pc-submenu">
-                        <li class="pc-item"><a class="pc-link" href="#">Compact</a></li>
-                        <li class="pc-item"><a class="pc-link" href="#">Horizontal</a>
+                        <li class="pc-item">
+                            <a class="pc-link" href="{{ url('/asignar-por-rol') }}">Por Rol</a>
                         </li>
-                        <li class="pc-item"><a class="pc-link" href="#">Tab</a></li>
-                        <li class="pc-item"><a class="pc-link" href="#">Vertical</a></li>
+                        <li class="pc-item">
+                            <a class="pc-link" href="{{ url('/asignar-por-usuario') }}">Por Usuario</a>
+                        </li>
+                        {{-- <li class="pc-item"><a class="pc-link" href="#">Tab</a></li>
+                        <li class="pc-item"><a class="pc-link" href="#">Vertical</a></li> --}}
                     </ul>
                 </li>
             </ul>
