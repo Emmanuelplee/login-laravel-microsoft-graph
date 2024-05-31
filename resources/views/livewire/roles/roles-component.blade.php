@@ -10,15 +10,17 @@
                 <div class="flex-grow-1 ms-1">
                   <h4 class="mb-0 py-3">{{ $componentName }} | {{ $pageTitle }}</h4>
                 </div>
-                <span>
-                  <a href="#"
-                    wire:click.prevent="storeShow()"
-                    wire:loading.attr="disabled"
-                    class="rounded btn btn-info fs-6"
-                    data-bs-toggle="modal" data-bs-target="#theModal">
-                    <i class="ti ti-plus" style="font-size: 1.5rem;"></i>
-                  </a>
-                </span>
+                @can('Roles_Create')
+                    <span>
+                    <a href="#"
+                        wire:click.prevent="storeShow()"
+                        wire:loading.attr="disabled"
+                        class="rounded btn btn-info fs-6"
+                        data-bs-toggle="modal" data-bs-target="#theModal">
+                        <i class="ti ti-plus" style="font-size: 1.5rem;"></i>
+                    </a>
+                    </span>
+                @endcan
               </div>
             </div>
           </div>

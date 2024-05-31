@@ -13,6 +13,12 @@
         $roles = Role::whereHas('permissions', function($query) use ($permissionName) {
             $query->where('name', $permissionName);
         })->get();
+        $names = $roles->pluck('name');
     @endphp
-    <h6>{{ $roles->count() }}</h6>
+    <div>
+        <strong>{{ $roles->count() }} »</strong>
+        @foreach ($names as $key => $value)
+            {{ $value }},
+        @endforeach
+    </div>
 </div>

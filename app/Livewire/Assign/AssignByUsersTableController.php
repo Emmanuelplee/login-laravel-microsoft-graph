@@ -6,7 +6,7 @@ use Rappasoft\LaravelLivewireTables\DataTableComponent;
 use Rappasoft\LaravelLivewireTables\Views\Column;
 use App\Models\Permissions;
 
-class AssignByUsersTableControllerOld extends DataTableComponent
+class AssignByUsersTableController extends DataTableComponent
 {
     protected $model = Permissions::class;
 

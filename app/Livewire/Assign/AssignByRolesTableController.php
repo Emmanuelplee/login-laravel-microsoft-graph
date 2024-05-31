@@ -5,11 +5,12 @@ namespace App\Livewire\Assign;
 
 use Carbon\Carbon;
 use App\Models\Role;
+use App\Models\Permissions;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Builder;
-use Rappasoft\LaravelLivewireTables\DataTableComponent;
+use Livewire\Attributes\On;
 use Rappasoft\LaravelLivewireTables\Views\Column;
-use App\Models\Permissions;
+use Rappasoft\LaravelLivewireTables\DataTableComponent;
 
 class AssignByRolesTableController extends DataTableComponent
 {
@@ -24,8 +25,8 @@ class AssignByRolesTableController extends DataTableComponent
         $this->dateMax  = Carbon::parse(Carbon::now())->format('Y-m-d');
 
         $this->roles    =  Role::orderBy('id', 'asc')->get();
-        // $this->id_role  = "ELEGIR";
-        $this->id_role  = 2;
+        $this->id_role  = "ELEGIR";
+        // $this->id_role  = 21;
     }
     public function configure(): void
     {
@@ -69,7 +70,6 @@ class AssignByRolesTableController extends DataTableComponent
         error_log('builder');
         $query = Permissions::query()
             ->select('id','name', DB::raw("0 as checked"));
-            // ->leftJoin('role_has_permissions as rp', 'permissions.id', '=', 'rp.permission_id');
         return $query;
     }
     public function columns(): array
@@ -102,7 +102,32 @@ class AssignByRolesTableController extends DataTableComponent
             ->html(),
         ];
     }
+    #[On('EventRemoveAll')]
+    public function removeAll()
+    {
+        error_log('removeAll');
+        if ($this->id_role == 'ELEGIR') {
+            $this->dispatch('sync-error','Selecciona un rol valido');
+            return;
+        }
 
+        $role = Role::find($this->id_role);
+        $role->syncPermissions([0]);
+        $this->dispatch('remove-all',"Se revocaron todos lo permisos al role $role->name");
+    }
+    #[On('EventSyncAll')]
+    public function syncAll()
+    {
+        error_log('syncAll');
+        if ($this->id_role == 'ELEGIR') {
+            $this->dispatch('sync-error','Selecciona un rol valido');
+            return;
+        }
+        $role = Role::find($this->id_role);
+        $permisos = Permissions::where('name','<>','Permissions_Index')->pluck('id')->toArray();
+        $role->syncPermissions($permisos);
+        $this->dispatch('sync-all',"Se sincronizaron todos lo permisos al role $role->name");
+    }
     public function syncPermiso($state, $permisoName)
     {
         error_log('syncPermiso');

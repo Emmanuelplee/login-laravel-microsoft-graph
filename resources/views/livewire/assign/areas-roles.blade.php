@@ -12,15 +12,12 @@
         </select>
     </div>
     <div class="col-md-6">
-        {{-- @can('Asignar_All') --}}
-            <button wire:click.prevent="syncAll()" type="button"
-                class="btn btn-primary btn-sm my-2">Asignar Todos
-            </button>
-        {{-- @endcan --}}
-        {{-- @can('Asignar_Revoque') --}}
-            <button onclick="Revocar()" type="button"
-                class="btn btn-primary btn-sm my-2 ms-1">Revocar Todos
-            </button>
-        {{-- @endcan --}}
+        <button wire:click.prevent="syncAll()" type="button"
+            class="btn btn-primary btn-sm my-2">Asignar Todos
+        </button>
+        <button
+            wire:click.prevent="$dispatch('Revocar')"
+            class="btn btn-primary btn-sm my-2 ms-1">Revocar Todos
+        </button>
     </div>
 </div>

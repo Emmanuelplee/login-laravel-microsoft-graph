@@ -2,7 +2,6 @@
     <div class="form-check form-switch">
         @php
             use App\Models\Role;
-            // Suponiendo que $role contiene el ID del rol que deseas encontrar
             if ($role != 'ELEGIR') {
                 $r = Role::find($role);
                 // Verificando si el rol tiene un permiso específico
@@ -13,13 +12,12 @@
                 }
             }
         @endphp
-        <span> <strong>id:</strong>{{ $item->id }} <strong>id_role:</strong> {{ $role }}</span>
+        {{-- <span> <strong>id:</strong>{{ $item->id }} <strong>id_role:</strong> {{ $role }}</span>
         @if ($r)
             <span><strong>El rol es:</strong> {{ $r->name }}</span>
         @else
             <span><strong>No hay rol.</strong></span>
-        @endif
-
+        @endif --}}
         <input type="checkbox"
             id="p{{$item->id}}"
             wire:change="syncPermiso($('#p'+{{$item->id}}).is(':checked'),'{{$item->name}}')"

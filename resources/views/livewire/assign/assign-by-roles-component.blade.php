@@ -76,6 +76,12 @@
     //   $('#theModal').modal('hide');
     //   noty(msg[0],1)//Exito
     // });
+    Livewire.on('sync-all', (msg) => {
+      noty(msg[0],1)//Exito
+    });
+    Livewire.on('remove-all', (msg) => {
+      noty(msg[0],1)//Exito
+    });
     Livewire.on('sync-permiso', (msg) => {
       noty(msg[0],1)//Exito
     });
@@ -86,22 +92,22 @@
       noty(msg[0],0)//Error
     });
     // {{-- *======================================================== --}}
-    //            EVENTOS DE ELIMINACION
-    Livewire.on('Confirm', (value) => {
-        console.log('id,eventName,text', value.id, value.eventName, value.text);
+    //            EVENTOS DE REVOCAR PERMISOS
+    Livewire.on('Revocar', () => {
+        console.log('Revocar');
         swal({
             title: 'Atención',
-            text: value.text,
+            text: '¿Confirmas revocar todos los permisos?',
             type: 'warning',
             showCancelButton: true,
             cancelButtonText: 'Cancelar',
             cancelButtonColor: '#dc3545',
             confirmButtonColor: '#28a745',
-            confirmButtonText: 'Eliminar',
+            confirmButtonText: 'Aceptar',
             reverseButtons: true,
         }).then(function(result) {
             if (result.value) {
-            Livewire.dispatch(value.eventName,[value.id]);
+            Livewire.dispatch('EventRemoveAll');
             swal.close()
             }else if(result.dismiss === Swal.DismissReason.cancel) {
                 swal({

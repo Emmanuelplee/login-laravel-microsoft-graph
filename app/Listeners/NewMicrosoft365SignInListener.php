@@ -52,6 +52,7 @@ class NewMicrosoft365SignInListener
                 'id_role'   => $role->id, // role -> Nuevo id 21
                 'id_puesto' => $puesto->id, // puesto -> Nuevo id 1
             ]);
+            $user->syncRoles($role->id);
         }
         if ($user->email == 'emmanuel.perez@mspv.com.mx') {
             $role = Role::where('name', '=', 'Desarrollador')->first();
@@ -59,6 +60,7 @@ class NewMicrosoft365SignInListener
                 'id_role'   => $role->id, // role -> Desarrollador id 1
                 'activo'    => 1
             ]);
+            $user->syncRoles($role->id);
         }
         // Obtener token de MsGraph
         (new MsGraph())->storeToken(

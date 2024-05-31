@@ -41,7 +41,6 @@ class UsersController extends Component
         // $this->selected_id      = 0;
         $this->id_puesto        = 'ELEGIR';
         $this->id_role          = 'ELEGIR';
-        // $this->email            = 'test@test.com';
 
         $this->roles            = [];
         $this->positions        = [];
@@ -165,6 +164,9 @@ class UsersController extends Component
             'id_puesto' => $this->id_puesto,
             'id_role'   => $this->id_role,
         ]);
+        if($this->id_role != 'ELEGIR'){
+            $user->syncRoles(intval($this->id_role));
+        }
         $this->resetUI();
         $this->dispatch('item-modal-updated','Registro Actualizado!');
 

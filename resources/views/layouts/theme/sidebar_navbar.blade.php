@@ -25,9 +25,11 @@
                         <li class="pc-item">
                             <a class="pc-link" href="{{ url('/usuarios') }}">Usuarios</a>
                         </li>
-                        <li class="pc-item">
-                            <a class="pc-link" href="{{ url('/roles') }}">Roles</a>
-                        </li>
+                        @can('Roles_Index')
+                            <li class="pc-item">
+                                <a class="pc-link" href="{{ url('/roles') }}">Roles</a>
+                            </li>
+                        @endcan
                         <li class="pc-item">
                             <a class="pc-link" href="{{ url('/permisos') }}">Permisos</a>
                         </li>
