@@ -22,37 +22,45 @@
                         <li class="pc-item">
                             <a class="pc-link" href="{{ route('app') }}">Principal</a>
                         </li>
-                        <li class="pc-item">
-                            <a class="pc-link" href="{{ url('/usuarios') }}">Usuarios</a>
-                        </li>
+
+                        @can('Users_Index')
+                            <li class="pc-item">
+                                <a class="pc-link" href="{{ url('/usuarios') }}">Usuarios</a>
+                            </li>
+                        @endcan
+
                         @can('Roles_Index')
                             <li class="pc-item">
                                 <a class="pc-link" href="{{ url('/roles') }}">Roles</a>
                             </li>
                         @endcan
-                        <li class="pc-item">
-                            <a class="pc-link" href="{{ url('/permisos') }}">Permisos</a>
-                        </li>
-                        <li class="pc-item">
-                            <a class="pc-link" href="{{ url('/reporte-permisos') }}">Reportes Permisos</a>
-                        </li>
+                        @can('Permissions_Index')
+                            <li class="pc-item">
+                                <a class="pc-link" href="{{ url('/permisos') }}">Permisos</a>
+                            </li>
+                        @endcan
+                        @can('Report_Permissions_Index')
+                            <li class="pc-item">
+                                <a class="pc-link" href="{{ url('/reporte-permisos') }}">Reportes Permisos</a>
+                            </li>
+                        @endcan
                     </ul>
                 </li>
-                <li class="pc-item pc-hasmenu">
-                    <a href="#!" class="pc-link"><span class="pc-micon">
-                            <i class="ti ti-shield-check"></i></span><span class="pc-mtext">Asignar Permisos</span><span
-                            class="pc-arrow"><i data-feather="chevron-right"></i></span></a>
-                    <ul class="pc-submenu">
-                        <li class="pc-item">
-                            <a class="pc-link" href="{{ url('/asignar-por-rol') }}">Por Rol</a>
-                        </li>
-                        <li class="pc-item">
-                            <a class="pc-link" href="{{ url('/asignar-por-usuario') }}">Por Usuario</a>
-                        </li>
-                        {{-- <li class="pc-item"><a class="pc-link" href="#">Tab</a></li>
-                        <li class="pc-item"><a class="pc-link" href="#">Vertical</a></li> --}}
-                    </ul>
-                </li>
+                @can('Assign_Index')
+                    <li class="pc-item pc-hasmenu">
+                        <a href="#!" class="pc-link"><span class="pc-micon">
+                                <i class="ti ti-shield-check"></i></span><span class="pc-mtext">Asignar Permisos</span><span
+                                class="pc-arrow"><i data-feather="chevron-right"></i></span></a>
+                        <ul class="pc-submenu">
+                            <li class="pc-item">
+                                <a class="pc-link" href="{{ url('/asignar-por-rol') }}">Por Rol</a>
+                            </li>
+                            {{-- <li class="pc-item">
+                                <a class="pc-link" href="{{ url('/asignar-por-usuario') }}">Por Usuario</a>
+                            </li> --}}
+                        </ul>
+                    </li>
+                @endcan
             </ul>
         </div>
         <!-- [navbar content] end -->

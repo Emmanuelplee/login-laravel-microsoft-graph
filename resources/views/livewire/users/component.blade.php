@@ -68,9 +68,19 @@
                   <td>{{ $item->my_role_is->name }}</td>
                   <td>
                     @if ($item->activo == 1)
-                    <span class="badge bg-light-success">Activo</span>
+                        @canany(['Users_Edit','Users_Delete'])
+                            <span class="badge bg-light-success">Activo</span>
+                        @endcanany
+                        @if(auth()->user()->cannot('Users_Edit') && auth()->user()->cannot('Users_Delete'))
+                        <span class="badge bg-light-success" style="opacity: 1">Activo</span>
+                        @endif
                     @else
-                    <span class="badge bg-light-danger">Inactivo</span>
+                        @canany(['Users_Edit','Users_Delete'])
+                            <span class="badge bg-light-danger">Inactivo</span>
+                        @endcanany
+                        @if(auth()->user()->cannot('Users_Edit') && auth()->user()->cannot('Users_Delete'))
+                            <span class="badge bg-light-danger" style="opacity: 1">Inactivo</span>
+                        @endif
                     @endif
                     <div class="overlay-edit">
                       <ul class="list-inline mb-0">
@@ -79,22 +89,26 @@
                             <i class="ti ti-pencil f-18"></i>
                           </a>
                         </li> --}}
-                        <li class="list-inline-item m-0">
-                          <a href="javascript:void(0)"
-                            wire:click.prevent="edit({{ $item->id }})"
-                            class="avtar avtar-s btn btn-primary">
-                            <i class="ti ti-pencil f-18"></i>
-                          </a>
-                        </li>
-                        <li class="list-inline-item m-0">
-                          <a href="javascript:void(0)"
-                            {{-- wire:confirm="¿CONFIRMAS ELINIMAR EL REGISTRO?" --}}
-                            wire:click="$dispatch('Confirm',{ id: {{ $item->id }},eventName:'destroy',text:'¿ESTA SEGURO DE ELINIMAR EL REGISTRO?'})"
-                            {{-- onclick="Confirm('{{$item->id}}','destroy','¿CONFIRMAS ELINIMAR EL REGISTRO?')" --}}
-                            class="avtar avtar-s btn bg-white btn-link-danger">
-                            <i class="ti ti-trash f-18"></i>
-                          </a>
-                        </li>
+                        @can('Users_Edit')
+                            <li class="list-inline-item m-0">
+                            <a href="javascript:void(0)"
+                                wire:click.prevent="edit({{ $item->id }})"
+                                class="avtar avtar-s btn btn-primary">
+                                <i class="ti ti-pencil f-18"></i>
+                            </a>
+                            </li>
+                        @endcan
+                        @can('Users_Delete')
+                            <li class="list-inline-item m-0">
+                            <a href="javascript:void(0)"
+                                {{-- wire:confirm="¿CONFIRMAS ELINIMAR EL REGISTRO?" --}}
+                                wire:click="$dispatch('Confirm',{ id: {{ $item->id }},eventName:'destroy',text:'¿ESTA SEGURO DE ELINIMAR EL REGISTRO?'})"
+                                {{-- onclick="Confirm('{{$item->id}}','destroy','¿CONFIRMAS ELINIMAR EL REGISTRO?')" --}}
+                                class="avtar avtar-s btn bg-white btn-link-danger">
+                                <i class="ti ti-trash f-18"></i>
+                            </a>
+                            </li>
+                        @endcan
                       </ul>
                     </div>
                   </td>
@@ -113,6 +127,11 @@
   <!-- Modal id="#theModal" -->
   @include('livewire.users.form')
 
+  <style>
+    .pc-footer {
+        margin-left: 0;
+    }
+  </style>
 </div>
 <!-- [ Pc Content ] end -->
 @script

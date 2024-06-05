@@ -11,7 +11,7 @@ class WelcomeController extends Component
 
     public function mount()
     {
-        $this->componentName    = 'Dashbord';
+        $this->componentName    = 'Inicio';
 		$this->pageTitle        = 'Principal';
     }
     public function render()
@@ -22,8 +22,6 @@ class WelcomeController extends Component
                             'inicio_sesion','ip_equipo','activo','tipo','id_role','id_puesto');
         return view('livewire.welcome-component', [
             'data'      => $data,
-            // 'puestos'   => $puestos,
-            // 'roles'     => $roles,
             ])
 			->extends('layouts.theme.app')
             // ->layoutData(['data' => $data])

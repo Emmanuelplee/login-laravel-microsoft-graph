@@ -24,9 +24,9 @@
     </div>
   </div>
   <!-- [ breadcrumb ] end -->
-  <div>
+  {{-- <div>
       livewire('users.dynamic-select-controller',['selectedOption' => 5,'options' => $positions])
-  </div>
+  </div> --}}
     <!-- [ Main Content ] start -->
     <div class="row">
       <!-- [ sample-page ] start -->
@@ -38,9 +38,9 @@
           <div class="card-body">
             <hr class="p-0 m-0">
             @auth
-            <pre class="text-start" style="font-size: 1rem;">
+            {{-- <pre class="text-start" style="font-size: 1rem;">
                 data: {{ print_r($data) }}
-                </pre>
+                </pre> --}}
             @endauth
           </div>
         </div>
@@ -50,7 +50,7 @@
     <!-- [ Main Content ] end -->
 
   <!-- Modal id="#theModal" -->
-  include('livewire.users.form')
+  {{-- include('livewire.users.form') --}}
 </div>
 <!-- [ Pc Content ] end -->
 

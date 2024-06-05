@@ -36,20 +36,25 @@ Route::group(['middleware' => ['web', 'guest']], function(){
 // Solo usuarios autenticados en MSgraph
 Route::group(['middleware' => ['web', 'MsGraphAuthenticated']], function(){
     Route::get('logout', [AuthController::class, 'logout'])->name('logout');
-
-    // Route::get('/home', [HomeController::class, 'welcome'])->name('app');
+    // Route::get('/home', [HomeController::class, 'welcome'])->name('app'); // Anterior
     Route::get('/home',WelcomeController::class)->name('app');
     //              LIVEWIRE COMPONENTES
     // * =================================================================
+    //              DESARROLLADOR
+    Route::group(['middleware' => ['role:Desarrollador']], function () {
+        Route::get('/permisos',PermissionsController::class);
+    });
+    // * =================================================================
     //              ADMINISTRACIÓN
-    Route::get('/usuarios',UsersController::class);
-    Route::get('/roles', RolesController::class);
-    Route::get('/permisos',PermissionsController::class);
-    Route::get('/reporte-permisos',ReportPermissionsController::class);
+    Route::group(['middleware' => ['role:Desarrollador|Administrador']], function () {
         //  =============================================================
         //              ASIGNAR PERMISOS
-        Route::get('/asignar-por-rol',AssignByRolesController::class);
-        Route::get('/asignar-por-usuario',AssignByUsersController::class);
+        Route::get('/asignar-por-rol',AssignByRolesController::class)->middleware('permission:Assign_Index');
+        // Route::get('/asignar-por-usuario',AssignByUsersController::class);
+    });
+    Route::get('/usuarios',UsersController::class)->middleware('permission:Users_Index');
+    Route::get('/roles', RolesController::class)->middleware('permission:Roles_Index');
+    Route::get('/reporte-permisos',ReportPermissionsController::class)->middleware('permission:Report_Permissions_Index');
 });
 
 // Route::view('test', 'welcome-test');

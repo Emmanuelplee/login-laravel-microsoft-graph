@@ -75,7 +75,8 @@ class UsersController extends Component
             'inicio_sesion','ip_equipo','activo','tipo','id_role','id_puesto')
             ->with('my_role_is:id,name,status,id_role_tipo','position:id,nombre,descripcion')
             ->orderBy('id', 'asc')
-			->paginate($this->pagination);
+            ->get();
+			// ->paginate($this->pagination);
 
         $this->roles = Role::orderBy('name', 'asc')->get();
         $this->positions = DB::table('puestos')->select(

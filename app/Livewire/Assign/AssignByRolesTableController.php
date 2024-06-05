@@ -6,9 +6,9 @@ namespace App\Livewire\Assign;
 use Carbon\Carbon;
 use App\Models\Role;
 use App\Models\Permissions;
+use Livewire\Attributes\On;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Builder;
-use Livewire\Attributes\On;
 use Rappasoft\LaravelLivewireTables\Views\Column;
 use Rappasoft\LaravelLivewireTables\DataTableComponent;
 
@@ -60,7 +60,7 @@ class AssignByRolesTableController extends DataTableComponent
         $this->setFilterLayoutSlideDown();
         // * ===== Areas ====================================================
         $this->setConfigurableAreas([
-            'after-toolbar' => ['livewire.assign.areas-roles',[
+            'after-toolbar' => ['livewire.assign.roles.areas-roles',[
                 'roles' => $this->roles,
             ]],
         ]);
@@ -90,13 +90,13 @@ class AssignByRolesTableController extends DataTableComponent
             ->html(),
             Column::make('Acción')
                 ->label((
-                    fn($item) => view('livewire.assign.acciones',['item' => $item,'role' => $this->id_role])
+                    fn($item) => view('livewire.assign.roles.acciones',['item' => $item,'role' => $this->id_role])
                 ))
                 ->excludeFromColumnSelect()
             ->html(),
             Column::make('Roles con el permiso')
                 ->label((
-                    fn($item) => view('livewire.assign.count',['item' => $item,'role' => $this->id_role])
+                    fn($item) => view('livewire.assign.roles.count',['item' => $item,'role' => $this->id_role])
                 ))
                 ->excludeFromColumnSelect()
             ->html(),
