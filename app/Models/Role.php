@@ -29,9 +29,4 @@ class Role extends SpatieRole
         return $this->belongsTo(RoleTipo::class, 'id_role_tipo');
     }
 
-    // Por ejemplo, podrías agregar un método para obtener todos los usuarios asignados a un rol específico
-    public function getUsers()
-    {
-        return $this->users()->get();
-    }
 }

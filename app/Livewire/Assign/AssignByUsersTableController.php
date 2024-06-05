@@ -4,8 +4,8 @@ namespace App\Livewire\Assign;
 
 
 use App\Models\Role;
-use App\Models\Permissions;
 use App\Models\User;
+use App\Models\Permissions;
 use Livewire\Attributes\On;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Builder;
