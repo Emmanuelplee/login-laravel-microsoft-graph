@@ -3,7 +3,7 @@
     <!-- [ breadcrumb ] start -->
     <div class="page-header">
       <div class="page-block card mb-0">
-        <div class="card-body">
+        <div class="card-body py-0">
           <div class="col-md-12">
             <div class="page-header-title">
               <div class="d-flex align-items-center">
@@ -13,9 +13,9 @@
                 <span>
                   <a href="#"
                     wire:click.prevent="storeShow()"
-                    class="rounded btn btn-info fs-6"
+                    class="avtar avtar-s bg-info rounded-circle text-white"
                     data-bs-toggle="modal" data-bs-target="#theModal">
-                    <i class="ti ti-plus" style="font-size: 1.5rem;"></i>
+                    <i class="ti ti-plus f-24" style="padding-bottom: 2px;"></i>
                   </a>
                 </span>
               </div>

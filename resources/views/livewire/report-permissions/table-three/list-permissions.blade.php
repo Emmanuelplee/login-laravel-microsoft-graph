@@ -8,14 +8,28 @@
     @endphp
     {{-- <span> <strong>id:</strong>{{ $item->id }} <strong>id_user:</strong> {{ $user_id }}</span> --}}
     @if ($rolFind && count($permissions) > 0)
-        <ul class="list-group list-group-flush">
+
+        <ul class="list-inline mb-0">
+            {{-- @can('Roles_Show') --}}
+                <li class="list-inline-item m-1">
+                <a href="javascript:void(0)"
+                    wire:click.prevent="$parent.tableThreeShow({{ $item->id }})"
+                    wire:loading.class="loading-disabled"
+                    class="avtar avtar-s btn btn-info"
+                    style="width:30px; height:30px;">
+                    <i class="ti ti-eye f-18"></i>
+                </a>
+                </li>
+            {{-- @endcan --}}
+            <li class="list-inline-item m-1">
+                # {{ count($permissions) }}
+            </li>
+        </ul>
+        {{-- <ul class="list-group list-group-flush">
             @foreach ($permissions as $value)
                 <li class="list-group-item">{{ $value }}</li>
             @endforeach
-        </ul>
-        {{-- <div><strong>El user es:</strong> {{ $rolFind->name }}</div> --}}
-        {{-- <div><strong>Permisos por usuario:</strong> {{ json_encode($permissions) }}</div> --}}
-        {{-- <div><strong>Permisos por role:</strong> {{ json_encode($permissions) }}</div> --}}
+        </ul> --}}
     @else
         <span><strong>No tiene permisos asociados.</strong></span>
     @endif

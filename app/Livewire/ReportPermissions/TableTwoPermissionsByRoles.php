@@ -38,6 +38,10 @@ class TableTwoPermissionsByRoles extends DataTableComponent
             'class' => 'bg-info bg-opacity-25 border border-info',
         ]);
         $this->setOfflineIndicatorEnabled();
+
+        // * ===== Multiples tablas misma vista ===============================
+        $this->setQueryStringDisabled();
+        // $this->setColumnSelectStatus(false);
     }
     public function builder(): Builder
     {
@@ -53,7 +57,7 @@ class TableTwoPermissionsByRoles extends DataTableComponent
                 ->sortable()
                 ->excludeFromColumnSelect()
             ->html(),
-            Column::make("Nombre", "name")
+            Column::make("Rol", "name")
                 ->searchable()
                 ->sortable()
             ->html(),

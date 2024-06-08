@@ -38,6 +38,10 @@ class TableOnePermissionsByUsers extends DataTableComponent
             'class' => 'bg-info bg-opacity-25 border border-info',
         ]);
         $this->setOfflineIndicatorEnabled();
+
+        // * ===== Multiples tablas misma vista ===============================
+        $this->setQueryStringDisabled();
+        // $this->setColumnSelectStatus(false);
     }
 
     public function builder(): Builder
@@ -63,11 +67,11 @@ class TableOnePermissionsByUsers extends DataTableComponent
             //     ->sortable(),
             // Column::make("Surname", "surname")
             //     ->sortable(),
-            // Column::make("Email", "email")
-            //     ->sortable()
-            //     ->deselected()
-            // ->html(),
-            Column::make('Rol nombre', 'my_role_is.name')
+            Column::make("Email", "email")
+                ->sortable()
+                ->deselected()
+            ->html(),
+            Column::make('Rol', 'my_role_is.name')
                 ->sortable()
                 ->searchable()
             ->html(),
@@ -79,4 +83,5 @@ class TableOnePermissionsByUsers extends DataTableComponent
             ->html(),
         ];
     }
+
 }

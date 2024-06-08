@@ -3,7 +3,7 @@
   <!-- [ breadcrumb ] start -->
   <div class="page-header">
     <div class="page-block card mb-0">
-      <div class="card-body">
+      <div class="card-body py-0">
         <div class="col-md-12">
           <div class="page-header-title">
             <div class="d-flex align-items-center">
@@ -30,8 +30,7 @@
         {{--
         <div class="card-header">
           <h5>Seccion del Contenido</h5>
-        </div>
-        --}}
+        </div> --}}
         {{-- <div wire:ignore class="table-card user-profile-list card-body"> --}}
         <div class="table-card user-profile-list card-body">
           <div class="table-responsive">

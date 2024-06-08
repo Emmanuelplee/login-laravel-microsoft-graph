@@ -14,6 +14,7 @@ class TableThreePermissionsByRolAndUsers extends DataTableComponent
     public function configure(): void
     {
         $this->setPrimaryKey('id');
+
         $this->setLoadingPlaceholderStatus(true);
         $this->setLoadingPlaceholderBlade('livewire.common.dataTable.loading');
         // * ======= Búsqueda global =========================================
@@ -38,6 +39,10 @@ class TableThreePermissionsByRolAndUsers extends DataTableComponent
             'class' => 'bg-info bg-opacity-25 border border-info',
         ]);
         $this->setOfflineIndicatorEnabled();
+
+        // * ===== Multiples tablas misma vista ===============================
+        $this->setQueryStringDisabled();
+        // $this->setColumnSelectStatus(false);
     }
 
     public function builder(): Builder

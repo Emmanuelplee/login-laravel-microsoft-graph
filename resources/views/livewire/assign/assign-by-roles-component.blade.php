@@ -3,7 +3,7 @@
     <!-- [ breadcrumb ] start -->
     <div class="page-header">
       <div class="page-block card mb-0">
-        <div class="card-body">
+        <div class="card-body py-0">
           <div class="col-md-12">
             <div class="page-header-title">
               <div class="d-flex align-items-center">
