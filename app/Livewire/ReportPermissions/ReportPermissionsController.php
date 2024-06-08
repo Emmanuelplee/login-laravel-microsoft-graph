@@ -75,7 +75,7 @@ class ReportPermissionsController extends Component
     {
         error_log('tableTwoShow');
         $this->roleFind = Role::find($id);
-        if (isset($this->userFind)) {
+        if (isset($this->roleFind)) {
             $this->permissions = $this->roleFind->permissions->pluck('name');// Objeto con collection de permissions
 
             $this->selected_id = $id;

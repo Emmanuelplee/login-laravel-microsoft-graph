@@ -20,8 +20,15 @@
             @endif
 
             @if ($stepTable == 2)
-                <b><p>Rol: {{ $selected_id == 0 ? '' : $selected_id }}</p><hr></b>
-                @include('livewire.report-permissions.table-two.show')
+                <div class="modal-content-sticky">
+                    <div>
+                        <p class="ps-2 py-1">
+                            <b>Id:</b> {{ $selected_id == 0 ? '' : $selected_id }}
+                            <b>Rol:</b> {{ $roleFind ? $roleFind->name :'' }}
+                        </p>
+                    @include('livewire.report-permissions.table-two.show')
+                    </div>
+                </div>
             @endif
 
             @if ($stepTable == 3)
