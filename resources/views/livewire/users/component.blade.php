@@ -3,7 +3,7 @@
   <!-- [ breadcrumb ] start -->
   <div class="page-header">
     <div class="page-block card mb-0">
-      <div class="card-body">
+      <div class="card-body py-0">
         <div class="col-md-12">
           <div class="page-header-title">
             <div class="d-flex align-items-center">
@@ -30,8 +30,7 @@
         {{--
         <div class="card-header">
           <h5>Seccion del Contenido</h5>
-        </div>
-        --}}
+        </div> --}}
         {{-- <div wire:ignore class="table-card user-profile-list card-body"> --}}
         <div class="table-card user-profile-list card-body">
           <div class="table-responsive">
@@ -49,8 +48,7 @@
               </thead>
               <tbody>
                 @foreach ($data as $item)
-                {{-- {{ $item }}
-                --}}
+                {{-- {{ $item }} --}}
                 <tr>
                   <td>{{ $item->id }}</td>
                   <td>
@@ -59,12 +57,6 @@
                         alt="foto perfil"
                         class="{{ ($item->getImageRoute($item->path_foto_perfil) === 'assets/images/default.png') ? '' : 'img-radius' }} align-top m-r-15"
                         style="width: 40px" />
-                      {{--
-                      <div class="d-inline-block">
-                        <h6 class="m-b-0">Quinn Flynn</h6>
-                        <p class="m-b-0 text-primary">Android developer</p>
-                      </div>
-                      --}}
                     </div>
                   </td>
                   <td>{{ $item->email }}</td>
@@ -72,12 +64,22 @@
                     {{ $item->name }} {{ $item->surname }}
                   </td>
                   <td>{{ $item->position->nombre }}</td>
-                  <td>{{ $item->role->name }}</td>
+                  <td>{{ $item->my_role_is->name }}</td>
                   <td>
                     @if ($item->activo == 1)
-                    <span class="badge bg-light-success">Activo</span>
+                        @canany(['Users_Edit','Users_Delete'])
+                            <span class="badge bg-light-success">Activo</span>
+                        @endcanany
+                        @if(auth()->user()->cannot('Users_Edit') && auth()->user()->cannot('Users_Delete'))
+                        <span class="badge bg-light-success" style="opacity: 1">Activo</span>
+                        @endif
                     @else
-                    <span class="badge bg-light-danger">Inactivo</span>
+                        @canany(['Users_Edit','Users_Delete'])
+                            <span class="badge bg-light-danger">Inactivo</span>
+                        @endcanany
+                        @if(auth()->user()->cannot('Users_Edit') && auth()->user()->cannot('Users_Delete'))
+                            <span class="badge bg-light-danger" style="opacity: 1">Inactivo</span>
+                        @endif
                     @endif
                     <div class="overlay-edit">
                       <ul class="list-inline mb-0">
@@ -86,22 +88,26 @@
                             <i class="ti ti-pencil f-18"></i>
                           </a>
                         </li> --}}
-                        <li class="list-inline-item m-0">
-                          <a href="javascript:void(0)"
-                            wire:click.prevent="edit({{ $item->id }})"
-                            class="avtar avtar-s btn btn-primary">
-                            <i class="ti ti-pencil f-18"></i>
-                          </a>
-                        </li>
-                        <li class="list-inline-item m-0">
-                          <a href="javascript:void(0)"
-                            {{-- wire:confirm="¿CONFIRMAS ELINIMAR EL REGISTRO?" --}}
-                            wire:click="$dispatch('Confirm',{ id: {{ $item->id }},eventName:'destroy',text:'¿ESTA SEGURO DE ELINIMAR EL REGISTRO?'})"
-                            {{-- onclick="Confirm('{{$item->id}}','destroy','¿CONFIRMAS ELINIMAR EL REGISTRO?')" --}}
-                            class="avtar avtar-s btn bg-white btn-link-danger">
-                            <i class="ti ti-trash f-18"></i>
-                          </a>
-                        </li>
+                        @can('Users_Edit')
+                            <li class="list-inline-item m-0">
+                            <a href="javascript:void(0)"
+                                wire:click.prevent="edit({{ $item->id }})"
+                                class="avtar avtar-s btn btn-primary">
+                                <i class="ti ti-pencil f-18"></i>
+                            </a>
+                            </li>
+                        @endcan
+                        @can('Users_Delete')
+                            <li class="list-inline-item m-0">
+                            <a href="javascript:void(0)"
+                                {{-- wire:confirm="¿CONFIRMAS ELINIMAR EL REGISTRO?" --}}
+                                wire:click="$dispatch('Confirm',{ id: {{ $item->id }},eventName:'destroy',text:'¿ESTA SEGURO DE ELINIMAR EL REGISTRO?'})"
+                                {{-- onclick="Confirm('{{$item->id}}','destroy','¿CONFIRMAS ELINIMAR EL REGISTRO?')" --}}
+                                class="avtar avtar-s btn bg-white btn-link-danger">
+                                <i class="ti ti-trash f-18"></i>
+                            </a>
+                            </li>
+                        @endcan
                       </ul>
                     </div>
                   </td>
@@ -120,6 +126,11 @@
   <!-- Modal id="#theModal" -->
   @include('livewire.users.form')
 
+  <style>
+    .pc-footer {
+        margin-left: 0;
+    }
+  </style>
 </div>
 <!-- [ Pc Content ] end -->
 @script

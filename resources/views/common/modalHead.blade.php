@@ -3,7 +3,7 @@
     id="theModal"
     tabindex="-1"
     role="dialog">
-  <div class="modal-dialog modal-xl" role="document">
+  <div class="modal-dialog modal-xl modal-dialog-scrollable" role="document">
   {{-- <div class="modal-dialog modal-lg" role="document"> --}}
     <div class="modal-content">
       <div class="modal-header">
@@ -15,7 +15,12 @@
           @endif
         </h5>
         {{-- <h6 class="text-center text-warning" wire:loading>POR FAVOR ESPERE...</h6> --}}
-        <h6 class="text-end text-warning col-5 m-0" wire:loading>PROCESANDO ESPERE...</h6>
+        <h6 class="text-end text-warning col-5 m-0" wire:loading>
+            <div wire:loading class="text-info">
+                <div class="spinner-border ms-3" role="status"></div>
+                {{-- <div class="">Cargando...</div> --}}
+            </div>
+        </h6>
         <button type="button"
           {{-- wire:click="resetUI()" --}}
           class="btn-close col-1"

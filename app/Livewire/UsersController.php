@@ -41,7 +41,6 @@ class UsersController extends Component
         // $this->selected_id      = 0;
         $this->id_puesto        = 'ELEGIR';
         $this->id_role          = 'ELEGIR';
-        // $this->email            = 'test@test.com';
 
         $this->roles            = [];
         $this->positions        = [];
@@ -74,9 +73,10 @@ class UsersController extends Component
 	{
         $data = User::query()->select('id','alias','name','surname','email','path_foto_perfil',
             'inicio_sesion','ip_equipo','activo','tipo','id_role','id_puesto')
-            ->with('role:id,name,status,id_role_tipo','position:id,nombre,descripcion')
+            ->with('my_role_is:id,name,status,id_role_tipo','position:id,nombre,descripcion')
             ->orderBy('id', 'asc')
-			->paginate($this->pagination);
+            ->get();
+			// ->paginate($this->pagination);
 
         $this->roles = Role::orderBy('name', 'asc')->get();
         $this->positions = DB::table('puestos')->select(
@@ -113,7 +113,7 @@ class UsersController extends Component
 
             $this->id_puesto    = $user->id_puesto;
             $this->id_role      = $user->id_role;
-            $this->dispatch('item-modal-edit', title: 'Mostar modal del Registro!');
+            $this->dispatch('item-modal-edit', title: 'Mostrar modal del Registro!');
             return;
         }else {
             $this->dispatch('item-error', 'No existe el registro!');
@@ -165,6 +165,9 @@ class UsersController extends Component
             'id_puesto' => $this->id_puesto,
             'id_role'   => $this->id_role,
         ]);
+        if($this->id_role != 'ELEGIR'){
+            $user->syncRoles(intval($this->id_role));
+        }
         $this->resetUI();
         $this->dispatch('item-modal-updated','Registro Actualizado!');
 

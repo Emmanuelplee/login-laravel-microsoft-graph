@@ -42,7 +42,7 @@ class PermissionsTableController extends DataTableComponent
         // $this->setSearchBlur(); // Búsqueda una vez que cambie el foco
 
         //========= Paginado ===============================================================
-        $this->setPageName('rolePage');
+        $this->setPageName('permisosPage');
         $this->setPerPageVisibilityStatus(true);// variable de pagina en la url
         $this->setPerPageAccepted([25, 50, 100]);// array de registros a visualizar
         $this->setPerPageFieldAttributes([
