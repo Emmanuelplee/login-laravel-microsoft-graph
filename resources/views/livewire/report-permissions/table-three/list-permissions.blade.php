@@ -22,7 +22,7 @@
                 </li>
             {{-- @endcan --}}
             <li class="list-inline-item m-1">
-                # {{ count($permissions) }}
+                # {{ count($item['users']) }} usuarios # {{ count($permissions) }} permisos
             </li>
         </ul>
         {{-- <ul class="list-group list-group-flush">
