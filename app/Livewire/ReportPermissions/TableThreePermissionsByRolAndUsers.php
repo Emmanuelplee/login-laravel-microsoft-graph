@@ -60,7 +60,7 @@ class TableThreePermissionsByRolAndUsers extends DataTableComponent
                 ->sortable()
                 ->excludeFromColumnSelect()
             ->html(),
-            Column::make("Nombre", "name")
+            Column::make("Rol", "name")
                 ->searchable()
                 ->sortable()
             ->html(),
@@ -68,13 +68,13 @@ class TableThreePermissionsByRolAndUsers extends DataTableComponent
             //     ->sortable(),
             // Column::make("Id role tipo", "id_role_tipo")
             //     ->sortable(),
-            Column::make('Usuarios')
-                ->label((
-                    fn($item) => view('livewire.report-permissions.table-three.list-users',['item' => $item,])
-                ))
-                ->excludeFromColumnSelect()
-            ->html(),
-            Column::make('permisos')
+            // Column::make('Usuarios')
+            //     ->label((
+            //         fn($item) => view('livewire.report-permissions.table-three.list-users',['item' => $item,])
+            //     ))
+            //     ->excludeFromColumnSelect()
+            // ->html(),
+            Column::make('Usuarios y permisos')
                 ->label((
                     fn($item) => view('livewire.report-permissions.table-three.list-permissions',['item' => $item,])
                 ))

@@ -38,6 +38,10 @@ class TableFourUsersByPermission extends DataTableComponent
             'class' => 'bg-info bg-opacity-25 border border-info',
         ]);
         $this->setOfflineIndicatorEnabled();
+
+        // * ===== Multiples tablas misma vista ===============================
+        $this->setQueryStringDisabled();
+        // $this->setColumnSelectStatus(false);
     }
 
     public function builder(): Builder
@@ -56,13 +60,13 @@ class TableFourUsersByPermission extends DataTableComponent
                 ->sortable()
                 ->excludeFromColumnSelect()
             ->html(),
-            Column::make("Nombre", "name")
+            Column::make("Permiso", "name")
                 ->searchable()
                 ->sortable()
             ->html(),
             Column::make("Descripcion", "description")
                 ->sortable(),
-            Column::make('Usuarios y roles')
+            Column::make('Usuarios con rol')
                 ->label((
                     fn($item) => view('livewire.report-permissions.table-four.list-users',['item' => $item,])
                 ))

@@ -2,6 +2,7 @@
 
 namespace App\Livewire\ReportPermissions;
 
+use App\Models\Permissions;
 use App\Models\Role;
 use App\Models\User;
 use Livewire\Component;
@@ -22,6 +23,7 @@ class ReportPermissionsController extends Component
     public $stepTable;
     public $userFind, $permissionsUsers;
     public $roleFind, $permissions;
+    public $permissionFind, $usersWithPermission;
 
 
     public function mount()
@@ -34,7 +36,7 @@ class ReportPermissionsController extends Component
 
         $this->showModal        = false;
 
-        $this->stepTable        = 1;
+        $this->stepTable        = 1; // Mostrar tableOne por defecto
         // tabla One
         $this->userFind         = '';
         $this->permissionsUsers = [];
@@ -42,8 +44,11 @@ class ReportPermissionsController extends Component
         $this->roleFind         = '';
         $this->permissions      = [];
         // table three mismos two
-
+            // $this->roleFind         = '';
+            // $this->permissions      = [];
         // tabla four
+        $this->permissionFind         = '';
+        $this->usersWithPermission = [];
     }
     public function render()
     {
@@ -75,7 +80,7 @@ class ReportPermissionsController extends Component
     {
         error_log('tableTwoShow');
         $this->roleFind = Role::find($id);
-        if (isset($this->userFind)) {
+        if (isset($this->roleFind)) {
             $this->permissions = $this->roleFind->permissions->pluck('name');// Objeto con collection de permissions
 
             $this->selected_id = $id;
@@ -93,12 +98,34 @@ class ReportPermissionsController extends Component
     {
         error_log('tableThreeShow');
         $this->roleFind = Role::find($id);
-        if (isset($this->userFind)) {
+        if (isset($this->roleFind)) {
             $this->permissions = $this->roleFind->permissions->pluck('name');// Objeto con collection de permissions
 
             $this->selected_id = $id;
             $this->showModal = true;
             $this->stepTable = 3;
+            $this->dispatch('item-modal-edit', title: '¡Mostrar modal show!');
+            return;
+        }else{
+            $this->dispatch('item-error', '¡No existe el registro!');
+            return;
+        }
+
+    }
+    public function tableFourShow($id)
+    {
+        error_log('tableFourShow');
+        $this->permissionFind = Permissions::find($id);
+        if (isset($this->permissionFind)) {
+            $item = $this->permissionFind;
+            $this->usersWithPermission = User::query()->with('roles:id,name')
+            ->whereHas('roles.permissions', function ($query) use ($item) {
+                $query->where('name', $item->name);
+            })->get();
+
+            $this->selected_id = $id;
+            $this->showModal = true;
+            $this->stepTable = 4;
             $this->dispatch('item-modal-edit', title: '¡Mostrar modal show!');
             return;
         }else{
@@ -121,5 +148,11 @@ class ReportPermissionsController extends Component
         //tabla Two
         $this->roleFind         = '';
         $this->permissions      = [];
+        // table three mismos two
+            // $this->roleFind         = '';
+            // $this->permissions      = [];
+        // tabla four
+        $this->permissionFind   = '';
+        $this->usersWithPermission = [];
     }
 }
