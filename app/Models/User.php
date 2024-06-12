@@ -14,11 +14,16 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
+use Spatie\Activitylog\Traits\LogsActivity;
+use Spatie\Activitylog\LogOptions;
+
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
     use HasRoles;
     use SoftDeletes;
+
+    use LogsActivity;
 
     /**
      * The attributes that are mass assignable.
@@ -40,6 +45,8 @@ class User extends Authenticatable
         'id_role',
         'id_puesto'
     ];
+
+    protected $logName = 'user';
 
     /**
      * The attributes that should be hidden for serialization.
@@ -76,6 +83,7 @@ class User extends Authenticatable
             return 'assets/images/default.png';
         }
     }
+
     // MARK: Relaciones
     // El usuario tiene un rol
     public function my_role_is(): BelongsTo
@@ -86,5 +94,15 @@ class User extends Authenticatable
     public function position(): BelongsTo
     {
         return $this->belongsTo(Puesto::class,'id_puesto');
+    }
+
+    public function getActivitylogOptions(): LogOptions
+    {
+        return LogOptions::defaults()
+            ->logOnly(['name','surname','inicio_sesion','ip_equipo','activo','id_role','id_puesto'])
+            ->dontLogIfAttributesChangedOnly(['updated_at'])
+            ->useLogName('user')
+            ->setDescriptionForEvent(fn(string $eventName) => "El usuario ha sido {$eventName}")
+            ->logOnlyDirty();// Solo registra los campos realmente modificados
     }
 }

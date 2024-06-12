@@ -157,6 +157,21 @@ class UsersController extends Component
         $this->validate($rules, $messages);
 
         $user = User::find($this->selected_id);
+
+        // ****************************************************************
+        // activity()->log(json_encode([
+        //     'user_id' => $this->selected_id,
+        //     'description' => 'Se ha actualizado el usuario',
+        //     'old_value' => [
+        //         'name' => $user->getOriginal('name'),
+        //         'email' => $user->getOriginal('email'),
+        //     ],
+        //     'new_value' => [
+        //         'name' => $this->name,
+        //         'email' => $this->email,
+        //     ],]
+        // ));
+
         $user->update([
             'name'      => $this->name,
             'surname'   => $this->surname,
@@ -168,6 +183,8 @@ class UsersController extends Component
         if($this->id_role != 'ELEGIR'){
             $user->syncRoles(intval($this->id_role));
         }
+        activity('user')->log('Registro actualización');
+
         $this->resetUI();
         $this->dispatch('item-modal-updated','Registro Actualizado!');
 
