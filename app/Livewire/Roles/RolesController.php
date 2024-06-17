@@ -143,10 +143,10 @@ class RolesController extends Component
             $this->status       = $item->status == 1 ? true : false;
             $this->id_role_tipo = $item->id_role_tipo;
 
-            $this->dispatch('item-modal-edit', title: 'Mostrar modal edit!');
+            $this->dispatch('item-modal-edit', title: '¡Mostrar modal edit!');
             return;
         }else {
-            $this->dispatch('item-error', 'No existe el registro!');
+            $this->dispatch('item-error', '¡No existe el registro!');
             return;
         }
     }
@@ -170,13 +170,19 @@ class RolesController extends Component
         $this->validate($rules, $messages);
 
         $item = Role::find($this->selected_id);
+
+        if (($item->name == 'Desarrollador'  && $this->name != $item->name) || ($item->name == 'Administrador'  && $this->name != $item->name)) {
+            $this->dispatch('item-error', '¡No  se recomienda cambiar el nombre de este rol!');
+            return;
+        }
+
         $item->update([
             'name'          => $this->name,
             'status'        => $this->status,
             'id_role_tipo'  => $this->id_role_tipo,
         ]);
         // $this->resetUI();
-        $this->dispatch('item-modal-updated','Registro Actualizado!');
+        $this->dispatch('item-modal-updated','¡Registro Actualizado!');
         $this->refreshChildTable();
 
     }
