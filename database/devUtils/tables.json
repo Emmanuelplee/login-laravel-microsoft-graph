@@ -1,0 +1,38 @@
+[
+    {
+     "name": "usuario",
+     "description": "tabla usuario"
+    },
+    {
+     "name": "rol",
+     "description": "tabla rol"
+    },
+    {
+     "name": "permiso",
+     "description": "tabla permiso"
+    },
+    {
+     "name": "area",
+     "description": "tabla area"
+    },
+    {
+     "name": "cuenta",
+     "description": "tabla cuenta"
+    },
+    {
+     "name": "estado",
+     "description": "tabla estado"
+    },
+    {
+     "name": "puesto",
+     "description": "tabla puesto"
+    },
+    {
+     "name": "sucursal",
+     "description": "tabla sucursal"
+    },
+    {
+     "name": "asignar permiso",
+     "description": "tabla asignar permiso"
+    }
+]

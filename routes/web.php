@@ -8,6 +8,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
 use App\Livewire\Assign\AssignByRolesController;
 use App\Livewire\Assign\AssignByUsersController;
+use App\Livewire\ActivityLog\ActivityLogController;
 use App\Livewire\Permissions\PermissionsController;
 use App\Livewire\ReportPermissions\ReportPermissionsController;
 
@@ -55,6 +56,7 @@ Route::group(['middleware' => ['web', 'MsGraphAuthenticated']], function(){
     Route::get('/usuarios',UsersController::class)->middleware('permission:Users_Index');
     Route::get('/roles', RolesController::class)->middleware('permission:Roles_Index');
     Route::get('/reporte-permisos',ReportPermissionsController::class)->middleware('permission:Report_Permissions_Index');
+    Route::get('/registro-actividades',ActivityLogController::class);
 });
 
 // Route::view('test', 'welcome-test');

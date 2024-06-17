@@ -2,11 +2,12 @@
 
 namespace App\Models;
 
+use App\Models\User;
+use Jenssegers\Agent\Agent;
 use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Spatie\Activitylog\Models\Activity as SpatieActivity;
-use Jenssegers\Agent\Agent;
 
 class CustomActivity extends SpatieActivity
 {
@@ -14,7 +15,19 @@ class CustomActivity extends SpatieActivity
 
     protected $table = 'activity_log';
 
-    // protected static $logAttributes = ['ip', 'host', 'browser'];
+    protected $fillable = [
+        'log_name',
+        'description',
+        'subject_type',
+        'event',
+        'subject_id',
+        'causer_type',
+        'causer_id',
+        'properties',
+        'ip',
+        'host',
+        'browser',
+    ];
 
     public static function boot()
     {
@@ -39,5 +52,10 @@ class CustomActivity extends SpatieActivity
     public function tapActivity(Activity $activity, string $eventName)
     {
         //
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'causer_id');
     }
 }

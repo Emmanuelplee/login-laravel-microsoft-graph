@@ -111,8 +111,46 @@ class AssignByRolesTableController extends DataTableComponent
             return;
         }
 
+        $logProperties = [];
+        // Obtener permisos que ya tiene el rol
+        $currentPermissions = DB::table('role_has_permissions')
+            ->where('role_id', $this->id_role)
+            ->pluck('permission_id')
+            ->toArray();
+        // dd($currentPermissions);
+        // Obtener todos los permisos
+        $allPermissions = DB::table('permissions')->where('name','<>','Permissions_Index')
+            ->pluck('id')
+            ->toArray();
+        // dd($allPermissions);
+        $attributes = [];
+        $old=[];
+        foreach ($allPermissions as $permissionId) {
+            if (in_array($permissionId, $currentPermissions)) {
+                // permisos que tiene asignados
+                $name = Permissions::findById($permissionId)->name;
+                $attributes[$name] = 0;
+                $old[$name] = 1;
+            }
+        }
+        // Crear el formato de log deseado
+        $logProperties = [
+            'attributes' => $attributes,
+            'old' => $old,
+        ];
+        // dd($logProperties);
+
         $role = Role::find($this->id_role);
         $role->syncPermissions([0]);
+
+        // * Registrar la actividad ===================================================
+        activity('asignar permiso')
+        ->causedBy(auth()->user())
+        ->performedOn($role)
+        ->withProperties($logProperties) // Registrar solo los datos modificados
+        ->event('RemoveAllPermissions')
+        ->log('Registro de asignar todos los permisos');
+
         $this->dispatch('remove-all',"Se revocaron todos lo permisos al role $role->name");
     }
     #[On('EventSyncAll')]
@@ -123,23 +161,88 @@ class AssignByRolesTableController extends DataTableComponent
             $this->dispatch('sync-error','Selecciona un rol valido');
             return;
         }
+
+        $logProperties = [];
+        // Obtener permisos que ya tiene el rol
+        $currentPermissions = DB::table('role_has_permissions')
+            ->where('role_id', $this->id_role)
+            ->pluck('permission_id')
+            ->toArray();
+        // dd($currentPermissions);
+        // Obtener todos los permisos
+        $allPermissions = DB::table('permissions')->where('name','<>','Permissions_Index')
+            ->pluck('id')
+            ->toArray();
+        // dd($allPermissions);
+        $attributes = [];
+        $old=[];
+        foreach ($allPermissions as $permissionId) {
+            if (in_array($permissionId, $currentPermissions)) {
+                // Ya tiene asignado el permiso
+            }else {
+                $name = Permissions::findById($permissionId)->name;
+                $attributes[$name] = 1;
+                $old[$name] = 0;
+            }
+        }
+        // Crear el formato de log deseado
+        $logProperties = [
+            'attributes' => $attributes,
+            'old' => $old,
+        ];
+        // dd($logProperties);
+
         $role = Role::find($this->id_role);
         $permisos = Permissions::where('name','<>','Permissions_Index')->pluck('id')->toArray();
         $role->syncPermissions($permisos);
+
+        // * Registrar la actividad ===================================================
+        activity('asignar permiso')
+        ->causedBy(auth()->user())
+        ->performedOn($role)
+        ->withProperties($logProperties) // Registrar solo los datos modificados
+        ->event('SyncAllPermissions')
+        ->log('Registro de asignar todos los permisos');
+
         $this->dispatch('sync-all',"Se sincronizaron todos lo permisos al role $role->name");
     }
     public function syncPermiso($state, $permisoName)
     {
         error_log('syncPermiso');
         if ($this->id_role != 'ELEGIR') {
+            // dd($state);
             $roleName = Role::find($this->id_role);
+
+            $logProperties = [];
             if ($state) {
                 $roleName->givePermissionTo($permisoName);
+
+                // Crear el formato de log deseado
+                $logProperties = [
+                    'attributes' => [$permisoName => 1],
+                    'old' => [$permisoName => 0],
+                ];
+
                 $this->dispatch('sync-permiso', "Permiso asignado al rol: $roleName->name");
             }else {
                 $roleName->revokePermissionTo($permisoName);
+
+                // Crear el formato de log deseado
+                $logProperties = [
+                    'attributes' => [$permisoName => 0],
+                    'old' => [$permisoName => 1],
+                ];
+
                 $this->dispatch('sync-permiso', "Permiso revocado al rol: $roleName->name");
             }
+            // * Registrar la actividad ===================================================
+            activity('asignar permiso')
+            ->causedBy(auth()->user())
+            ->performedOn($roleName)
+            ->withProperties($logProperties) // Registrar solo los datos modificados
+            ->event('updated')
+            ->log('Registro de asignar permiso actualizado');
+            // $this->dispatch('ActivityLog',[$roleName]); // Un refresh del activitylog
         }else {
             $this->dispatch('sync-error','Selecciona un rol valido');
         }

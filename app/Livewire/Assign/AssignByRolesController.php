@@ -4,6 +4,7 @@ namespace App\Livewire\Assign;
 
 use Livewire\Component;
 use App\Models\Permissions;
+use Livewire\Attributes\On;
 use Illuminate\Support\Facades\DB;
 
 class AssignByRolesController extends Component
@@ -45,4 +46,11 @@ class AssignByRolesController extends Component
             ->extends('layouts.theme.app')
             ->section('content');
     }
+
+    // #[On('ActivityLog')]
+    // public function ActivityLogRefresh($data)
+    // {
+    //     error_log('ActivityLogRefresh');
+    //     error_log(json_encode($data));
+    // }
 }

@@ -2,8 +2,8 @@
 
 namespace App\Livewire\Permissions;
 
-use App\Models\Permissions;
 use Livewire\Component;
+use App\Models\Permissions;
 use Livewire\Attributes\On;
 use Livewire\WithPagination;
 use Livewire\WithFileUploads;

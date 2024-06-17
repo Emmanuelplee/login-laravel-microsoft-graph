@@ -2,10 +2,10 @@
 
 namespace App\Livewire\ReportPermissions;
 
-use App\Models\Permissions;
 use App\Models\Role;
 use App\Models\User;
 use Livewire\Component;
+use App\Models\Permissions;
 use Livewire\Attributes\On;
 use Livewire\WithPagination;
 use Livewire\WithFileUploads;

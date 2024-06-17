@@ -158,36 +158,50 @@ class UsersController extends Component
 
         $user = User::find($this->selected_id);
 
-        // ****************************************************************
-        // activity()->log(json_encode([
-        //     'user_id' => $this->selected_id,
-        //     'description' => 'Se ha actualizado el usuario',
-        //     'old_value' => [
-        //         'name' => $user->getOriginal('name'),
-        //         'email' => $user->getOriginal('email'),
-        //     ],
-        //     'new_value' => [
-        //         'name' => $this->name,
-        //         'email' => $this->email,
-        //     ],]
-        // ));
-
-        $user->update([
+        // Obtener los datos originales
+        $originalData = $user->only(['name', 'surname', 'activo', 'id_puesto', 'id_role']);
+        // Datos actualizados
+        $updatedData = [
             'name'      => $this->name,
             'surname'   => $this->surname,
             // 'email'     => $this->email,
             'activo'    => $this->activo,
             'id_puesto' => $this->id_puesto,
             'id_role'   => $this->id_role,
-        ]);
-        if($this->id_role != 'ELEGIR'){
-            $user->syncRoles(intval($this->id_role));
+        ];
+
+        // Obtener solo los datos modificados
+        $dirtyData = array_diff_assoc($updatedData, $originalData);
+
+        if (!empty($dirtyData)) {
+            // * Deshabilitar el logging temporalmente ================================
+            activity()->disableLogging();
+
+            // Actualizar el usuario solo con los datos modificados
+            $user->update($dirtyData);
+            // Sincronizar roles si se ha cambiado el rol
+            if($this->id_role != 'ELEGIR'){
+                $user->syncRoles(intval($this->id_role));
+            }
+            // * Habilitar el logging nuevamente =====================================
+            activity()->enableLogging();
+
+            // Crear el formato de log deseado
+            $logProperties = [
+                'attributes' => $dirtyData,
+                'old' => array_intersect_key($originalData, $dirtyData),
+            ];
+            // Registrar la actividad
+            activity('usuario')
+                ->causedBy(auth()->user())
+                ->performedOn($user)
+                ->withProperties($logProperties) // Registrar solo los datos modificados
+                ->event('updated')
+                ->log('Registro del usuario actualizado');
         }
-        activity('user')->log('Registro actualización');
 
         $this->resetUI();
-        $this->dispatch('item-modal-updated','Registro Actualizado!');
-
+        $this->dispatch('item-modal-updated', 'Registro Actualizado!');
     }
     #[On('destroy')]
     public function destroy($id)

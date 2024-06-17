@@ -12,6 +12,7 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 use Spatie\Activitylog\Traits\LogsActivity;
@@ -45,8 +46,6 @@ class User extends Authenticatable
         'id_role',
         'id_puesto'
     ];
-
-    protected $logName = 'user';
 
     /**
      * The attributes that should be hidden for serialization.
@@ -95,13 +94,17 @@ class User extends Authenticatable
     {
         return $this->belongsTo(Puesto::class,'id_puesto');
     }
-
+    // El usuario pertenece a un solo registro de actividades
+    // public function user(): HasOne
+    // {
+    //     return $this->hasOne(CustomActivity::class,'id');
+    // }
     public function getActivitylogOptions(): LogOptions
     {
         return LogOptions::defaults()
             ->logOnly(['name','surname','inicio_sesion','ip_equipo','activo','id_role','id_puesto'])
             ->dontLogIfAttributesChangedOnly(['updated_at'])
-            ->useLogName('user')
+            ->useLogName('usuario')
             ->setDescriptionForEvent(fn(string $eventName) => "El usuario ha sido {$eventName}")
             ->logOnlyDirty();// Solo registra los campos realmente modificados
     }

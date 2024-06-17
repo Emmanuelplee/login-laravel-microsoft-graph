@@ -44,6 +44,11 @@
                                 <a class="pc-link" href="{{ url('/reporte-permisos') }}">Reportes Permisos</a>
                             </li>
                         @endcan
+                        {{-- @can('Report_Permissions_Index') --}}
+                            <li class="pc-item">
+                                <a class="pc-link" href="{{ url('/registro-actividades') }}">Registro Actividades</a>
+                            </li>
+                        {{-- @endcan --}}
                     </ul>
                 </li>
                 @can('Assign_Index')

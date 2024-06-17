@@ -39,7 +39,7 @@ class Role extends SpatieRole
         return LogOptions::defaults()
             ->logOnly(['name','status','id_role_tipo'])
             ->dontLogIfAttributesChangedOnly(['updated_at'])
-            ->useLogName('role')
+            ->useLogName('rol')
             ->setDescriptionForEvent(fn(string $eventName) => "El rol ha sido {$eventName}")
             ->logOnlyDirty();// Solo registra los campos realmente modificados
     }
