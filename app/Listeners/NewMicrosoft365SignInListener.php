@@ -34,6 +34,8 @@ class NewMicrosoft365SignInListener
             'inicio_sesion' => Carbon::now()->format('H:i:s'),
             'password' => '',
         ]);
+        // * Deshabilitar para no generar activityLog
+        activity()->disableLogging();
         //Actualizar ip_equipo si es diferente de la bd
         $ip = $this->request->ip();
         if ($user->ip_equipo != $ip) {
