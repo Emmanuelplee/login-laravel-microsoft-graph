@@ -27,11 +27,8 @@ class ExcelTableOneExport implements FromCollection, WithHeadings, WithCustomSta
 {
     public $data;
 
-    protected $permissions;
-
-    public function __construct($data, $permissions) {
+    public function __construct($data) {
         $this->data = $data;
-        $this->permissions = $permissions;
     }
     /**
     * @return \Illuminate\Support\Collection
@@ -76,6 +73,7 @@ class ExcelTableOneExport implements FromCollection, WithHeadings, WithCustomSta
             // ]],
             'A:H' => ['alignment' => [
                 'horizontal'   => Alignment::HORIZONTAL_CENTER,
+                'vertical'   => Alignment::VERTICAL_CENTER,
             ]],
         ];
     }

@@ -3,8 +3,10 @@
 namespace App\Livewire\ReportPermissions;
 
 use App\Models\Role;
+use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Database\Eloquent\Builder;
 use Rappasoft\LaravelLivewireTables\Views\Column;
+use App\Exports\ReportPermissions\ExcelTableTwoExport;
 use Rappasoft\LaravelLivewireTables\DataTableComponent;
 
 class TableTwoPermissionsByRoles extends DataTableComponent
@@ -70,5 +72,41 @@ class TableTwoPermissionsByRoles extends DataTableComponent
                 ->excludeFromColumnSelect()
             ->html(),
         ];
+    }
+    public function bulkActions(): array
+    {
+        return [
+            'exportExcel' => 'EXCEL',
+        ];
+    }
+
+    public function exportExcel()
+    {
+        error_log('exportExcel');
+        $excelName = 'reporte-permisos-tabla-dos_'.now()->format('Y_m_d_H_i').'.xlsx';
+        $items = $this->getSelected();
+        $data = $this->dataExcel($items);
+
+        $this->clearSelected();
+
+        return Excel::download(new ExcelTableTwoExport($data), $excelName);
+    }
+
+    public function dataExcel($items){
+        $data = [];
+        if (isset($items)) {
+            $data = Role::query()
+            ->with('permissions:id,name')
+            ->select('roles.*')
+            // ->where('roles.name','<>','Permissions_Index')
+            ->whereIn('roles.id', $items)
+            ->get()
+            ->map(function ($role){
+                $role->permissions = $role->permissions->pluck('name')->toArray();
+                return $role;
+            });
+        }
+        // dd($data);
+        return $data;
     }
 }

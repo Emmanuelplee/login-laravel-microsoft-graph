@@ -3,7 +3,6 @@
 namespace App\Livewire\ReportPermissions;
 
 use App\Models\User;
-use App\Models\Permissions;
 use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Database\Eloquent\Builder;
 use Rappasoft\LaravelLivewireTables\Views\Column;
@@ -102,9 +101,8 @@ class TableOnePermissionsByUsers extends DataTableComponent
         $data = $this->dataExcel($items);
 
         $this->clearSelected();
-        // Obtén la lista de permisos
-        $permissions = Permissions::pluck('name')->toArray();
-        return Excel::download(new ExcelTableOneExport($data, $permissions), $excelName);
+
+        return Excel::download(new ExcelTableOneExport($data), $excelName);
     }
 
     public function dataExcel($items){
