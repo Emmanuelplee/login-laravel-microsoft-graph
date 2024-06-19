@@ -3,8 +3,11 @@
 namespace App\Livewire\ReportPermissions;
 
 use App\Models\User;
+use App\Models\Permissions;
+use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Database\Eloquent\Builder;
 use Rappasoft\LaravelLivewireTables\Views\Column;
+use App\Exports\ReportPermissions\ExcelTableOneExport;
 use Rappasoft\LaravelLivewireTables\DataTableComponent;
 
 class TableOnePermissionsByUsers extends DataTableComponent
@@ -46,7 +49,7 @@ class TableOnePermissionsByUsers extends DataTableComponent
 
     public function builder(): Builder
     {
-        error_log('builder');
+        error_log('builderTableOne');
         $query = User::query()
             ->with('my_role_is:id,name');
         return $query;
@@ -82,6 +85,50 @@ class TableOnePermissionsByUsers extends DataTableComponent
                 ->excludeFromColumnSelect()
             ->html(),
         ];
+    }
+    public function bulkActions(): array
+    {
+        return [
+            'exportExcel' => 'EXCEL',
+        ];
+    }
+
+    public function exportExcel()
+    {
+        // User::whereIn('id', $this->getSelected())->update(['active' => true]);
+        error_log('exportExcel');
+        $excelName = 'reporte-permisos-tabla-uno_'.now()->format('Y_m_d_H_i').'.xlsx';
+        $items = $this->getSelected();
+        $data = $this->dataExcel($items);
+
+        $this->clearSelected();
+        // Obtén la lista de permisos
+        $permissions = Permissions::pluck('name')->toArray();
+        return Excel::download(new ExcelTableOneExport($data, $permissions), $excelName);
+    }
+
+    public function dataExcel($items){
+        $data = [];
+        if (isset($items)) {
+            $data = User::join('roles as r','r.id','users.id_role')
+            ->with('roles.permissions')
+            ->select('users.*','r.name as role')
+            ->whereIn('users.id', $items)
+            ->get()
+            ->map(function($user) {
+                $user->permissions = $user->roles->flatMap(function($role) {
+                    return $role->permissions->pluck('name');
+                })->unique()->values()->toArray();
+                return $user;
+            });
+            // $data = User::query()
+            // ->with('roles:id,name','roles.permissions:id,name')
+            // ->whereIn('users.id', $items)
+            // ->where('roles.permissions.name','<>','Permissions_Index')
+            // ->get();
+        }
+        // dd($data);
+        return $data;
     }
 
 }
