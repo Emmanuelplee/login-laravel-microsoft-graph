@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Exports\ReportPermissions;
+namespace App\Exports;
 
 use PhpOffice\PhpSpreadsheet\Shared\Date; // garantizar sea fecha
 use PhpOffice\PhpSpreadsheet\Style\Fill;
@@ -22,7 +22,7 @@ use Maatwebsite\Excel\Concerns\ShouldAutoSize; //ancho de columnas automático
 use PhpOffice\PhpSpreadsheet\Worksheet\Worksheet;// Para Interactuar con style
 
 
-class ExcelTableFourExport implements FromCollection, WithHeadings, WithCustomStartCell, WithTitle,WithStyles
+class ExcelActivityLogExport implements FromCollection, WithHeadings, WithCustomStartCell, WithTitle,WithStyles
                                     ,ShouldAutoSize, WithColumnWidths,WithColumnFormatting, WithMapping
 {
     public $data;
@@ -36,13 +36,14 @@ class ExcelTableFourExport implements FromCollection, WithHeadings, WithCustomSt
     public function collection()
     {
         $data = $this->data;
+        // dd($data);
         return $data;
         // return Category::all();
     }
     //titulo de la hoja en propiedades
     public function title(): string
     {
-        return 'Usuarios por permiso';
+        return 'Reporte de actividades';
     }
     public function startCell(): string
     {
@@ -51,14 +52,17 @@ class ExcelTableFourExport implements FromCollection, WithHeadings, WithCustomSt
     //cabeceras del excel
     public function headings() : array
     {
-        return ["ID",'PERMISO','DESCRIPCION','FECHA CREADO','USUARIOS CON ROL'];
+        return ["ID",'TABLA','DESCRIPCION','TIPO MODELO','ID MODELO',
+                // 'NOMBRE'
+                'EVENTO','MODELO CAUSANTE','ID CAUSANTE','NOMBRE USUARIO',
+                'PROPIEDADES','IP','HOST','NAVEGADOR','FECHA CREADO'];
     }
     public function styles(Worksheet $sheet)
     {
-        $sheet->getStyle('E:E')->getAlignment()->setWrapText(true);
+        $sheet->getStyle('J:J')->getAlignment()->setWrapText(true);
 
         return [
-            'A1:E1' => ['font' => [
+            'A1:N1' => ['font' => [
                     'bold' => true,
                     'color' => ['rgb' => 'FFFFFF']
                     ],
@@ -68,7 +72,7 @@ class ExcelTableFourExport implements FromCollection, WithHeadings, WithCustomSt
                     ],
                     'allBorders' => ['borderStyle' => Border::BORDER_THIN],
                 ],
-            'A:E' => ['alignment' => [
+            'A:N' => ['alignment' => [
                 'horizontal'   => Alignment::HORIZONTAL_CENTER,
                 'vertical'   => Alignment::VERTICAL_CENTER,
             ]],
@@ -77,7 +81,7 @@ class ExcelTableFourExport implements FromCollection, WithHeadings, WithCustomSt
     public function columnWidths(): array
     {
         return [
-            'E' => 100, // columna 100 caracteres
+            'J' => 100, // columna 100 caracteres
         ];
     }
     public function columnFormats(): array
@@ -85,27 +89,37 @@ class ExcelTableFourExport implements FromCollection, WithHeadings, WithCustomSt
         return [
             // 'C' => NumberFormat::FORMAT_CURRENCY_USD_SIMPLE,
             // 'G' => 'yyyy-mm-dd H:mm:ss AM/PM',
-            'D' => 'yyyy-mm-dd H:mm',
+            'N' => 'yyyy-mm-dd H:mm',
         ];
     }
     // Mapeo de datos a mostrar
     public function map($data): array
     {
-        $users = [];
-        foreach ($data['users']->toArray() as $key => $user){
-            $roles = array_column($user['roles'], 'name'); //Extraer los nombres de los roles
-            $rolesString = implode (', ', $roles); //Concatena los roles en una cadena
-            $users[$key] = [$user['alias']. ' : ' .$rolesString,];
-        }
-        $result = array_column($users, 0);
-        // dd($result);
+        // $users = [];
+        // foreach ($data['users']->toArray() as $key => $user){
+        //     $roles = array_column($user['roles'], 'name'); //Extraer los nombres de los roles
+        //     $rolesString = implode (', ', $roles); //Concatena los roles en una cadena
+        //     $users[$key] = [$user['alias']. ' : ' .$rolesString,];
+        // }
+        // $result = array_column($users, 0);
+        // dd($data);
         return [
-            $data['id'],
-            $data['name'],
-            $data['description'],
+            $data->id,
+            $data->log_name,
+            $data->description,
+            $data->subject_type,
+            $data->subject_id,
+            $data->event,
+            $data->causer_type,
+            $data->causer_id,
+            isset($data->user->alias) ? $data->user->alias : null,
+            $data->properties,
+            $data->ip,
+            $data->host,
+            $data->browser,
             isset($data['created_at']) ? Date::dateTimeToExcel($data['created_at']) : null, // Verificación de null para campos de fecha
-            implode('| ', $result),
-
+            // $data->created_at,
+            // implode('| ', $result),
         ];
     }
 }

@@ -2,9 +2,12 @@
 
 namespace App\Livewire\ReportPermissions;
 
+use App\Models\User;
 use App\Models\Permissions;
+use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Database\Eloquent\Builder;
 use Rappasoft\LaravelLivewireTables\Views\Column;
+use App\Exports\ReportPermissions\ExcelTableFourExport;
 use Rappasoft\LaravelLivewireTables\DataTableComponent;
 
 class TableFourUsersByPermission extends DataTableComponent
@@ -73,5 +76,51 @@ class TableFourUsersByPermission extends DataTableComponent
                 ->excludeFromColumnSelect()
             ->html(),
         ];
+    }
+    public function bulkActions(): array
+    {
+        return [
+            'exportExcel' => 'EXCEL',
+        ];
+    }
+
+    public function exportExcel()
+    {
+        error_log('exportExcel');
+        $excelName = 'reporte-permisos-tabla-tres_'.now()->format('Y_m_d_H_i').'.xlsx';
+        $items = $this->getSelected();
+        $data = $this->dataExcel($items);
+
+        $this->clearSelected();
+
+        return Excel::download(new ExcelTableFourExport($data), $excelName);
+    }
+
+    public function dataExcel($items){
+        $data = [];
+        if (isset($items)) {
+            $permissionsFind = Permissions::query()
+            ->whereIn('permissions.id', $items)
+            ->get();
+            foreach ($permissionsFind as $permission) {
+                $usersWithPermission = User::query()
+                    ->select('id','alias','email')
+                    ->with('roles:id,name')
+                    ->whereHas('roles.permissions', function ($query) use ($permission) {
+                        $query->where('name', $permission->name);
+                    })
+                    ->get();
+
+                    $data[] = [
+                        'id' => $permission->id,
+                        'name' => $permission->name,
+                        'description' => $permission->description,
+                        'created_at' => $permission->created_at,
+
+                        'users' => $usersWithPermission,
+                    ];
+            }
+        }
+        return collect($data);
     }
 }

@@ -5,6 +5,8 @@ namespace App\Livewire\ActivityLog;
 use Carbon\Carbon;
 use App\Models\Table;
 use App\Models\CustomActivity;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\ExcelActivityLogExport;
 use Illuminate\Database\Eloquent\Builder;
 use Rappasoft\LaravelLivewireTables\Views\Column;
 use Rappasoft\LaravelLivewireTables\DataTableComponent;
@@ -213,5 +215,34 @@ class ActivityLogTableController extends DataTableComponent
                 ->collapseOnTablet()
             ->html(),
         ];
+    }
+    public function bulkActions(): array
+    {
+        return [
+            'exportExcel' => 'EXCEL',
+        ];
+    }
+
+    public function exportExcel()
+    {
+        error_log('exportExcel');
+        $excelName = 'reporte-actividades_'.now()->format('Y_m_d_H_i').'.xlsx';
+        $items = $this->getSelected();
+        $data = $this->dataExcel($items);
+
+        $this->clearSelected();
+
+        return Excel::download(new ExcelActivityLogExport($data), $excelName);
+    }
+
+    public function dataExcel($items){
+        $data = [];
+        if (isset($items)) {
+            $data = CustomActivity::query()
+            ->with('user:id,alias,name')
+            ->whereIn('activity_log.id', $items)
+            ->get();
+        }
+        return $data;
     }
 }

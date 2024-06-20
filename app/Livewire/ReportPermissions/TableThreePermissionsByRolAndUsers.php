@@ -3,9 +3,11 @@
 namespace App\Livewire\ReportPermissions;
 
 use App\Models\Role;
+use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Database\Eloquent\Builder;
 use Rappasoft\LaravelLivewireTables\Views\Column;
 use Rappasoft\LaravelLivewireTables\DataTableComponent;
+use App\Exports\ReportPermissions\ExcelTableThreeExport;
 
 class TableThreePermissionsByRolAndUsers extends DataTableComponent
 {
@@ -81,5 +83,44 @@ class TableThreePermissionsByRolAndUsers extends DataTableComponent
                 ->excludeFromColumnSelect()
             ->html(),
         ];
+    }
+    public function bulkActions(): array
+    {
+        return [
+            'exportExcel' => 'EXCEL',
+        ];
+    }
+
+    public function exportExcel()
+    {
+        error_log('exportExcel');
+        $excelName = 'reporte-permisos-tabla-tres_'.now()->format('Y_m_d_H_i').'.xlsx';
+        $items = $this->getSelected();
+        $data = $this->dataExcel($items);
+
+        $this->clearSelected();
+
+        return Excel::download(new ExcelTableThreeExport($data), $excelName);
+    }
+
+    public function dataExcel($items){
+        $data = [];
+        if (isset($items)) {
+            $data = Role::query()
+            ->with('permissions:id,name','users:id,alias,email')
+            ->select('roles.*')
+            ->whereIn('roles.id', $items)
+            ->get()
+            ->map(function ($role){
+                $role->permissions = $role->permissions->pluck('name')->toArray();
+                return $role;
+            })
+            ->map(function ($role){
+                $role->users = $role->users->pluck('email')->toArray();
+                return $role;
+            });
+        }
+        // dd($data);
+        return $data;
     }
 }
