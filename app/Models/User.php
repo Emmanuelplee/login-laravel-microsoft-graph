@@ -5,18 +5,19 @@ namespace App\Models;
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use App\Models\Puesto;
 use Illuminate\Support\Carbon;
+use App\Models\SolicitudPagoSpd;
 use Laravel\Sanctum\HasApiTokens;
+use Spatie\Activitylog\LogOptions;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Traits\HasRoles;
 use Illuminate\Notifications\Notifiable;
-use Illuminate\Database\Eloquent\SoftDeletes;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\HasOne;
-use Illuminate\Foundation\Auth\User as Authenticatable;
-
 use Spatie\Activitylog\Traits\LogsActivity;
-use Spatie\Activitylog\LogOptions;
+use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Relations\HasOne;
+
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
@@ -94,11 +95,11 @@ class User extends Authenticatable
     {
         return $this->belongsTo(Puesto::class,'id_puesto');
     }
-    // El usuario pertenece a un solo registro de actividades
-    // public function user(): HasOne
-    // {
-    //     return $this->hasOne(CustomActivity::class,'id');
-    // }
+    // El usuario tiene muchas solicitudes de pago
+    public function solicitudesDePago()
+    {
+        return $this->hasMany(SolicitudPagoSpd::class);
+    }
     public function getActivitylogOptions(): LogOptions
     {
         return LogOptions::defaults()

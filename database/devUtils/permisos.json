@@ -98,5 +98,10 @@
         "id": 20,
         "name": "Report_Permissions_Delete",
         "description": "Eliminar reporte de permisos"
+    },
+    {
+        "id": 21,
+        "name": "Assign_Index",
+        "description": "Mostrar asignar permisos"
     }
 ]

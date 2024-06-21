@@ -34,5 +34,9 @@
     {
      "name": "asignar permiso",
      "description": "tabla asignar permiso"
+    },
+    {
+     "name": "solicitudes pago spd",
+     "description": "tabla solicitudes pago spd"
     }
 ]

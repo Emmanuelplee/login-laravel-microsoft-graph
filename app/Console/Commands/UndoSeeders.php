@@ -2,9 +2,10 @@
 
 namespace App\Console\Commands;
 
+use Illuminate\Console\Command;
 use Database\Seeders\PermisosSeeder;
 use Database\Seeders\RoleFactorySeeder;
-use Illuminate\Console\Command;
+use Database\Seeders\SolicitudPagoSdpSeeder;
 
 class UndoSeeders extends Command
 {
@@ -32,6 +33,7 @@ class UndoSeeders extends Command
         // Llamar a los métodos undo de cada seeder
         // (new RoleFactorySeeder)->undo();
         // (new PermisosSeeder)->undo();
+        // (new SolicitudPagoSdpSeeder)->undo();
 
         $this->info('Datos revertidos exitosamente.');
     }

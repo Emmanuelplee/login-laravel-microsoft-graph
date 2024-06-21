@@ -24,7 +24,7 @@ class ActivityLogController extends Component
 
     public function mount()
 	{
-        $this->user_auth = auth()->user()->id;
+        $this->user_auth = auth()->user();
 
 		$this->componentName    = 'Registro de Actividades';
 		$this->pageTitle        = 'Listado';
@@ -68,9 +68,8 @@ class ActivityLogController extends Component
     {
         error_log('resetUI');
         $this->selected_id      = 0;
-
         $this->showModal        = false;
-
-        $this->properties       = [];
+        // ~ Otros propiedades
+        // $this->properties       = [];
     }
 }

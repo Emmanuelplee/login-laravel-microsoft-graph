@@ -70,8 +70,8 @@
                         <div class="table-card user-profile-list">
                           <div class="table-responsive">
 
-                            <!-- <span class="fs-6 fst-itali">{{ print_r(json_encode($data)) }}</span> -->
-                            <livewire:ActivityLog.ActivityLogTableController />
+                             {{-- <span class="fs-6 fst-itali">{{ print_r(json_encode($data)) }}</span> --}}
+                            <livewire:PaymentRequests.PaymentRequestsSpdTableController />
 
                           </div>
                         </div>
@@ -125,7 +125,7 @@
     <!-- [ Main Content ] end -->
 
     <!-- Modal id="#theModal" -->
-    @include('livewire.activity-log.form')
+    {{-- @include('livewire.activity-log.form') --}}
 
   </div>
   <!-- [ Pc Content ] end -->
