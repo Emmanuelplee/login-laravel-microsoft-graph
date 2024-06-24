@@ -12,15 +12,13 @@ class AssignByRolesController extends Component
     public $pageTitle, $componentName;
     public $selected_id, $name, $description;
     public $user_auth;
-
-    public $tableControllerKey;// key refrescar RolesTableController
+    public $tableControllerKey;// key refrescar TableController
     public function mount()
 	{
         $this->user_auth        = auth()->user()->id;
 		$this->componentName    = 'Asignar permisos por rol';
 		$this->pageTitle        = 'Listado';
         $this->selected_id      = 0;
-
         $this->tableControllerKey = uniqid();
 	}
     /**

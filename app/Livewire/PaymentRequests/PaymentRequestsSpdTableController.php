@@ -2,9 +2,11 @@
 
 namespace App\Livewire\PaymentRequests;
 
-use Rappasoft\LaravelLivewireTables\DataTableComponent;
-use Rappasoft\LaravelLivewireTables\Views\Column;
 use App\Models\SolicitudPagoSpd;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Database\Eloquent\Builder;
+use Rappasoft\LaravelLivewireTables\Views\Column;
+use Rappasoft\LaravelLivewireTables\DataTableComponent;
 
 class PaymentRequestsSpdTableController extends DataTableComponent
 {
@@ -13,8 +15,23 @@ class PaymentRequestsSpdTableController extends DataTableComponent
     public function configure(): void
     {
         $this->setPrimaryKey('id');
-    }
 
+        // Agregar el filtro en la configuración
+        // $this->setFilter('user_id', auth()->id());
+
+        $this->setQueryStringStatus(false); // Desactivar la cadena de consulta si no es necesaria
+    }
+    public function builder(): Builder
+    {
+        error_log('builder');
+        // Retornar solo los registros del usuario autenticado
+        $userId = auth()->user()->id;
+        Log::info('User ID: ' . $userId); // Esto registrará el ID del usuario en el archivo de logs de Laravel
+        return SolicitudPagoSpd::query()->where('user_id', $userId);
+
+        // Si el usuario no está autenticado, retorna una consulta vacía
+        return SolicitudPagoSpd::query()->where('user_id', 0);
+    }
     public function columns(): array
     {
         return [
@@ -44,7 +61,7 @@ class PaymentRequestsSpdTableController extends DataTableComponent
                 ->sortable(),
             Column::make("Xml estatus", "xml_estatus")
                 ->sortable(),
-            Column::make("User id", "user_id")
+            Column::make("user_id", "user_id")
                 ->sortable(),
             Column::make("Created at", "created_at")
                 ->sortable(),

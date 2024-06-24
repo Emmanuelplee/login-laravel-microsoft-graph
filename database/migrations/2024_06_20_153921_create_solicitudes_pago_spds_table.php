@@ -17,13 +17,13 @@ return new class extends Migration
             $table->string('folio', 15);
             $table->string('centro_costo', 15)->nullable();
             $table->dateTime('fecha_hr_sdp')->nullable();
-            $table->string('solicitante', 50)->nullable();
+            $table->string('solicitante', 100)->nullable();
             $table->string('sub_conceptos', 150)->nullable();
-            $table->string('cargo', 50)->nullable();
-            $table->string('dirigido_a', 50)->nullable();
-            $table->string('factura', 25)->nullable();
-            $table->decimal('monto', 8,2)->nullable();
-            $table->string('estatus', 50)->nullable();
+            $table->string('cargo', 100)->nullable();
+            $table->string('dirigido_a', 100)->nullable();
+            $table->string('factura', 100)->nullable();
+            $table->decimal('monto', 10,2)->nullable();
+            $table->string('estatus', 100)->nullable();
 
             $table->json('archivos')->nullable();
             // buscar total del monto en archivos xmls

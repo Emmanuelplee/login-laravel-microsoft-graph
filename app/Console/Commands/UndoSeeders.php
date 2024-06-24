@@ -33,7 +33,7 @@ class UndoSeeders extends Command
         // Llamar a los métodos undo de cada seeder
         // (new RoleFactorySeeder)->undo();
         // (new PermisosSeeder)->undo();
-        // (new SolicitudPagoSdpSeeder)->undo();
+        (new SolicitudPagoSdpSeeder)->undo();
 
         $this->info('Datos revertidos exitosamente.');
     }
