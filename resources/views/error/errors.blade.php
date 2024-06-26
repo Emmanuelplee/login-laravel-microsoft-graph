@@ -38,10 +38,17 @@
                     {{-- <h1 class="mt-2">{{ $status }}</h1> --}}
                     <h1 class="mt-2">¡Algo salio mal error {{ $status }}!</h1>
                     <p class="mt-2 mb-4 text-muted f-20">{{ $message }}</p>
-                    <a class="btn btn-primary d-inline-flex align-items-center mb-3"
-                      href="{{url('/home')}}">
-                      <i class="ph ph-house me-2"></i> Regresar a home
-                    </a>
+                    @if ($status == 417)
+                        <a class="btn btn-primary d-inline-flex align-items-center mb-3"
+                        href="{{ route('login')}}">
+                        <i class="ti ti-shield-lock me-2"></i> Ir a iniciar sesion
+                        </a>
+                    @else
+                        <a class="btn btn-primary d-inline-flex align-items-center mb-3"
+                        href="{{ url('/home')}}">
+                        <i class="ph ph-house me-2"></i> Ir al menu principal
+                        </a>
+                    @endif
                   </div>
                 </div>
               </div>

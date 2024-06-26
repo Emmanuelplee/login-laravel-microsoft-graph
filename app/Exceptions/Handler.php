@@ -49,6 +49,13 @@ class Handler extends ExceptionHandler
             return response()->view('error.errors',['message' => $message,'status'=>$status]);
             // return redirect()->route('login');
         }
+        //error 417 error obtener token valido
+        if ($exception instanceof \League\OAuth2\Client\Provider\Exception\IdentityProviderException) {
+            $message = 'Error al obtener un token valido.';
+            $status  = 417;
+            return response()->view('error.errors',['message' => $message,'status'=>$status]);
+            // return redirect()->route('login');
+        }
         //Erro 504 no existe la ruta
         if ($exception instanceof \Symfony\Component\HttpKernel\Exception\NotFoundHttpException) {
             $message = 'La pagina no fue encontrada o no existe.';
