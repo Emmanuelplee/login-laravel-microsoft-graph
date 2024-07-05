@@ -100,6 +100,11 @@ class User extends Authenticatable
     {
         return $this->hasMany(SolicitudPagoSpd::class);
     }
+    // El usuario tiene muchos archivos sdps
+    public function ArchivosSdps()
+    {
+        return $this->hasMany(ArchivosSdps::class);
+    }
     public function getActivitylogOptions(): LogOptions
     {
         return LogOptions::defaults()

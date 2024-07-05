@@ -36,7 +36,11 @@
      "description": "tabla asignar permiso"
     },
     {
-     "name": "solicitudes pago spd",
-     "description": "tabla solicitudes pago spd"
+     "name": "solicitudes pago sdp",
+     "description": "tabla solicitudes pago sdp"
+    },
+    {
+     "name": "archivos sdps",
+     "description": "tabla archivos sdps"
     }
 ]

@@ -76,7 +76,7 @@
                         </a>
                         <ul class="pc-submenu">
                             <li class="pc-item">
-                                <a class="pc-link" href="{{ url('/solicitud-pago-spd') }}">SPD</a>
+                                <a class="pc-link" href="{{ url('/solicitud-pago-sdp') }}">SDP</a>
                             </li>
                             <li class="pc-item">
                                 <a class="pc-link" href="#">OTRA</a>

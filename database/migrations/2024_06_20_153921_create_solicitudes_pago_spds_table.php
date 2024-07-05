@@ -11,12 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('solicitudes_pago_spds', function (Blueprint $table) {
+        Schema::create('solicitudes_pago_sdps', function (Blueprint $table) {
             $table->id();
 
             $table->string('folio', 15);
             $table->string('centro_costo', 15)->nullable();
-            $table->dateTime('fecha_hr_sdp')->nullable();
+            $table->timestamp('fecha_hr_sdp')->nullable();
             $table->string('solicitante', 100)->nullable();
             $table->string('sub_conceptos', 150)->nullable();
             $table->string('cargo', 100)->nullable();
@@ -25,9 +25,11 @@ return new class extends Migration
             $table->decimal('monto', 10,2)->nullable();
             $table->string('estatus', 100)->nullable();
 
-            $table->json('archivos')->nullable();
+            $table->json('monto_tipo_archivo')->nullable();
+            $table->decimal('monto_comprobado',10,2)->nullable()->default(0);
             // buscar total del monto en archivos xmls
             $table->boolean('xml_estatus')->default(0);
+            $table->boolean('aprobado')->default(0);
 
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')
@@ -43,6 +45,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('solicitudes_pago_spds');
+        Schema::dropIfExists('solicitudes_pago_sdps');
     }
 };

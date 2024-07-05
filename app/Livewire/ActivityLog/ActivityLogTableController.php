@@ -87,7 +87,7 @@ class ActivityLogTableController extends DataTableComponent
                     }
 
             }),
-            TextFilter::make('Descripcion')
+            TextFilter::make('Descripción')
                 ->config([
                     'placeholder' => 'Buscar registro por descripción',
                     'maxlength' => '25',
@@ -161,7 +161,7 @@ class ActivityLogTableController extends DataTableComponent
                 ->searchable() // buscador general
                 ->sortable()
             ->html(),
-            Column::make("Descripcion", "description")
+            Column::make("Descripción", "description")
                 ->searchable() // buscador general
                 ->sortable()
             ->html(),

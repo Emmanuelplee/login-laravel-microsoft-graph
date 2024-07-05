@@ -30,8 +30,13 @@
                 $modelfind = DB::table('permissions')->where('id','=',$item->subject_id)->first();
                 $name = $modelfind->name;
             }
+            if ($model === 'SolicitudPagoSdp') {
+                // $modelfind = Permissions::find($item->subject_id);
+                $modelfind = DB::table('solicitudes_pago_sdps')->where('id','=',$item->subject_id)->first();
+                $name = $modelfind->folio;
+            }
         }
-        // dump($name);
+        // dump($model);
     @endphp
     {{ $name }}
 </div>

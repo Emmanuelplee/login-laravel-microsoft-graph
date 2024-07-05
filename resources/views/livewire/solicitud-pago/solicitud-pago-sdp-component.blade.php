@@ -71,7 +71,7 @@
                           <div class="table-responsive">
 
                              {{-- <span class="fs-6 fst-itali">{{ print_r(json_encode($data)) }}</span> --}}
-                            <livewire:PaymentRequests.PaymentRequestsSpdTableController />
+                            <livewire:SolicitudPago.SolicitudPagoSdpTableController :key="$tableControllerKey"/>
 
                           </div>
                         </div>
@@ -125,7 +125,7 @@
     <!-- [ Main Content ] end -->
 
     <!-- Modal id="#theModal" -->
-    {{-- @include('livewire.activity-log.form') --}}
+    @include('livewire.solicitud-pago.form')
 
   </div>
   <!-- [ Pc Content ] end -->
@@ -133,9 +133,21 @@
   <script>
     // {{-- *========================================================= --}}
     //              EVENTOS DEL CONTROLLER
+    Livewire.on('actualizar-todas-sdps', (msg) => {
+        console.log('actualizar-todas-sdps msg:', msg)
+        noty(msg[0],1)//Exito
+    });
     Livewire.on('item-modal-edit', (msg) => {
         console.log("item-modal-edit " + JSON.stringify(msg));
         $('#theModal').modal('show');
+    });
+    Livewire.on('item-info-file', (msg) => {
+        console.log('item-info-file msg:', msg)
+        noty(msg[0],1)//Exito
+    });
+    Livewire.on('item-modal-updated', (msg) => {
+        $('#theModal').modal('hide');
+        noty(msg[0],1)//Exito
     });
     // {{-- *======================================================== --}}
     //            EVENTO DE ERROR DEL CONTROLLER
@@ -149,6 +161,10 @@
         console.log('borrar Errors clase(er) ejecutar resetUI');
         $('.er').css('display','none');
         Livewire.dispatch('resetUI');
+    });
+    // Foco primer input del Modal clase __focus_active
+    $('#theModal').on('shown.bs.modal', msg => {
+        $('.__focus_active').focus();
     });
   </script>
 @endscript

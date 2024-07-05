@@ -10,14 +10,15 @@ use Spatie\Activitylog\Traits\LogsActivity;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class SolicitudPagoSpd extends Model
+class SolicitudPagoSdp extends Model
 {
     use HasFactory;
     use SoftDeletes;
 
     use LogsActivity;
 
-    protected $table ='solicitudes_pago_spds';
+    protected $table ='solicitudes_pago_sdps';
+
 
     protected $fillable = [
         'folio',
@@ -30,8 +31,10 @@ class SolicitudPagoSpd extends Model
         'factura',
         'monto',
         'estatus',
+        'monto_tipo_archivo',
+        'monto_comprobado',
+        'aprobado',
 
-        'archivos',
         'xml_estatus',
         'user_id',
     ];
@@ -57,8 +60,8 @@ class SolicitudPagoSpd extends Model
                     'cargo','dirigido_a','factura','monto','estatus','archivos','xml_estatus',
                     'user_id',])
             ->dontLogIfAttributesChangedOnly(['updated_at'])
-            ->useLogName('solicitudes pago spd')
-            ->setDescriptionForEvent(fn(string $eventName) => "La solicitudes pago spd ha sido {$eventName}")
+            ->useLogName('solicitudes pago sdp')
+            ->setDescriptionForEvent(fn(string $eventName) => "La solicitudes pago sdp ha sido {$eventName}")
             ->logOnlyDirty();// Solo registra los campos realmente modificados
     }
 }
