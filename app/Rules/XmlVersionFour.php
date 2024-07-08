@@ -44,6 +44,13 @@ class XmlVersionFour implements ValidationRule
                 $fail('El archivo XML no tiene UUID.');
                 return;
             }
+            //Validar el uuid con una expresión regular
+            $regex = '/^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$/';
+            if (!preg_match($regex, $uuid)) {
+                $fail('El uuid no es valido.');
+                return;
+            }
+
         } catch (\Exception $e) {
             $fail('No se pudo extraer la información del XML.');
         }
