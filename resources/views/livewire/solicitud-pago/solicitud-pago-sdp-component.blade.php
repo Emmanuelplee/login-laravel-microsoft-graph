@@ -63,7 +63,7 @@
             <div class="card-body pt-0 pb-1">
                 {{-- <div class="col-lg-8 col-xxl-9"></div> --}}
               <div class="col-lg-12 col-xxl-12">
-                <div wire:ignore class="tab-content">
+                <div wire:ignore.self class="tab-content">
                     <div class="tab-pane show active" id="profile" role="tabpanel">
 
                         <div class="h4 py-2">{{ $componentName }}</div>
@@ -134,26 +134,27 @@
     // {{-- *========================================================= --}}
     //              EVENTOS DEL CONTROLLER
     Livewire.on('actualizar-todas-sdps', (msg) => {
-        console.log('actualizar-todas-sdps msg:', msg)
-        noty(msg[0],1)//Exito
+        console.log('actualizar-todas-sdps msg:', msg);
+        noty(msg[0],1);//Exito
     });
     Livewire.on('item-modal-edit', (msg) => {
         console.log("item-modal-edit " + JSON.stringify(msg));
         $('#theModal').modal('show');
     });
     Livewire.on('item-info-file', (msg) => {
-        console.log('item-info-file msg:', msg)
-        noty(msg[0],1)//Exito
+        console.log('item-info-file msg:', msg);
+        noty(msg[0],1);//Exito
     });
     Livewire.on('item-modal-updated', (msg) => {
         $('#theModal').modal('hide');
-        noty(msg[0],1)//Exito
+        noty(msg[0],1);//Exito
+        Livewire.dispatch('refreshChildTable');
     });
     // {{-- *======================================================== --}}
     //            EVENTO DE ERROR DEL CONTROLLER
     Livewire.on('item-error', (msg) => {
-        console.log('item-error msg:', msg)
-        noty(msg[0],0)//Error
+        console.log('item-error msg:', msg);
+        noty(msg[0],0);//Error
     });
     // {{-- *=========================================================== --}}
     //            CERRAR MODAL

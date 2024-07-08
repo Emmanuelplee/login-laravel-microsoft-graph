@@ -152,12 +152,14 @@ class SolicitudPagoSdpController extends Component
 
         $extension = $this->files->getClientOriginalExtension();
         if ($extension === 'xml') {
+            // reglas solo para el xml
             $rules = [
-                'files'     => ['required','mimes:xml,pdf,jpg,jpeg','max:1048', new XmlVersionFour],
+                'files'     => ['required','mimes:xml','max:1048', new XmlVersionFour],
             ];
         }else {
+            // reglas para cualquier archivo excepto xml
             $rules = [
-                'files'     => ['required','mimes:xml,pdf,jpg,jpeg','max:1048'],
+                'files'     => ['required','mimes:pdf,jpg,jpeg','max:1048'],
             ];
         }
         $messages = [
@@ -166,8 +168,8 @@ class SolicitudPagoSdpController extends Component
             'files.max'         => 'El tamaño máximo del archivo es 1MB.',
         ];
         $this->validate($rules, $messages);
-        Log::error('updatedFiles extension: '.$extension);
 
+        Log::error('updatedFiles extension: '.$extension);
         if ($extension === 'xml') {
             // $this->procesarArchivoXml($this->files);
             $xml = simplexml_load_file($this->files->getRealPath());
@@ -196,14 +198,13 @@ class SolicitudPagoSdpController extends Component
             $this->dispatch('item-info-file','Archivo XML cargado correctamente');
             return;
         } else {
+
             if ($extension === 'jpg' || $extension === 'jpeg') {
                 // NOTE: bajar la calidad a la imagen $this->files
-                // $this->processPdfOrJpgFile($this->files);
             }
             $this->dispatch('item-info-file','Archivo PDF o JPG cargado correctamente');
             return;
         }
-        $this->files            = '';
     }
     public function update()
     {
@@ -224,7 +225,6 @@ class SolicitudPagoSdpController extends Component
                 'monto_capturado.min'       => 'El monto debe ser mayor a 0.',
             ];
             $this->validate($rules, $messages);
-            // dd($data_xml);
             // crear el archivo con la data del xml
             $archivoFind = ArchivosSdps::create([
                 'tipo'      => 'XML',
@@ -245,8 +245,6 @@ class SolicitudPagoSdpController extends Component
                 'monto_comprobado'      => $sdpFind->monto_comprobado + $archivoFind->monto,
                 'xml_estatus'           => $sdpFind->xml_estatus === 0 ?? 1,
             ]);
-            // $this->dispatch('item-modal-updated','Registro actualizado');
-            // return;
         } else {
             $rules = [
                 'files'             => 'required|mimes:pdf,jpg,jpeg|max:1048',
@@ -263,21 +261,37 @@ class SolicitudPagoSdpController extends Component
             ];
             $this->validate($rules, $messages);
 
-            // $this->processPdfOrJpgFile($this->files);
             error_log('processPdfOrJpgFile');
+            if (($this->monto_comprobado + $this->monto_capturado) > $sdpFind->monto ) {
+                $this->dispatch('item-error', 'El monto comprobado + capturado es mayor al total de la SDP.');
+                return;
+            }
+
             $ruta = $extension === 'pdf' ? 'archivos_sdps/PDF' : 'archivos_sdps/IMAGEN';
-            $ArchivoFind =ArchivosSdps::create([
+            // crear el archivo (pdf o imagen)
+            $archivoFind = ArchivosSdps::create([
                 'tipo'      => $extension === 'pdf' ? 'PDF' : 'IMAGEN',
-                'uuid'      => $this->uuid,
-                'fecha_documento' => $this->fecha,
+                'monto'     => $this->monto_capturado,
                 'ruta'      => $this->files->store($ruta, 'public'),
+                'fecha_documento' => $this->fecha,
+                'uuid'      => $this->uuid,
                 'user_id'   => $this->user_auth->id,
                 'sdp_id'    => $this->selected_id,
+            ]);
+
+            // Actualizar o crear el campo data
+            $json = $sdpFind->monto_tipo_archivo ?? [];
+            $json[$archivoFind->tipo] = ($json[$archivoFind->tipo] ?? 0) + $archivoFind->monto; // Actualizar monto
+
+            //Actualizar la sdp con los datos nuevos actualizados
+            $sdpFind->update([
+                'monto_tipo_archivo'    => $json,
+                'monto_comprobado'      => $sdpFind->monto_comprobado + $archivoFind->monto,
             ]);
         }
         // $this->resetUI();
         $this->dispatch('item-modal-updated','¡Registro Actualizado!');
-        $this->refreshChildTable();
+        // $this->refreshChildTable();
 
     }
     private function procesarArchivoXml($file)
