@@ -46,7 +46,7 @@ class SolicitudPagoSdp extends Model
     ];
     public function user()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class,'user_id');
     }
     // Las Solicitudes de pago tiene muchos archivos sdps
     public function ArchivosSdps()

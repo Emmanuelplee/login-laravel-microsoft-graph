@@ -10,7 +10,7 @@
             @if ($stepTable == 1)
                 <div class="modal-content-sticky">
                     <div>
-                        <p class="ps-2 py-1">
+                        <p class="sticky ps-2 py-1">
                             <b>Id:</b> {{ $selected_id == 0 ? '' : $selected_id }}
                             <b>Nombre:</b> {{ $userFind ? $userFind->alias :'' }}
                         </p>
@@ -22,7 +22,7 @@
             @if ($stepTable == 2)
                 <div class="modal-content-sticky">
                     <div>
-                        <p class="ps-2 py-1">
+                        <p class="sticky ps-2 py-1">
                             <b>Id:</b> {{ $selected_id == 0 ? '' : $selected_id }}
                             <b>Rol:</b> {{ $roleFind ? $roleFind->name :'' }}
                         </p>
@@ -34,7 +34,7 @@
             @if ($stepTable == 3)
                 <div class="modal-content-sticky">
                     <div>
-                        <p class="ps-2 py-1">
+                        <p class="sticky ps-2 py-1">
                             <b>Id:</b> {{ $selected_id == 0 ? '' : $selected_id }}
                             <b>Rol:</b> {{ $roleFind ? $roleFind->name :'' }}
                         </p>
@@ -46,7 +46,7 @@
             @if ($stepTable == 4)
                 <div class="modal-content-sticky">
                     <div>
-                        <p class="ps-2 py-1">
+                        <p class="sticky ps-2 py-1">
                             <b>Id:</b> {{ $selected_id == 0 ? '' : $selected_id }}
                             <b>Permiso:</b> {{ $permissionFind ? $permissionFind->name :'' }}
                         </p>

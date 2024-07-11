@@ -122,11 +122,10 @@
         })
     })
     Livewire.on('item-deleted', (msg) => {
-    console.log('item-deleted msg:', msg)
-    noty(msg[0],1)//Exito
-    // setTimeout(() => Livewire.dispatch('refreshChildTable'), 5000);
-    Livewire.dispatch('refreshChildTable')
-
+        console.log('item-deleted msg:', msg)
+        noty(msg[0],1)//Exito
+        // setTimeout(() => Livewire.dispatch('refreshChildTable'), 5000);
+        Livewire.dispatch('refreshChildTable')
     });
     // {{-- *=========================================================== --}}
     //            CERRAR MODAL

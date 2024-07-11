@@ -19,7 +19,7 @@
                     wire:loading.class="loading-disabled"
                     class="avtar avtar-s btn btn-primary"
                     style="width:30px; height:30px;">
-                    <i class="ti ti-pencil f-18"></i>
+                    <i class="ph ph-file-arrow-up f-18"></i>
                 </a>
             </li>
 

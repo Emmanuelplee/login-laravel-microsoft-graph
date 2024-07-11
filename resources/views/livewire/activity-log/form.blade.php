@@ -10,7 +10,7 @@
             @if ($stepTable == 1)
                 <div class="modal-content-sticky">
                     <div>
-                        <p class="ps-2 py-1">
+                        <p class="sticky ps-2 py-1">
                             <b>Id:</b> {{ $selected_id == 0 ? '' : $selected_id }}
                             <b>Tabla:</b> {{ $properties ? $properties['log_name'] : '' }}
                             <b>Evento:</b> {{ $properties['event'] ? $properties['event'] : 'N/A' }}

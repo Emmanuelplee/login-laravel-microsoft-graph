@@ -328,7 +328,12 @@ class SolicitudPagoSdpTableController extends DataTableComponent
             $formatted = '<ul>';
             // Lista del json
             foreach ($value as $key => $amount) {
-                $formatted .= '<li>' . $key . ': ' . number_format($amount, 2) . '</li>';
+                if ($key === 'XML') {
+                    $key = 'Facturas (XML)';
+                }else {
+                    $key ='Recibos ('.$key.')';
+                }
+                $formatted .= '<li>' . $key . ': $' . number_format($amount, 2) . '</li>';
             }
             $formatted .= '</ul>';
             return $formatted;

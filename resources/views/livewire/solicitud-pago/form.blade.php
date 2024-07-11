@@ -2,15 +2,22 @@
 <div>
     <form wire.ignore.self>
         <div class="row">
-          <b><p>Solicitud de pago: {{ $selected_id == 0 ? '' : $selected_id }}</p><hr></b>
+          {{-- <b><p>Solicitud de pago: {{ $selected_id == 0 ? '' : $selected_id }}</p><hr></b> --}}
 
           {{-- * MOSTRAR INFO --}}
           @if ($showModal)
-            @include('livewire.solicitud-pago.show')
+          <div class="modal-content-sticky">
+            <div>
+                <p class="sticky ps-2 py-0">
+                    <b>Solicitud de pago: {{ $selected_id == 0 ? '' : $selected_id }}</b>
+                </p>
+                @include('livewire.solicitud-pago.show')
+            </div>
+          </div>
           @endif
 
           @if (!$showModal)
-          {{-- * Info SDP --}}
+            {{-- * Info SDP --}}
             @if (!is_array($info_sdp_selected))
                 {{-- {{ $info_sdp_selected }} --}}
                 <div class="row align-items-center mb-3">
@@ -33,9 +40,10 @@
                     <div class="col-sm-6">
                         <div class="d-flex align-items-center">
                             <div class="flex-grow-1 me-3">
-                                Monto total: ${{ $info_sdp_selected->monto }} MXN<br>
+                                Monto total: ${{ number_format($info_sdp_selected->monto) }} MXN<br>
+                                Monto comprobado: ${{ number_format($info_sdp_selected->monto_comprobado, 2) }} MXN<br>
+                                <strong class="bg-light-danger">Monto por comprobar: ${{ number_format(($info_sdp_selected->monto - $info_sdp_selected->monto_comprobado),2) }} MXN</strong><br>
                                 Estatus: {{ $info_sdp_selected->estatus }}<br>
-                                Monto Comprobado: ${{ $info_sdp_selected->monto_comprobado }} MXN<br>
                             </div>
                         </div><hr class="m-0">
                     </div>
@@ -95,7 +103,7 @@
                     @if ($existe_uuid)
                         <div class="col-sm-12 col-md-12 col-lg-12">
                             <div class="alert alert-danger" role="alert">
-                                El archivo xml ya está asociado a una sdp.
+                                El archivo xml ya está asociado a la sdp con folio: {{ $sdp_asociado->folio }}
                             </div>
                         </div>
                     @endif
@@ -112,7 +120,7 @@
                             <span class="input-group-text">$</span>
                             <input type="number"
                                 id="monto_capturado"
-                                wire:model="monto_capturado"
+                                wire:model.live.debounce.1000ms="monto_capturado"
                                 class="form-control
                                     @error('monto_capturado') border border-danger border-1 @enderror"
                                 placeholder="Monto Cacturado"
@@ -165,71 +173,10 @@
 
         </div>
     </form>
-    {{-- <h3>Archivos cargados</h3>
-    <ul>
-        @foreach (App\Models\ArchivosSdps::where('sdp_id', $selected_id)->get() as $archivo)
-            <li>
-                <a href="{{ Storage::url($archivo->ruta) }}" target="_blank">
-                    {{ $archivo->ruta }}
-                </a>
-            </li>
-        @endforeach
-    </ul> --}}
-</div>
 
-
-    <!-- <p>Modal body End.</p> -->
-    </div>
-    <div class="modal-footer">
-        <button type="button"
-        {{-- wire:click="resetUI()" --}}
-        class="btn btn-danger rounded"
-        data-bs-dismiss="modal">CERRAR</button>
-        @if ($selected_id === 0)
-        <button type="button"
-            wire:click="store()"
-            wire:loading.attr="disabled"
-            class="btn btn-info rounded">GUARDAR</button>
-        @endif
-        @if ($selected_id >= 1 && !$showModal && !$existe_uuid && $uuid != '')
-            @if ($files && $files->getClientOriginalExtension() === 'xml')
-                @if ($files === '')
-                    <button type="button"
-                        wire:click="update()"
-                        wire:loading.attr="disabled"
-                        wire:target='files'
-                        class="btn btn-info rounded">ACTUALIZAR</button>
-                @else
-                    <button type="button"
-                        wire:click="update()"
-                        wire:loading.attr="disabled"
-                        wire:target='update'
-                        class="btn btn-info rounded">ACTUALIZAR</button>
-                @endif
-            @endif
-        @endif
-        @if ($selected_id >= 1 && !$showModal && !$existe_uuid)
-            @if ($files && ($files->getClientOriginalExtension() === 'pdf' || $files->getClientOriginalExtension() === 'jpg'))
-                @if ($files === '')
-                    <button type="button"
-                        wire:click="update()"
-                        wire:loading.attr="disabled"
-                        wire:target='files'
-                        class="btn btn-info rounded">ACTUALIZAR</button>
-                @else
-                    <button type="button"
-                        wire:click="update()"
-                        wire:loading.attr="disabled"
-                        wire:target='update'
-                        class="btn btn-info rounded">ACTUALIZAR</button>
-                @endif
-            @endif
-        @endif
-    </div>
-  </div>
 </div>
-</div>
-{{-- @include('common.modalFooter') --}}
+<!-- <p>Modal body End.</p> -->
+@include('livewire.solicitud-pago.form-footer')
 
 @script
   <script>

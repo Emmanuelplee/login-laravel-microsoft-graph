@@ -111,14 +111,14 @@ class TableFourUsersByPermission extends DataTableComponent
                     })
                     ->get();
 
-                    $data[] = [
-                        'id' => $permission->id,
-                        'name' => $permission->name,
-                        'description' => $permission->description,
-                        'created_at' => $permission->created_at,
+                $data[] = [
+                    'id' => $permission->id,
+                    'name' => $permission->name,
+                    'description' => $permission->description,
+                    'created_at' => $permission->created_at,
 
-                        'users' => $usersWithPermission,
-                    ];
+                    'users' => $usersWithPermission,
+                ];
             }
         }
         return collect($data);

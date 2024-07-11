@@ -30,9 +30,10 @@ class SolicitudPagoSdpController extends Component
     // ~ Otras propiedades
     // Para modal info
     public $info_sdp_selected, $monto_tipo_archivo, $monto_comprobado, $xml_status;
+    public $archivos_sdps_find;
     // Para el Formulario
     public $files, $monto_capturado, $fecha, $uuid, $folio;
-    public $existe_uuid;
+    public $existe_uuid, $sdp_asociado;
     public $dateMin, $dateMax;
 
 
@@ -52,6 +53,7 @@ class SolicitudPagoSdpController extends Component
         $this->monto_tipo_archivo   = [];
         $this->monto_comprobado     = 0;
         $this->xml_status           = false;
+        $this->archivos_sdps_find   = [];
 
         $this->files            = '';
         $this->monto_capturado  = 0;
@@ -60,6 +62,7 @@ class SolicitudPagoSdpController extends Component
         $this->folio            = '';
 
         $this->existe_uuid      = false;
+        $this->sdp_asociado     = '';
         $this->dateMin          = '2023-01-01 00:00:01';
         $this->dateMax          = Carbon::parse(Carbon::now())->format('Y-m-d');
     }
@@ -97,6 +100,12 @@ class SolicitudPagoSdpController extends Component
         ->extends('layouts.theme.app')
         ->section('content');
     }
+    /**
+     * Muestra la solicitud de pago específica.
+     *
+     * @param int $id
+     * @return void
+     */
     public function show($id)
     {
         error_log('show');
@@ -111,6 +120,7 @@ class SolicitudPagoSdpController extends Component
             $this->xml_status           = $item->xml_estatus == 1 ? true : false;
             // $this->id_role_tipo = $item->roleTipo->only('id','nombre','descripcion');
 
+            $this->archivos_sdps_find = ArchivosSdps::where('sdp_id','=',$this->selected_id)->get();
             $this->showModal = true;
             $this->dispatch('item-modal-edit', title: 'Mostrar modal show!');
             return;
@@ -140,6 +150,16 @@ class SolicitudPagoSdpController extends Component
             return;
         }
     }
+    /**
+     * Actualiza el archivo seleccionado con el archivo proporcionado.
+     *
+     * Esta función valida la extensión del archivo, el tamaño y su contenido antes de actualizar el archivo seleccionado.
+     * También valida el monto total capturado y lo compara con el total de la SDP seleccionada.
+     *
+     * @param File $files El archivo a ser actualizado.
+     * @return void
+     * @throws ValidationException Si la extensión del archivo no es válida o el tamaño del archivo excede el límite.
+     */
     public function updatedFiles()
     {
         error_log('updatedFiles');
@@ -183,14 +203,16 @@ class SolicitudPagoSdpController extends Component
 
             $this->uuid = (string) $xml->xpath('//tfd:TimbreFiscalDigital')[0]['UUID'];
 
-            if (ArchivosSdps::where('uuid', '=',$this->uuid)->first()) {
+            $archivoFind = ArchivosSdps::where('uuid', '=',$this->uuid)->first();
+            if ($archivoFind) {
                 $this->existe_uuid = true;
-                $this->dispatch('item-error', 'El archivo xml ya está asociado a una sdp.');
+                $this->sdp_asociado = $archivoFind->SolicitudPagoSdp;
+                $this->dispatch('item-error', 'El archivo xml ya está asociado a la sdp folio:'. $this->sdp_asociado->folio);
                 return;
             }
+            $sdpFind = SolicitudPagoSdp::find($this->selected_id);
             error_log('Comprobado: ',$this->monto_comprobado, 'Capturado: '.$this->monto_capturado);
-            $sdp = SolicitudPagoSdp::find($this->selected_id);
-            if (($this->monto_comprobado + $this->monto_capturado) > $sdp->monto ) {
+            if (($this->monto_comprobado + $this->monto_capturado) > $sdpFind->monto ) {
                 $this->existe_uuid = true;
                 $this->dispatch('item-error', 'El monto comprobado + capturado es mayor al total de la SDP.');
                 return;
@@ -206,6 +228,14 @@ class SolicitudPagoSdpController extends Component
             return;
         }
     }
+    /**
+     * Actualiza un registro de SolicitudPagoSdp con los datos proporcionados.
+     *
+     * Esta función maneja el proceso de subida de archivos, valida los datos, y actualiza el registro de SDP correspondientemente.
+     * También crea registros relacionados de ArchivosSdps para archivos XML y no XML.
+     *
+     * @return void
+     */
     public function update()
     {
         error_log('update');
@@ -294,6 +324,67 @@ class SolicitudPagoSdpController extends Component
         // $this->refreshChildTable();
 
     }
+
+    #[On('destroyFile')]
+    public function destroyFile($id)
+    {
+        error_log('destroyFile: '.$id);
+        $archivoFind = ArchivosSdps::find($id);
+        // Una vez encontrado el Archivo a eliminar
+        Log::error('ArchivoFid:', $archivoFind->toArray());
+        if ($archivoFind) {
+            // Info de sdp
+            $sdpFind = SolicitudPagoSdp::find($this->selected_id);
+            // campo json monto_tipo_archivo
+            $json = $sdpFind->monto_tipo_archivo ?? [];
+            // Existe el monto_tipo_archivo [XML,PDF,IMAGEN]
+            if (isset($json[$archivoFind->tipo])) {
+                $monto_total_por_tipo_archivo = $json[$archivoFind->tipo] - $archivoFind->monto;
+                // Si monto_total_por_tipo_archivo es menor o igual a 0, se elimina el tipo de archivo del campo json
+                if ($monto_total_por_tipo_archivo <= 0) {
+                    unset($json[$archivoFind->tipo]);
+                }else{
+                    $json[$archivoFind->tipo] =  $json[$archivoFind->tipo] - $archivoFind->monto;
+                }
+
+                if ($archivoFind->tipo === 'XML' && !isset($json[$archivoFind->tipo])) {
+                    $sdpFind->update([
+                       'monto_tipo_archivo' => $json,
+                       'monto_comprobado'   => $sdpFind->monto_comprobado - $archivoFind->monto,
+                       'xml_estatus'        => 0,
+                    ]);
+                }else {
+                    $sdpFind->update([
+                       'monto_tipo_archivo' => $json,
+                       'monto_comprobado'   => $sdpFind->monto_comprobado - $archivoFind->monto,
+                    ]);
+                }
+                // Si todo esta bien eliminar imagen y el registro
+                $imageTemp = $archivoFind->ruta;
+                $archivoFind->delete();
+
+                if ($imageTemp != null) {
+                    $path = public_path('/storage/' . $imageTemp);
+                    if (file_exists($path)) {
+                        unlink($path);
+                    }
+                }
+                // Refrescar datos de cambios en la SDP
+                $this->monto_comprobado = $this->monto_comprobado;
+                // recargar los archivos de sdp
+                $this->archivos_sdps_find = ArchivosSdps::where('sdp_id','=',$this->selected_id)->get();
+            }else {
+                $this->dispatch('item-error', 'El archivo no tiene un monto asociado.');
+                return;
+            }
+            // Refrescar tabla principal
+            $this->dispatch('item-deleted','¡Archivo Eliminado!');
+            return;
+        }else {
+            $this->dispatch('item-error', 'El archivo no se encontró.');
+            return;
+        }
+    }
     private function procesarArchivoXml($file)
     {
         error_log('Procesar Archivo XML');
@@ -339,6 +430,7 @@ class SolicitudPagoSdpController extends Component
         $this->folio                = '';
 
         $this->existe_uuid          = false;
+        $this->sdp_asociado         = '';
 
         $this->resetValidation();
     }

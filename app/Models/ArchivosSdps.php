@@ -36,11 +36,11 @@ class ArchivosSdps extends Model
     ];
     public function user()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class,'user_id');
     }
     public function SolicitudPagoSdp()
     {
-        return $this->belongsTo(SolicitudPagoSdp::class);
+        return $this->belongsTo(SolicitudPagoSdp::class,'sdp_id');
     }
     public function getActivitylogOptions(): LogOptions
     {

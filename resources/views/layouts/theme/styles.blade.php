@@ -68,7 +68,7 @@
         overflow-y: auto !important;
     }
     /* Estilos para los encabezados fijos */
-    .modal-content-sticky div p{
+    .modal-content-sticky div p.sticky{
         position: sticky !important;
         top: 0 !important;
         background: #DAF3F8 !important;
