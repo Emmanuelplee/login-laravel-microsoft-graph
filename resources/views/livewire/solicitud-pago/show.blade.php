@@ -80,9 +80,14 @@
               <div class="d-flex align-items-center">
                 <div class="flex-grow-1 me-3">
                     Monto comprobado: ${{ number_format($info_sdp_selected->monto_comprobado, 2) }} MXN<br>
-                    <strong class="bg-light-danger">Monto por comprobar: ${{ number_format(($info_sdp_selected->monto - $info_sdp_selected->monto_comprobado),2) }} MXN</strong><br>
+                    @if (($info_sdp_selected->monto - $info_sdp_selected->monto_comprobado) > 0)
+                        <strong class="bg-light-danger">Monto por comprobar: ${{ number_format(($info_sdp_selected->monto - $info_sdp_selected->monto_comprobado),2) }} MXN</strong><br>
+                    @else
+                        <strong class="bg-light-success">Monto por comprobar: ${{ number_format(($info_sdp_selected->monto - $info_sdp_selected->monto_comprobado),2) }} MXN</strong><br>
+
+                    @endif
                     Xml estatus:
-                        @if ($info_sdp_selected->mxml_estatus)
+                        @if ($info_sdp_selected->xml_estatus)
                             <span class="py-1 badge bg-success" style="opacity: 1">Existen</span>
                         @else
                             <span class="py-1 badge bg-danger" style="opacity: 1">No existen</span>
@@ -115,6 +120,7 @@
                                     $ruta = $explode[2];
                                 @endphp
                                 <div class="row align-items-center">
+
                                     <div class="col col-md-1 p-0">
                                         @if ($archivo->tipo === 'XML')
                                             <i class="ph ph-file-code bg-light-success  f-24"></i>
@@ -126,22 +132,31 @@
                                             <i class="ph ph-file-image bg-light-success  f-24"></i>
                                         @endif
                                     </div>
+
                                     <div class="col col-md-7 p-0">
                                         <a href="{{ Storage::url($archivo->ruta) }}" target="_blank">
                                             {{ $ruta }}
                                         </a>
                                     </div>
+
                                     <div class="col col-md-2 p-0">
                                         <span>${{ number_format($archivo->monto, 2) }} MXN</span>
                                     </div>
-                                    <div class="col col-md-2 p-0">
-                                        <a href="javascript:void(0)"
-                                        wire:click.prevent="$dispatch('Confirm',{ id: {{ $archivo->id }},eventName:'destroyFile',text:'¿ESTA SEGURO DE ELIMINAR EL ARCHIVO?'})"
-                                        class="avtar avtar-s btn btn-danger"
-                                        style="width:30px; height:30px;">
-                                        <i class="ti ti-trash f-18"></i>
-                                        </a>
-                                    </div>
+
+                                    @if ($info_sdp_selected->estatus !== 'SOLICITUD PAGADA' && $info_sdp_selected->estatus !== 'SOLICITUD CANCELADA')
+                                        <div class="col col-md-2 p-0">
+                                            <a href="javascript:void(0)"
+                                                wire:click.prevent="$dispatch('Confirm',
+                                                    { id: {{ $archivo->id }},
+                                                    eventName:'destroyFile',
+                                                    text:'¿ESTA SEGURO DE ELIMINAR EL ARCHIVO?'})"
+                                                class="avtar avtar-s btn btn-danger"
+                                                style="width:30px; height:30px;">
+                                                <i class="ti ti-trash f-18"></i>
+                                            </a>
+                                        </div>
+                                    @endif
+
                                 </div>
                                 <hr class="my-1">
                             @endforeach

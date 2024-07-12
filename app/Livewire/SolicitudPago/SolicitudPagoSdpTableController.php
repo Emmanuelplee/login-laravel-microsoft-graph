@@ -82,7 +82,10 @@ class SolicitudPagoSdpTableController extends DataTableComponent
         error_log('builder');
         // Retornar solo los registros del usuario autenticado
         Log::info('User ID: ' . $this->user_auth->id); // Esto registrará el ID del usuario en logs de Laravel
-        return SolicitudPagoSdp::query()->where('user_id', $this->user_auth->id);
+        $query = SolicitudPagoSdp::query()
+            ->with('user:id,alias,email')
+            ->where('user_id', $this->user_auth->id);
+        return $query;
     }
     public function filters(): array
     {
@@ -216,8 +219,9 @@ class SolicitudPagoSdpTableController extends DataTableComponent
             Column::make("Aprobado", "aprobado")
                 ->sortable()
             ->html(),
-            Column::make("User id", "user_id")
-                ->sortable(),
+            Column::make("Usuario correo", "user.email")
+                ->sortable()
+            ->html(),
 
             DateColumn::make("Fecha Creado", "created_at")
                 ->outputFormat('d-m-Y h:i:s A')
