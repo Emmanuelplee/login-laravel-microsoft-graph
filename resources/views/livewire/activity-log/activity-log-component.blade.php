@@ -43,18 +43,6 @@
                         id="followers-tab" data-bs-toggle="tab" href="#followers" role="tab" aria-selected="false">
                         <i class="ph ph-file-lock me-2"></i>  Permisos por rol
                       </a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link {{ $stepTable == 3 ? 'active' : ''}}"
-                        id="friends-tab" data-bs-toggle="tab" href="#friends" role="tab" aria-selected="false">
-                        <i class="ph ph-shield-check me-2"></i> Permisos por rol y usuario
-                      </a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link {{ $stepTable == 4 ? 'active' : ''}}"
-                        id="gallery-tab" data-bs-toggle="tab" href="#gallery" role="tab" aria-selected="false">
-                        <i class="ph ph-users-three me-2"></i> Usuarios por permiso
-                      </a>
                     </li> --}}
                   </ul>
 
@@ -84,30 +72,6 @@
                           <div class="table-responsive">
 
                             <livewire:ReportPermissions.TableTwoPermissionsByRoles />
-
-                          </div>
-                        </div>
-
-                    </div>
-                    <div class="tab-pane" id="friends" role="tabpanel" aria-labelledby="friends-tab">
-
-                        <div class="h4 py-2">Permisos por rol y usuarios</div>
-                        <div class="table-card user-profile-list">
-                          <div class="table-responsive">
-
-                            <livewire:ReportPermissions.TableThreePermissionsByRolAndUsers />
-
-                          </div>
-                        </div>
-
-                    </div>
-                    <div class="tab-pane" id="gallery" role="tabpanel" aria-labelledby="gallery-tab">
-
-                        <div class="h4 py-2">Usuarios por permiso</div>
-                        <div class="table-card user-profile-list">
-                          <div class="table-responsive">
-
-                              <livewire:ReportPermissions.TableFourUsersByPermission />
 
                           </div>
                         </div>

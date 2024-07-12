@@ -35,6 +35,12 @@
                 $modelfind = DB::table('solicitudes_pago_sdps')->where('id','=',$item->subject_id)->first();
                 $name = $modelfind->folio;
             }
+            if ($model === 'ArchivosSdps') {
+                // $modelfind = Permissions::find($item->subject_id);
+                $modelfind = DB::table('archivos_sdps')->where('id','=',$item->subject_id)->first();
+                $explode = explode('/',$modelfind->ruta);
+                $name = $explode[2];
+            }
         }
         // dump($model);
     @endphp
